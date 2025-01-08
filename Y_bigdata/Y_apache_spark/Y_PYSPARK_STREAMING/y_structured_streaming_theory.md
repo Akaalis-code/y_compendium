@@ -35,6 +35,12 @@
     But when I tried , I set config like "spark.sql.streaming.schemaInference = True" and did not give any schema ,  
     it worked fine.
 
+    New test reveal : if the source has zero files when reader is started , it indeed is giving 
+                        "unable to infer schema" error message.
+
+                        But if the source already has any data while the reader has started,
+                        it is infereing schema succesfully ,with below config set ofcourse
+
     Example :
         ss.conf.set("spark.sql.streaming.schemaInference", True)
         read_stream_df = ss.readStream.format("csv")\
@@ -47,6 +53,23 @@
     “maxFilesPerTrigger”
 
 
-CHECK POINTING
+CHECK POINTING :
+    Its a folder location where structured streaming keeps its meta data on which files from SOURCE have been read
+    and written succesfully into the SINK .
+
+    We generally will give the checkpointing location through STREAMWRITER object , like below .
+     
 WRITE AHEAD LOGS
 WATERMARKING
+
+
+# Aggregations and Window functions check for different output modes :
+
+        | OPERATION         | OUTPUT MODE              | SINK   | Working or not |
+        |:-----------------:|:------------------------:|:------:|:--------------:|
+        |          | Append                   |
+        |       | Append, Complete         |
+        |         | Append, Update, Complete |
+        |       | Append, Update, Complete |
+        |       | Append, Update, Complete |
+        |  | Append, Update, Complete |

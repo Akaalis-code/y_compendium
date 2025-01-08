@@ -47,6 +47,9 @@ LIGHT MATTERS (Company):-   May be pioneer in PHOTONICS , Where the communicatio
                             instead of electrons . In short replacing Circuits with fibre optics at nano scale.
 
 1x (Company):-  Promising in Humanoid robotics
+
+
+CL) DRAKE equation 
 --------------------------------------- CET -- end -------------------------------------------------------------
 
 
@@ -102,4 +105,5 @@ vocabulary :
 
 
     etymology - the study of the origin of words and the way in which their meanings have changed throughout history.
+    disingenuous - not candid or sincere, typically by pretending that one knows less about something than one really does.
 ---------------------------------------- English -- End ---------------------------------------------------------
