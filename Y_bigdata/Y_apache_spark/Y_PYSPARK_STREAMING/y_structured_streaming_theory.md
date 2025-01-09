@@ -58,7 +58,7 @@ CHECK POINTING :
     and written succesfully into the SINK .
 
     We generally will give the checkpointing location through STREAMWRITER object , like below .
-     
+
 WRITE AHEAD LOGS
 WATERMARKING
 
@@ -73,3 +73,22 @@ WATERMARKING
         |       | Append, Update, Complete |
         |       | Append, Update, Complete |
         |  | Append, Update, Complete |
+
+
+
+# WINDOWS operation :
+
+    Windows operation syntax and functionality is almost same with usual SQl Windows but with slight added features
+    like Watermark functionality to provide a thresholld value on late arrival of data and etc .
+
+    Synatx is as follows : (may be subject to change)
+
+        window(timeColumn: Column,          -->> use a time related column in your dataframe
+                windowDuration: String,     -->> mention that duration like this "10 minutes"
+                slideDuration: String,      -->> mention that duration like this "5 minutes"
+                startTime: String           -->> mention that duration like this "5 minutes"
+                )
+        
+        dataframe.groupBy(<Windowsobject derved from above>,
+                            <your dataframe column>,
+                        ).agg()
