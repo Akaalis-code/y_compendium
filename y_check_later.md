@@ -28,8 +28,15 @@ CL) Vector databses
 CL) Synchronous vs Asynchronous programming
     Python library - asyncio
 CL) Subroutine vs coroutine
+CL) Flink:
+        Flink seems to be a competitor for SPARK STRUCTURED STREAMING 
+CL) Informatica , DAG - bigdata tech 
+CL) Kafka can be deployed on bare-metal hardware
+    KAFKA CONNECTS
+    KAFKA STREAMS
+    KAFKA TOPICS
 
-
+    MAP REDUCE FLATMAP
 
 --------------------------------------- CET -- start -------------------------------------------------------------
 NUCLEAR FUSION:
