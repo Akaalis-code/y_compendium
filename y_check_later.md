@@ -11,7 +11,7 @@ A)  I think pyspark does come with light weight SPARK BINARIES enough to execute
 Clean later -->> Spark analogy pt in this file is 7 MB try reducing the size later /home/yvm/Documents/y_youtube/y_youtube_teaching/y_pyspark/y_pyspark_batch.md
 
 
-CL) Study about "ENUMARATOR vs ZIP" in python for looping 
+
 CL) Iterators vs generators
 CL) Clousures and decorators
 CL) Python multi threading vs multiprocessing and CPU Pooling through map reduce 
@@ -37,6 +37,8 @@ CL) Kafka can be deployed on bare-metal hardware
     KAFKA TOPICS
 
     MAP REDUCE FLATMAP
+CL) ACL s (Access Control Lists)
+CL) ATOMIC BROADCAST PROBLEM
 
 --------------------------------------- CET -- start -------------------------------------------------------------
 NUCLEAR FUSION:
@@ -82,7 +84,7 @@ PYTHON :
     iterator vs generator
     closure and decorator 
     Is there any performance improvement in list comprehension or just a compact way to write code
-    ZIP() function in for loops of python
+    Study about "ENUMARATOR vs ZIP" in python for looping 
 
 ---------------------------------------- English -- start --------------------------------------------------------
 Speakers :
@@ -113,4 +115,7 @@ vocabulary :
 
     etymology - the study of the origin of words and the way in which their meanings have changed throughout history.
     disingenuous - not candid or sincere, typically by pretending that one knows less about something than one really does.
+
+    agnostic - a person who believes that nothing is known or can be known of the existence or nature of God
+    silos - a tall tower or pit on a farm used to store grain
 ---------------------------------------- English -- End ---------------------------------------------------------
