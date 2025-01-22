@@ -118,4 +118,5 @@ vocabulary :
 
     agnostic - a person who believes that nothing is known or can be known of the existence or nature of God
     silos - a tall tower or pit on a farm used to store grain
+    Corpus - a collection of written texts, especially the entire works of a particular author or a body of writing on a particular subject.
 ---------------------------------------- English -- End ---------------------------------------------------------

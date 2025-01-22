@@ -27,4 +27,18 @@ Machine learning algorithms :
 
 
 
-AI AGENT = It can be thought of as sensors that senses the environment that we place it in .
+AI AGENT = an "AI MODEL" + Ability to be aware of its environment and learn how to react as need 
+    Example :   suppose you want to know and summarize and prioritize the world news as of today ,
+                it should have an AI mdel which has ability for interaction like LLM and on top of that
+                Some WEBSCRAPER to have the ability to study its environment.
+
+RAG
+
+VECTOR DATABASES
+
+KOKORO TTS
+
+Google AI STUDIO
+    google generative ai
+
+DEEPSEEK = Chineese Company which released open source "R1" model that rivals OPEN AI o1 reasoning model

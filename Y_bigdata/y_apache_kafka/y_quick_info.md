@@ -18,10 +18,11 @@ REFERENCE = https://kafka.apache.org/documentation/
 
     Previous to kafka there were "ACTIVE MQ" , "RABBIT MQ" , "IBM MQ" which were being use as messaging queue technologies
 
-    KAFKA s Cloud solutions are as below :
+    KAFKA s various tools and solutions :
         Azure Event Hubs
         Amazon MSK (Managed Streaming for Apache Kafka)
         Confluent is enterprise level solution built around KAFKA with some extra needed tools
+        QUIX STREAMS gives python library for using KAFKA STREAMS I think (Subject to change)
 
     
 # How does it work :
