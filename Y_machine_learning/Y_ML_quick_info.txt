@@ -26,11 +26,12 @@ Machine learning algorithms :
 
 
 
+AI WORKFLOWS = "AI MODEL"+"some tools" orchestrated in flow by human
 
-AI AGENT = an "AI MODEL" + Ability to be aware of its environment and learn how to react as need 
-    Example :   suppose you want to know and summarize and prioritize the world news as of today ,
-                it should have an AI mdel which has ability for interaction like LLM and on top of that
-                Some WEBSCRAPER to have the ability to study its environment.
+AI AGENT = an "AI MODEL" + Ability to be aware of its environment and learn how to react as need autonomously
+            with out any human suggestion.
+
+AI SYSTEMS = 
 
 RAG
 
@@ -42,3 +43,7 @@ Google AI STUDIO
     google generative ai
 
 DEEPSEEK = Chineese Company which released open source "R1" model that rivals OPEN AI o1 reasoning model
+
+LANGCHAIN =
+
+PYDANTIC = 
