@@ -13,7 +13,7 @@
 
    2) Getting OLLAMA model of your choice and running it locally :
    
-         > ollama run <your_model_choice>                    -->> Through ollama the model gets downloaded and installed and starts running in your system
+         > ollama run <your_model_choice:parameter_value>    -->> Through ollama the model gets downloaded and installed and starts running in your system
          > ollama stop <your_model_choice>                   -->> This will stop your running model
          > ollama rm 
          > ollama ps                                         -->> To check all the LOADED olama models in your system

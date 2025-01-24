@@ -39,7 +39,7 @@ CL) Kafka can be deployed on bare-metal hardware
     MAP REDUCE FLATMAP
 CL) ACL s (Access Control Lists)
 CL) ATOMIC BROADCAST PROBLEM
-
+CL) ANSIBLE vs TERRAFORM
 --------------------------------------- CET -- start -------------------------------------------------------------
 NUCLEAR FUSION:
     Z Machine 
