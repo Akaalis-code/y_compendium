@@ -5,7 +5,7 @@ import numpy as np
 plt.style.use('fivethirtyeight')
 
 # Available values for GENES , that is list of all locations
-points = array_2d = np.array([[ 8, 73],[37, 71],[65,  9],[99,  8],[65, 49],[18, 39],[98, 28],[41, 74],[74, 87],[68, 74],[17, 29],[71, 71],[ 0, 50],[51, 84],[76, 98],[62, 31],[35, 13],[47,  5],[64, 87],[63, 41]])
+points = np.array([[ 8, 73],[37, 71],[65,  9],[99,  8],[65, 49],[18, 39],[98, 28],[41, 74],[74, 87],[68, 74],[17, 29],[71, 71],[ 0, 50],[51, 84],[76, 98],[62, 31],[35, 13],[47,  5],[64, 87],[63, 41]])
 # Generate 10 random points
 #points = np.random.randint(0, 100, (20, 2))
 
@@ -41,4 +41,4 @@ ani = animation.FuncAnimation(fig, update, frames=range(19), init_func=init, bli
 mng = plt.get_current_fig_manager().full_screen_toggle()
 
 # Display the animation
-plt.show()
+#plt.show()
