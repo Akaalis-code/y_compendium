@@ -10,7 +10,6 @@ def mth_sequencer(para_dna_index) :
     rtn_child = []
     for i in para_dna_index :
         rtn_child.append(points1[i])
-    print(np.array(rtn_child))
     rtn_child = np.array(rtn_child)
     return rtn_child
 

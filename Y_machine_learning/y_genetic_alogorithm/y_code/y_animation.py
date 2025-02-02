@@ -28,17 +28,28 @@ def init():
     return lines
 
 # Function to update the animation
+
+y_test_frames = [12, 0, 10, 1, 13, 4, 11, 7, 6, 14, 8, 9, 15, 18, 19, 17, 5, 3, 2, 16]
+var_clone = []
+for i in y_test_frames :
+    var_clone.append(points[i])
+var_clone= np.array(var_clone)
 def update(frame):
-    xdata = [points[frame, 0], points[frame + 1, 0]]
-    ydata = [points[frame, 1], points[frame + 1, 1]]
+    frame = frame
+    xdata = [var_clone[frame, 0], var_clone[frame + 1, 0]]
+    ydata = [var_clone[frame, 1], var_clone[frame + 1, 1]]
     lines[frame].set_data(xdata, ydata)
     return lines
 
 # Create the animation
-ani = animation.FuncAnimation(fig, update, frames=range(19), init_func=init, blit=True)
+
+ani = animation.FuncAnimation(fig, update, frames=range(19), init_func=init, blit=True ,repeat=True)
+
+
+
 
 # for doing full screen of plot
 mng = plt.get_current_fig_manager().full_screen_toggle()
 
 # Display the animation
-#plt.show()
+plt.show()
