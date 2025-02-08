@@ -32,3 +32,4 @@
     > pip install pyspark
     > pip install matplotlib
     > sudo apt install python3-tk
+    > python3 y_animation.py
