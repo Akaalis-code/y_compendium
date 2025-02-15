@@ -17,9 +17,13 @@
         4)Crossver and mutation
         5)Start again at step 1
 
-        Terminology :-
-            Gene - Each individual point in the sequence
+        Terminology in the order of Ascending size:-
+            Nitrogenous/Nucleotide base - ACTG
+            Gene - A segment in the sequence
             DNA  - Sequence of Genes
+            Chromosome - 
+            Cell Nucleus - 
+            CELL -
 
 
     STORAGE :-
