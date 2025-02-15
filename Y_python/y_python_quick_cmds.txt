@@ -1,3 +1,19 @@
+########################### Random ## START #############################################################################
+
+1) "dir(<any_object>)" it will give out all dunder related variables for it 
+
+
+2) Dunder = __anyobject__
+
+3)  CONTEXT MANAGER using "with" block   
+    __entry__
+    __exit__
+
+4) assert <boolean condition>,<message if boolean returns 0>
+
+
+########################### Random ## END #############################################################################
+
 ########################### PIP related info ## START #####################################################################################
 
 To check where the pip installed the libraries :
@@ -64,9 +80,4 @@ pip cache checking and purging
 
 
 
-########################### Random ## START #############################################################################
 
-1) "dir(<any_object>)" it will give out all dunder related variables for it 
-
-
-########################### Random ## END #############################################################################
