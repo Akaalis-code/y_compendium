@@ -60,7 +60,12 @@ CHECK POINTING :
     We generally will give the checkpointing location through STREAMWRITER object , like below .
 
 WRITE AHEAD LOGS
-WATERMARKING
+WATERMARKING :
+    (subject to change) -->> output modes are only Append and Update , when complete mode is there Watermarking is Infinite time threshold 
+
+    Think of the pupose of watermark as memory cleaner which holds STATE store and 
+    any window whose end time is outside {MAX_EVEN_TIME - THRESHOLD} will be wiped out from memory's STATE STORE which holds
+    this aggregated intermediate data 
 
 
 # Aggregations and Window functions check for different output modes :
@@ -89,6 +94,12 @@ WATERMARKING
                 startTime: String           -->> mention that duration like this "5 minutes"
                 )
         
-        dataframe.groupBy(<Windowsobject derved from above>,
-                            <your dataframe column>,
-                        ).agg()
+        dataframe.groupBy   (  <Windowsobject derved from above>,
+                                <your dataframe column>,
+                            ).agg()
+    
+
+    Types of Windows operation :
+        Rolling Window 
+        Sliding window
+        session window 

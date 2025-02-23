@@ -104,3 +104,48 @@
 	Streaming table
 	Delta LIVE table
 	Streaming live table
+
+
+####################################### Prof certificate ######################################################################
+
+dbutils.jobs.taskValues.get() :
+dbutils.jobs.taskValues.set() :
+	In a pipline , you can use this to set or get any particular parameters which needs to propogate information acrros 
+	the tasks with in  a job 
+
+
+dbutils.notebook.run("My Other Notebook", 60) :
+dbutils.notebook.exit("My exit value")
+
+
+dbutils.secrets.get(scope="my-scope", key="my-key"):
+				.getbytes(..)
+				.list(..)
+				.listScopes(...)
+
+
+dbutils.widgets......
+dbutils.widgets.get('fruits_combobox')
+
+
+
+
+
+CDC vs CDF 
+
+microbatch._jdf
+
+mlflow pyfunc spark_udf
+
+.trigger()
+
+All Describe cmds
+
+Ganglia UI
+
+ASSERT
+
+DATABRICKS REST API 
+
+.withWatermark("timestamp", "10 minutes") \
+(max event time seen by the engine - late threshold > T)
