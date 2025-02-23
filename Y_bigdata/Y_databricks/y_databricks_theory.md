@@ -132,12 +132,56 @@ dbutils.widgets.get('fruits_combobox')
 
 
 CDC vs CDF 
+	table_changes ( table_name, start_time [, end_time ] )
+
+	_change_type STRING NOT NULL
+	Specifies the change: delete, insert, update_preimage, or update_postimage
+
+	_commit_version BIGINT NOT NULL
+	Specifies the commit version of the table associated with the change.
+
+	_commit_timestamp TIMESTAMP NOT NULL
+
+	CREATE TABLE myschema.t(c1 INT, c2 STRING) TBLPROPERTIES(delta.enableChangeDataFeed=true);
+	(spark.readStream
+	.option("readChangeFeed", "true")
+	.table("myDeltaTable")
+	)
+
+	-- providing only the startingVersion/timestamp
+	SELECT * FROM table_changes('tableName', 0)
+
+	-- database/schema names inside the string for table name, with backticks for escaping dots and special characters
+	SELECT * FROM table_changes('dbName.`dotted.tableName`', '2021-04-21 06:45:46' , '2021-05-21 12:00:00')
+
+	spark.read \
+	.option("readChangeFeed", "true") \
+	.option("startingVersion", 0) \
+	.option("endingVersion", 10) \
+	.table("myDeltaTable")
+
+
+	spark.read \
+	.option("readChangeFeed", "true") \
+	.option("startingTimestamp", '2021-04-21 05:45:46') \
+	.option("endingTimestamp", '2021-05-21 12:00:00') \
+	.table("myDeltaTable")
+
+	set spark.databricks.delta.properties.defaults.enableChangeDataFeed = true;
+
+
+
+
 
 microbatch._jdf
 
 mlflow pyfunc spark_udf
 
 .trigger()
+.trigger(continuous="1 second") \     # trigger intervel is 1 sec compared to default 100 ms , and the 1 sec mentioned here 
+										is for check pointing 
+.trigger(availableNow=True) \ # once = True is depricated 
+.trigger(once=True) \ Might be active in Autoloader
 
 All Describe cmds
 
