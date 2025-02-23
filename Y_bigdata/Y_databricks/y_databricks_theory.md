@@ -173,9 +173,24 @@ CDC vs CDF
 
 
 
+
+
 microbatch._jdf
 
-mlflow pyfunc spark_udf
+
+
+
+
+
+
+mlflow pyfunc spark_udf :
+	mlflow.pyfunc.spark_udf(spark, model_uri=logged_model)
+
+
+
+
+
+
 
 .trigger()
 .trigger(continuous="1 second") \     # trigger intervel is 1 sec compared to default 100 ms , and the 1 sec mentioned here 
@@ -183,13 +198,116 @@ mlflow pyfunc spark_udf
 .trigger(availableNow=True) \ # once = True is depricated 
 .trigger(once=True) \ Might be active in Autoloader
 
+
+
+
+
+
+
 All Describe cmds
+
+
+
+
+
+
 
 Ganglia UI
 
-ASSERT
 
-DATABRICKS REST API 
+
+
+
+
+
+ASSERT
+	for SQl = select assert_true(condition [, message])
+	For python = assert tableExists(tableName, dbName) is True
+
+
+
+
+
+
+
+DATABRICKS REST API :
+	curl --request GET "https://${DATABRICKS_HOST}/api/2.0/clusters/get"
+
+
+
+
+
+
 
 .withWatermark("timestamp", "10 minutes") \
 (max event time seen by the engine - late threshold > T)
+
+
+
+
+
+
+OPTIMIZE :
+	Z-order -> sorts data by column values , it doesnt consider newly arrived data , for that you need to explicitly run 
+				OPTIMIZE table_name [FULL] [WHERE predicate]
+				[ZORDER BY (col_name1 [, ...] ) ]
+	
+	CLUSTER BY -> colocates similar data based of mention column names 
+
+	Liquid cluster -> Does same thing as CLUSTER BY , but its automatic and periodic running with out human intervention
+
+
+	Compaction :
+		Sees if files can be merged together 
+		OPTIMIZE table_name
+		deltaTable.optimize().executeCompaction()
+	
+	Bin packing :
+		Evenly ditributes files based on size
+	
+	spark.databricks.delta.autoCompact.maxFileSize
+
+	ALTER TABLE <table_name> UNSET TBLPROPERTIES (delta.autoOptimize.autoCompact)
+
+
+
+
+
+
+
+
+
+TIME TRAVEL :
+	SELECT * FROM my_table VERSION AS OF 2
+	SELECT * FROM my_table TIMESTAMP AS OF '2024-01-27 11:37:00';
+
+	Delta Log Retention:
+
+	Property: delta.logRetentionDuration
+
+	Default: 30 days
+
+	Purpose: Determines how long the Delta transaction log history is retained. This log contains metadata about all changes made to the table.
+
+	Deleted File Retention:
+
+	Property: delta.deletedFileRetentionDuration
+
+	Default: 7 days
+
+	Purpose: Specifies how long deleted data files are retained. This is important for time travel, as it allows you to query previous versions of the table.
+
+	VACUUM Command:
+
+	Purpose: Removes old data files that are no longer referenced by the Delta table. Running VACUUM helps free up storage space.
+
+	Retention Window: The default retention window for VACUUM is 7 days. You can adjust this by setting the delta.deletedFileRetentionDuration property.
+
+	Example:
+
+	sql
+	VACUUM table_name RETAIN 30 Hours ;
+
+
+
+	RESTORE TABLE my_table To version as of 3
