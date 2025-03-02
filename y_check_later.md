@@ -86,6 +86,8 @@ PYTHON :
     Is there any performance improvement in list comprehension or just a compact way to write code
     Study about "ENUMARATOR vs ZIP" in python for looping 
 
+    SPARK REPL(READ EVAL PRINT LOOP)
+
 ---------------------------------------- English -- start --------------------------------------------------------
 Speakers :
     Christopher hitchens 

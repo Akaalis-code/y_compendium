@@ -33,7 +33,7 @@ writing_df =    transform_df.writeStream\
     .trigger(processingTime = "1 minute")
     .option("maxFilesPerTrigger" , "1")
 
-# output modes :
+# output modes : This feels wrong correct it later 
     append = Insert only new records
     Update = UPSERT 
     Complete = OVERWRITE 
