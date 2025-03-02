@@ -176,9 +176,11 @@ CDC vs CDF
 
 
 microbatch._jdf
+Question 38 says contrary to above 
+it says just use microBatch.sparkSession.sql()
 
 
-
+Study about dataframe writer .mode options there seems to be an ignore option too
 
 
 
@@ -269,6 +271,9 @@ OPTIMIZE :
 
 	ALTER TABLE <table_name> UNSET TBLPROPERTIES (delta.autoOptimize.autoCompact)
 
+	Auto compaction doesnt support Z ordering
+	Z-ordering is very costly compared to compaction
+
 
 
 
@@ -311,3 +316,32 @@ TIME TRAVEL :
 
 
 	RESTORE TABLE my_table To version as of 3
+
+
+
+	While streaming , if any of the source table deletion should nt break streaming use option ignoreDelete
+	spark.readstream.table(...).option("ignoreDelete",True).writeStream.....
+	
+
+
+
+
+dbfs:users/hive/warehouse/db_hr.db
+
+
+SPARK UI query details page 
+
+
+#Databricks notebook source
+
+
+Databricks CLi and rest APi study
+	REST API :
+		GET 
+		POST
+		PATCH -->> for update 
+		DELETE
+
+
+
+Partial fail and full fail of tasks in workflows study about it 
