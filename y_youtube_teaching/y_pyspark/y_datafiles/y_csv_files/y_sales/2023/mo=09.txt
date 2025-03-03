@@ -1,0 +1,5 @@
+col_company,col_product,col_number_of_items,col_sales
+C1,P1,100,1
+C2,P1,20,1
+C3,P2,14,1
+

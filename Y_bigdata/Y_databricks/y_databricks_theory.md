@@ -142,6 +142,7 @@ dbutils.widgets.get('fruits_combobox')
 
 
 CDC vs CDF 
+	CDF is useful when only small fraction of data is changed in each batch
 	table_changes ( table_name, start_time [, end_time ] )
 
 	If you run above method using select , it returns below cols along with tables cols
@@ -187,7 +188,7 @@ CDC vs CDF
 
 
 
-microbatch._jdf
+microbatch._jdf -->> question 15 .. its asking for runtime less than 10.5
 Question 38 says contrary to above 
 it says just use microBatch.sparkSession.sql()
 
@@ -237,10 +238,14 @@ ACCESES related :
 	Cluster access :
 		Attach to
 		Can restart
-		Manage -->> can manage permissions
+		Manage -->> can manage permissions and edit cluster config 
 		Allow cluster creation
 
+		View SPARK UI and Computer metrics -->> Can attach to permission enough
+		View Driver logs                   -->> Can manage permisiion
+		Edit cluster config                -->> Manage permission
 
+	Group cannot be owners of the job only individual users can 
 
 All Describe cmds
 	DESCRIBE my_table_name = just gives tables columns info
@@ -301,11 +306,19 @@ WATERMARKING :
 	Not through the example in oficial doc
 
 
+df.dropDuplicates()
+df.dropna()
 
 
--- start from here tommorow
 
-OPTIMIZE :
+OPTIMIZE : 
+	Q19,Q26 says Auto optimiza will consider 128 MB file sizes 
+	    	Standard optimiza considers file sizes of 1 GB 
+	
+	Auto optimize will not do Z ordering as it is costly operation
+	In spark default partition block size is 128 MB , thats not fixed we can change it from configs
+	In databricks when we run optimize cmd , any file that is less than 1 GB size will be merged
+
 	Z-order -> sorts data by column values , it doesnt consider newly arrived data , for that you need to explicitly run 
 				OPTIMIZE table_name [FULL] [WHERE predicate]
 				[ZORDER BY (col_name1 [, ...] ) ]
@@ -330,6 +343,12 @@ OPTIMIZE :
 	Auto compaction doesnt support Z ordering
 	Z-ordering is very costly compared to compaction
 
+	In file statistics collection first 32 columns will be used 
+	and for nested columns each nested value will be considered as a column
+	for example 4 struct field columns with each 8 nested fields will be considered as 32 cols
+
+	Files cannot be compacted accross the partitions even if you run optimize 
+
 
 
 
@@ -344,19 +363,21 @@ TIME TRAVEL :
 
 	Delta Log Retention:
 
-	Property: delta.logRetentionDuration
+		Property: delta.logRetentionDuration
 
-	Default: 30 days
+		Default: 30 days
 
-	Purpose: Determines how long the Delta transaction log history is retained. This log contains metadata about all changes made to the table.
+		Purpose: Determines how long the Delta transaction log history is retained. This log contains metadata 
+		about all changes made to the table.
 
 	Deleted File Retention:
 
-	Property: delta.deletedFileRetentionDuration
+		Property: delta.deletedFileRetentionDuration
 
-	Default: 7 days
+		Default: 7 days
 
-	Purpose: Specifies how long deleted data files are retained. This is important for time travel, as it allows you to query previous versions of the table.
+		Purpose: Specifies how long deleted data files are retained. This is important for time travel, 
+		as it allows you to query previous versions of the table.
 
 	VACUUM Command:
 
@@ -373,6 +394,8 @@ TIME TRAVEL :
 
 	RESTORE TABLE my_table To version as of 3
 
+	Study about @v syntax also 
+
 
 
 	While streaming , if any of the source table deletion should nt break streaming use option ignoreDelete
@@ -381,6 +404,7 @@ TIME TRAVEL :
 
 
 
+Q47 in pe1
 
 dbfs:users/hive/warehouse/db_hr.db
 
@@ -394,3 +418,12 @@ SPARK UI query details page
 
 
 Partial fail and full fail of tasks in workflows study about it 
+
+
+
+JOINS ON STREAMS :
+	In STREAM joins all the past inputs are buffered to match and do comparision with upcomming future inputs 
+	This past window can be controlled by watermarking
+
+	In stream static joins , in every micro batch latest version of static table will be used
+	for doing join with streaming
