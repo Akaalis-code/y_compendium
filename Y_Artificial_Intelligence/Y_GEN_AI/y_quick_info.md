@@ -34,4 +34,4 @@ Foundational models :(Subject to correction)
     PaLM
 
 
-Day 4 12:28
+Day 4 12:28 starting 
