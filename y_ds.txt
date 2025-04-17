@@ -1,4 +1,5 @@
 {NDo , NCh , NFa , Exr , NPo , WoDr}
 
 
-16Apr2025 - {NDo , NCh , NFa ,  , NPo , }
+16Apr2025 - {NDo , NCh , NFa ,  , NPo , } -> 4/6
+16Apr2025 - {NDo , NCh , NFa ,  ,  , }    -> 3/6
