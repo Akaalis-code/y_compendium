@@ -48,3 +48,7 @@ Foundational models :(Subject to correction)
 
 
 Day 4 12:28 starting 
+
+
+
+MCP - MODEL CONTEXT PROTOCOL

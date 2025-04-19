@@ -21,8 +21,7 @@
         >>> python -c "from transformers import pipeline; print(pipeline('sentiment-analysis')('we kind of you'))"
         -   As you did not mention which model to use , it will use a DEFAULT one 
         -   For the very first time , it Downloads big files which I presume as "WEIGHTS" of the 
-            model along with 
-            other necessities.
+            model along with other necessities.
         -   They get downloaded into your systems cache file , the directory will be as below
             "~/.cache/huggingface/" 
         -   You can change environment variables to change that cached location
