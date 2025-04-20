@@ -106,7 +106,7 @@
 	Streaming live table
 
 
-####################################### Prof certificate ######################################################################
+####################################### Prof certificate ROUGH WORK ##START ###################################################
 
 Workflows 
 	JOBS
@@ -427,3 +427,6 @@ JOINS ON STREAMS :
 
 	In stream static joins , in every micro batch latest version of static table will be used
 	for doing join with streaming
+
+
+####################################### Prof certificate ROUGH WORK ## END ###################################################
