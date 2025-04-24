@@ -52,3 +52,9 @@ Day 4 12:28 starting
 
 
 MCP - MODEL CONTEXT PROTOCOL
+
+
+
+AI TOOLS for coding IDE:(Check later)
+    Cursor 
+    Windsurf

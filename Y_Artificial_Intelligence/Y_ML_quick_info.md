@@ -25,6 +25,11 @@ Machine learning algorithms :
 
 
 
+# All Neural Networks 
+<iframe src="y_nn_overview.pdf" width="10000" height="1000"></iframe>
+
+
+
 
 TOKENIZATION = 
 
@@ -40,7 +45,8 @@ AI AGENT = an "AI MODEL" + Ability to be aware of its environment and learn how 
 
 
 
-------------------------------------- CHECK LATER -- START ------------------------------------------------------------
+------------------------------------- CHECK LATER -- START ---------------------------------------------------------
+
 AI SYSTEMS = 
 
 RAG
@@ -67,7 +73,8 @@ EMBEDDING
     Contextual Embeddings
         BERT or GPT
 
-
+RNN
+LSTM
 
 pip install 'accelerate>=0.26.0'   ------->>>> I tried using model(microsoft/phi-4) which seems big , it asked to do this
 ------------------------------------- CHECK LATER -- End ------------------------------------------------------------
