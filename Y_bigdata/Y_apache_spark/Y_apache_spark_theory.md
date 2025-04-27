@@ -74,3 +74,21 @@
                                        "Spark.sql.shuffle.partitions" this SPARK config can be used to 
                                        set number of SHUFFLE partitions (default is 200)
 
+
+# JOIN Startegies :
+
+   1) Broadcast JOIN
+   2) Broadcast Hash JOIN
+   3) Shuffle hash JOIN
+   4) Shuffle sort merge join
+   5) Cartesian join
+
+
+# Difference between COALESCE and REPARTITION :
+      Feature     | coalesce(n)                                | repartition(n)
+   🔄 Purpose     | Reduce number of partitions                | Increase or change number of partitions
+   🔁 Shuffle     | ❌ No full shuffle (narrow transformation) | ✅ Full shuffle (wide transformation)
+   ⚖️ Data Balance | Not evenly distributed                     | Evenly distributed across partitions
+   🚀 Performance | Faster (no shuffle)                        | Slower (shuffles all data)
+   🧠 Use Case    | Before writing to avoid small files        | For parallelism or after filtering
+   📈 Example     | df.coalesce(4)                             | df.repartition(8)

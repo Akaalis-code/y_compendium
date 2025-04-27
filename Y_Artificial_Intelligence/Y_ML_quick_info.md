@@ -26,7 +26,9 @@ Machine learning algorithms :
 
 
 # All Neural Networks 
-<iframe src="y_nn_overview.pdf" width="10000" height="1000"></iframe>
+<iframe src="y_nn_overview.pdf" width="1000" height="1000"></iframe>
+
+[View the PDF](y_nn_overview.pdf)
 
 
 
