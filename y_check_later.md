@@ -78,7 +78,7 @@ PCB WAY -->> for 3d printing , CNC cutting PCB
 Video Editing :
     PICSART web based tool for AI enhaced removals 
     
----------------------------------------- Various tools -- start -------------------------------------------------------------
+---------------------------------------- Various tools -- End -------------------------------------------------------------
 
 PYTHON :
     iterator vs generator
@@ -111,8 +111,8 @@ vocabulary :
     articulate - having or showing the ability to speak fluently and coherently
     eloquent - fluent or persuasive in speaking or writing
 
-    antithesis - 
-    rhetoric - 
+    antithesis - a person or thing that is the direct opposite of someone or something else.
+    rhetoric - language designed to have a persuasive or impressive effect, but which is often regarded as lacking in sincerity or meaningful content.
 
 
     etymology - the study of the origin of words and the way in which their meanings have changed throughout history.
@@ -121,5 +121,7 @@ vocabulary :
     agnostic - a person who believes that nothing is known or can be known of the existence or nature of God
     silos - a tall tower or pit on a farm used to store grain
     Corpus - a collection of written texts, especially the entire works of a particular author or a body of writing on a particular subject.
-    isochrome maps - 
+    isochrome maps - Distance that can be covered in a constant time with constant velocity ,
+                     Ideally speaking it would be CIRCLE in 2D and SPHERE in 3D,
+                     But rethink the same thing when there are only certain curvy roads that you can take in a particular direction in 2D
 ---------------------------------------- English -- End ---------------------------------------------------------
