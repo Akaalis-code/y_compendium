@@ -26,9 +26,10 @@ Machine learning algorithms :
 
 
 # All Neural Networks 
-<iframe src="y_nn_overview.pdf" width="1000" height="1000"></iframe>
+<img src="y_neuralnetworks_overview.png" alt="Spark analogy" width="1000"/>
 
-[View the PDF](y_nn_overview.pdf)
+
+
 
 
 
