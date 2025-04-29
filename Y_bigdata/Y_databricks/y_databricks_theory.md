@@ -55,12 +55,11 @@
 
 
 
-# Unity catalog heirarchy :
+# Unity catalog  :
 
 	Go to "https://accounts.azuredatabricks.net/" to access all workspaces and metastores
 	Contributor role at IAM of workspace is required (Subject to change)
-	Al though how other workspaces are supposed to show up here if Contributor role at one workspace is enough
-
+	Although how other workspaces are supposed to show up here if Contributor role at one workspace is enough is the question ?
 	In Azure while creating Worskspace choose the PRICING TIER as PREMIUM . only in that UNITY CATALOG is available
 
 	### MAIN FEATURE :
@@ -70,15 +69,16 @@
 		where its unified governance system makes it possible to share its data objects like Tables and views accross
 		the Databricks workspaces under one account (Subject to corrections)
 	
-	- For cross plat form Sharing study about DELTA sharing 
+	- For cross platform Sharing study about DELTA sharing 
 
+## Heirarchy of UNITY CATALOG
 	1. Account level : 
 			- Each Account (DataBricks or Azure) can contain N number of Workspaces and M number of 
 				metastores(but only one metastore per region)
 	2. Metastore :
 			- Each metastore can contain N number of catalogs
 			- "Hive metastore" , "samples" , "system" , "<your workspace named catalog>" these catalogs come by default
-	3. Catalog :
+	3. Catalog : Collection of DATABASES or SCHEMAS
 	4. Schema / database :
 	5. Tables , Views , functions
 

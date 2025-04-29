@@ -15,8 +15,7 @@
 
         
         USER 
-        TENANT / Directory : I think its related to DOMAIN or ORAGANIZATION level you can create users with domain name 
-                            	after @ symbol
+        TENANT / Directory : I think its related to DOMAIN or ORAGANIZATION level you can create users with domain name after @ symbol
         SUBSCRIPTION
         LICESENCE
 
