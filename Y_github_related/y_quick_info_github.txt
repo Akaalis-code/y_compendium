@@ -1,8 +1,8 @@
 ------ GIT controls from command prompt -- start ------------------------------
 
 
-1) git config --global user.name “[firstname lastname]”
-2) git config --global user.email “[valid-email]”
+1) git config --global user.name “your username”
+2) git config --global user.email “valid email”
 3) git config --list 
 
 4) initialize an existing directory as a Git repository
@@ -41,3 +41,10 @@ git diffs
 
    Rebase is used similar to git merge but the source branch will be removed after merge,
    by making target branch as the base for even source branch
+
+
+--------------------------- Personal Access Tokens -- Start ------------------------------------
+
+In latest PAT , for PUSH PULL CLONE access use "Contents" permission
+
+--------------------------- Personal Access Tokens -- End ------------------------------------
