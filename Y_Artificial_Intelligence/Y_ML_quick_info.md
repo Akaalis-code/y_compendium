@@ -2,16 +2,24 @@
 Machine learning algorithms :
 
     Supervised learning :
-        Linear regression 
-        Logistic regression
-        Decision tree
-        Random forest
-        Support vector machine
-        K nearest neighbour
-        Naive bayes
+        Regression :
+            Linear regression 
+            Logistic regression
+        Classification :
+            Decision tree
+            Random forest : (Classification and regression)
+                Combining many Decision trees together (Ensemble algorithm) will result random forest
+                Bagging and Bootstrapping (Check later )
+            Support vector machine
+            K nearest neighbour (Can be regression or classification) :
+                K is hyper parameter
+                k=1 (overfitting)
+                k= higher number (moving towards under fitting)
+            Naive bayes
 
     Unsupervised learning :
-        K means clustering
+        K means clustering :
+            K is hyper parameter
         Heirarichal clustering
         DB scan
         Principal component analysis
@@ -80,4 +88,9 @@ RNN
 LSTM
 
 pip install 'accelerate>=0.26.0'   ------->>>> I tried using model(microsoft/phi-4) which seems big , it asked to do this
+
+Boosting :
+    XGBOOST
+    ADABOOST
+    Gradient Boost
 ------------------------------------- CHECK LATER -- End ------------------------------------------------------------
