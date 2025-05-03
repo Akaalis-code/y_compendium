@@ -102,3 +102,7 @@
     For revisiting this :
         > . ~/Documents/y_python_envs/y_env_genetic_algorithm/bin/activate
         > python3 y_animation.py
+
+
+# CHECKPOINT for next visit :
+    in y_cross_mutator.py--->> mth_cross_mutation()

@@ -76,14 +76,7 @@ with open(var_directory+'/y_primal_data.json', 'w') as var_file:
     var_file.write(str(var_primal_data))
 
 
-with open(var_directory+'/y_primal_data.json', 'r') as var_file:
-    data = json.load(var_file)
 
-    print("Gene_pool_test1",data["Gene_pool_test1"])
-    print("Parent_gene_1",data["Parent_gene_1"])
-    print("Parent_gene_2",data["Parent_gene_2"])
-    print("Parent_gene_3",data["Parent_gene_3"])
-    print("Parent_gene_4",data["Parent_gene_4"])
 
 # ss = SparkSession.builder.appName("initial data").getOrCreate()
 # #students_df=ss.createDataFrame( [(1,'rama','physics'),(2,'raju','maths'),(1,'rama','maths')]  ,  ('ID','name','subject'))
