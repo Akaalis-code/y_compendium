@@ -2,23 +2,26 @@ from pyspark.sql import SparkSession
 import numpy as np
 import random
 import y_fitness_function
- 
+
+var_prometheus_gene_pool
 var_parent_gene_1 = []
 var_parent_gene_2 = []
+var_parent_gene_3 = []
+var_parent_gene_4 = []
 
 
-for i in range(0,len(var_prometheus_gene_pool)) :
-    while True :
-        new_index = random.randint(0, 19)
-        if new_index in var_parent_gene_1 :
-            continue
-        else :
-            var_parent_gene_1.append(new_index)
-            break
+# for i in range(0,len(var_prometheus_gene_pool)) :
+#     while True :
+#         new_index = random.randint(0, 19)
+#         if new_index in var_parent_gene_1 :
+#             continue
+#         else :
+#             var_parent_gene_1.append(new_index)
+#             break
 
-print(var_parent_gene_1)
-var_kid = y_fitness_function.mth_sequencer(var_parent_gene_1)
-print(y_fitness_function.mth_fitness_function(var_kid))
+# print(var_parent_gene_1)
+# var_kid = y_fitness_function.mth_sequencer(var_parent_gene_1)
+# print(y_fitness_function.mth_fitness_function(var_kid))
 
 
 

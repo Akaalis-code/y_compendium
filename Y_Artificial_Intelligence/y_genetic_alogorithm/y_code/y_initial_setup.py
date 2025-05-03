@@ -2,13 +2,62 @@ import numpy as np
 import os
 import random
 from pyspark.sql import SparkSession
+import json
+
+var_primal_data = {}
 # import y_fitness_function as fvf
 
 
 # Below is the source of all possible values that the gene can have
-var_locations = list(np.array([[8, 73],[37, 71],[65,  9],[99,  8],[65, 49],[18, 39],[98, 28],[41, 74],[74, 87],[68, 74],[17, 29],[71, 71],[ 0, 50],[51, 84],[76, 98],[62, 31],[35, 13],[47,  5],[64, 87],[63, 41]]))
+#var_locations = list(np.array([[8, 73],[37, 71],[65,  9],[99,  8],[65, 49],[18, 39],[98, 28],[41, 74],[74, 87],[68, 74],[17, 29],[71, 71],[ 0, 50],[51, 84],[76, 98],[62, 31],[35, 13],[47,  5],[64, 87],[63, 41]]))
+var_locations = [[8, 73],[37, 71],[65,  9],[99,  8],[65, 49],[18, 39],[98, 28],[41, 74],[74, 87],[68, 74],[17, 29],[71, 71],[ 0, 50],[51, 84],[76, 98],[62, 31],[35, 13],[47,  5],[64, 87],[63, 41]]
+
+var_primal_data["Gene_pool_test1"] = var_locations
 
 
+var_p_dna_1 = []
+var_p_dna_2 = []
+var_p_dna_3 = []
+var_p_dna_4 = []
+
+for i in range(0,len(var_locations)) :
+    while True :
+        var_rand_int = random.randint(0, (len(var_locations)-1))
+        if var_rand_int in var_p_dna_1 :
+            continue
+        else :
+            var_p_dna_1.append(var_rand_int)
+            break
+    while True :
+        var_rand_int = random.randint(0, (len(var_locations)-1))
+        if var_rand_int in var_p_dna_2 :
+            continue
+        else :
+            var_p_dna_2.append(var_rand_int)
+            break
+    while True :
+        var_rand_int = random.randint(0, (len(var_locations)-1))
+        if var_rand_int in var_p_dna_3 :
+            continue
+        else :
+            var_p_dna_3.append(var_rand_int)
+            break
+    while True :
+        var_rand_int = random.randint(0, (len(var_locations)-1))
+        if var_rand_int in var_p_dna_4 :
+            continue
+        else :
+            var_p_dna_4.append(var_rand_int)
+            break
+
+
+var_primal_data["Parent_gene_1"] = var_p_dna_1
+var_primal_data["Parent_gene_2"] = var_p_dna_2
+var_primal_data["Parent_gene_3"] = var_p_dna_3
+var_primal_data["Parent_gene_4"] = var_p_dna_4
+
+
+# Write in storage file 
 try :
     var_my_home_fldr = os.getenv('my_home_fldr')
 except :
@@ -21,55 +70,20 @@ if not os.path.exists(var_directory):
     print(" y_log : Path doesnt exist , creating now ")
     os.makedirs(var_directory)
     print(" y_log : Succesfully created")
-    
-with open(var_directory+'/y_initial_population.txt', 'w') as var_file:
-    var_file.write(str(var_locations))
+
+var_primal_data = json.dumps(var_primal_data, indent=4)
+with open(var_directory+'/y_primal_data.json', 'w') as var_file:
+    var_file.write(str(var_primal_data))
 
 
+with open(var_directory+'/y_primal_data.json', 'r') as var_file:
+    data = json.load(var_file)
 
-# var_p_dna_1 = []
-# var_p_dna_2 = []
-# var_p_dna_3 = []
-# var_p_dna_4 = []
-
-# var_directory_1 = var_my_home_fldr+'/Documents/y_population/y_generations'
-# if not os.path.exists(var_directory_1):
-#     os.makedirs(var_directory_1)
-
-#     for i in range(0,len(var_locations)) :
-#         while True :
-#             var_rand_int = random.randint(0, (len(var_locations)-1))
-#             if var_rand_int in var_p_dna_1 :
-#                 continue
-#             else :
-#                 var_p_dna_1.append(var_rand_int)
-#                 break
-#         while True :
-#             var_rand_int = random.randint(0, (len(var_locations)-1))
-#             if var_rand_int in var_p_dna_2 :
-#                 continue
-#             else :
-#                 var_p_dna_2.append(var_rand_int)
-#                 break
-#         while True :
-#             var_rand_int = random.randint(0, (len(var_locations)-1))
-#             if var_rand_int in var_p_dna_3 :
-#                 continue
-#             else :
-#                 var_p_dna_3.append(var_rand_int)
-#                 break
-#         while True :
-#             var_rand_int = random.randint(0, (len(var_locations)-1))
-#             if var_rand_int in var_p_dna_4 :
-#                 continue
-#             else :
-#                 var_p_dna_4.append(var_rand_int)
-#                 break
-
-# print(var_p_dna_1 , len(var_p_dna_1))
-# print(var_p_dna_2 , len(var_p_dna_2))
-# print(var_p_dna_3 , len(var_p_dna_3))
-# print(var_p_dna_4 , len(var_p_dna_4))
+    print("Gene_pool_test1",data["Gene_pool_test1"])
+    print("Parent_gene_1",data["Parent_gene_1"])
+    print("Parent_gene_2",data["Parent_gene_2"])
+    print("Parent_gene_3",data["Parent_gene_3"])
+    print("Parent_gene_4",data["Parent_gene_4"])
 
 # ss = SparkSession.builder.appName("initial data").getOrCreate()
 # #students_df=ss.createDataFrame( [(1,'rama','physics'),(2,'raju','maths'),(1,'rama','maths')]  ,  ('ID','name','subject'))
