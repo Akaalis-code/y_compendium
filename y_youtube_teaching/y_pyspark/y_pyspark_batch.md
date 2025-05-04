@@ -19,6 +19,24 @@
 <br>
 <br>
 
+
+# Problem statment 
+
+<br>
+
+<img src="./y_resources/y_spark_analogy.svg" alt="Spark analogy" width="1000"/>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
 # INTRO of spark 
 
 <br>
@@ -35,7 +53,8 @@
 <br>
 <br>
 
-<img src="./y_resources/y_spark_architechture.png" alt="Spark architechture" width="1000"/>
+### SOURCE = SPARK OFFICIAL DOCUMENTATION
+<img src="./y_resources/y_spark_architechture.png" alt="Spark architechture" width="1000" title="From official documentation"/>
 
 <br>
 <br>
@@ -48,7 +67,23 @@
 <br>
 
 ###########################################################################################################################
-# Pyspark setup ## Start 
+# Responsibilities of each component in above diagram
+#### SOURCE = https://techgurudehradun.in/blog/?p=77
+
+    Driver program :
+        1) Starts spark session
+        2) Divides the work into tasks
+        3) Talk to cluster manager to get info about worker
+    Cluster Manager :
+        1) Maintain information about the worker nodes
+        2) Submit that info to Driver program
+    Worker Nodes (or executor programs(EP)):
+        1) Each work node may contain one or more execution programs(EP) 
+        2) Each execution program will run in JVM s with the computing resources given to it
+        3) Run the Taks given to it and submit it to driver program
+
+###########################################################################################################################
+# Pyspark setup For Local mode (i.e. single node cluster) ## Start 
 ###########################################################################################################################
 1)  Inside vitualbox , a dedicated ubuntu OS is setup for pyspark teaching
 
@@ -141,7 +176,7 @@
 
 
     df_my_sales_data =  ss.read.options(header=True , recursiveFileLookup = True )\
-                        .csv('/home/yvb/Documents/y_youtube/y_youtube_teaching/y_pyspark/y_datafiles/y_csv_files/*')
+                        .csv('/home/yvm/Documents/y_youtube/y_youtube_teaching/y_pyspark/y_datafiles/y_csv_files/*')
 
 
     df_my_sales_data.show()
@@ -389,7 +424,7 @@ AGG()  ---->>>>  sum(), avg(), max(), min(), and count()
                                     StructField("tst_number_of_items", IntegerType()) ,
                                     StructField("tst_sales", IntegerType()),
                                 ])
-        df_test = ss.createDataFrame( [('C1','P2',57,23424),('C20','P2',57,23424)]  ,  my_schema)
+        df_test = ss.createDataFrame( [('C1','P2',57,23424),('C20','P2',80,5000)]  ,  my_schema)
         df_test.show()
 
 

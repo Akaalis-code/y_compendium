@@ -1,3 +1,14 @@
+##########################################################################################################################################
+### Objective of this file ==>>> To show how creating one variable from another variable through "=" symbol connects them to each other 
+### even in context of changing just one variable automatically affects other
+##########################################################################################################################################
+
+
+
+
+
+### Simple variables with integers
+
 # x = 123
 # y = x
 
@@ -8,6 +19,7 @@
 
 
 
+### Simple variables with strings
 
 # x = '123'
 # y = x
@@ -19,6 +31,7 @@
 
 
 
+### with list
 
 # x = [1,1,1]
 # y = x
@@ -33,6 +46,7 @@
 
 
 
+### With dictionaries
 
 x = {'A':1 , 'B':2 , 'C':3}
 y = x
@@ -50,7 +64,7 @@ print('After : ',x,y)
 
 
 
-
+################################### rough work 
 
 # import random
 
@@ -59,15 +73,6 @@ print('After : ',x,y)
 
 # print(lst_1)
 # print(lst_2)
-
-
-
-
-
-
-
-
-
 
 
 

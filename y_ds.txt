@@ -1,0 +1,10 @@
+{NDo , NCh , NFa , Exr , NAf , WoDr}
+
+
+16Apr2025 - {NDo , NCh , NFa ,  , NAf , } -> 4/6
+17Apr2025 - {NDo , NCh , NFa ,  ,  , }    -> 3/6
+18Apr2025 - { , NCh , NFa ,  ,  , }    -> 2/6
+19Apr2025 - {NDo , NCh , NFa , Exr ,  , WoDr}    -> 5/6
+25Apr2025 - {NDo ,  , NFa , Exr ,  , }    -> 3/6
+26Apr2025 - { , NCh , NFa ,  ,  , WoDr}    -> 3/6
+27Apr2025 - {NDo , NDo , NFa , Exr , NAf , WoDr}    -> 6/6

@@ -1,0 +1,13 @@
+Yet to do this video .
+
+In a list of values just find out if the list of lentgth 20 numbers 
+where a list of first 20 values have been randomly placed
+have any duplicates or not .
+
+Bad logic :
+    Compare each value with its subsequent value.
+    Complexity = O(n(n+1)/2)
+
+Good logic :
+    Just check if the sum of values in list is equal to sum of first N integers value 
+    Complexity = O(n)

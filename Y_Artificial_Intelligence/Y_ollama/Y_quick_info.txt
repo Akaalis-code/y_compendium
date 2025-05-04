@@ -1,0 +1,161 @@
+##### For Text generation , below is the OLLAMA setup 
+
+   0) PIP setup if you dont already have it :
+         > sudo apt install python3-pip
+
+   1) OLLAMA tools setup in your system , and some other basic commands : 
+
+         > curl -fsSL https://ollama.com/install.sh | sh      -->> ollama gets installed in your system and starts some services
+            http://localhost:11434/                           -->> In this url its saying ollama running , need to figureout how to stop it ,
+                                                                  other than using systemctl
+         > systemctl stop ollama.service                     -->> This is stopping ollama , need to figure out how to restart again
+         > ollama serve                                      -->> To start local ollama server
+
+   2) Getting OLLAMA model of your choice and running it locally :
+   
+         > ollama run <your_model_choice:parameter_value>    -->> Through ollama the model gets downloaded and installed and starts running in your system
+         > ollama stop <your_model_choice>                   -->> This will stop your running model
+         > ollama rm 
+         > ollama ps                                         -->> To check all the LOADED olama models in your system
+         > ollama list                                       -->> To check all the available models in your system 
+
+   3) Python library which lets you talk to your local running ollama and your model
+            
+            > pip install ollama
+
+   4) Next Run this below code in python :
+
+         from ollama import chat
+         from ollama import ChatResponse
+
+         response: ChatResponse = chat(model='llama3.2', messages=[
+         {
+               'role': 'user',
+               'content': 'Why is the sky blue?',
+         },
+         ])
+         print(response['message']['content'])
+         # or access fields directly from the response object
+         print(response.message.content)
+
+
+
+
+
+
+
+
+
+
+##### For Listening
+
+	1) Install "whisper-mic" for live listening from mic .
+		Note - "whisper" is from "OPENAI" , but "whisper-mic" is developed by some individual developer 
+
+		> pip install whisper-mic
+
+		Below are DEBUG steps if above cmd raises issue :-
+			IF Problem from pyaudio:-
+				> sudo apt-get install portaudio19-dev
+				> pip install pyaudio
+			
+			If problem from python header (python.h) :-
+				> sudo apt-get install python3-dev
+			
+			If from any build tools :-
+				> sudo apt install build-essential
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      0) Install "speechrecognition" library of python , it is dependent on "pyaudio" which is in turn dependent on "portaudio.h"
+         Note : None of the below packages have been checked by me for any security clearence 
+
+            > sudo apt-get install portaudio19-dev
+            > sudo apt-get install python3-dev
+            > pip install pyaudio
+            > pip install SpeechRecognition
+      
+      1) Install "pyttsx3" library of python 
+
+            > pip install pyttsx3
+
+      2) Now for listening 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############################################## SPARE INFO ## using GTTS ## Not actively using #################################
+
+
+#### For Text to speech creation use as below 
+
+      0) Use GTTS python library for Text to speech , To install follow as below :
+
+            > pip install gtts
+      
+      1) Using pygame to speak in real time :
+
+            > pip install pygame, io

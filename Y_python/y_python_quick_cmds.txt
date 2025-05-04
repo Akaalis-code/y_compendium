@@ -1,3 +1,34 @@
+########################### Random ## START #############################################################################
+
+1) "dir(<any_object>)" it will give out all dunder related variables for it 
+
+
+2) Dunder = __anyobject__
+
+3)  CONTEXT MANAGER using "with" block   
+    __entry__
+    __exit__
+
+4) assert <boolean condition>,<message if boolean returns 0>
+
+
+########################### Random ## END #############################################################################
+
+########################### PIP related info ## START #####################################################################################
+
+To check where the pip installed the libraries :
+        > pip show <lib_name>
+To uninstall all pip installed libs :
+        > pip freeze | xargs pip uninstall -y
+pip cache checking and purging
+        > pip cache dir
+        > pip cache info
+        > pip cache remove <pattern>
+        > pip cache purge
+
+########################### PIP related info ## START #####################################################################################
+
+
 
 ########################### LAMBDA , FILTER , MAP , REDUCE ## START #####################################################################################
 
@@ -30,17 +61,7 @@
         newlist = [x for x in fruits if "a" in x]
         print(newlist)
 
-########################### LAMBDA , FILTER , MAP , REDUCE ## END #####################################################################################
-
-
-
-
-
-1) In python try "dir(<any_object>)" it will give out all dunder related variables for it 
-
-
-
-
+########################### LAMBDA , FILTER , MAP , REDUCE ## END ##############################################################
 
 
 
@@ -55,3 +76,8 @@
     with open("file.txt", "w") as f: 
         f.write("Hello World!!!")
 ########################### File handlers ## END #############################################################################
+
+
+
+
+

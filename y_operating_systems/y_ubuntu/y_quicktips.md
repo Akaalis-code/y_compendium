@@ -20,4 +20,36 @@
     To get how to use "du" command run below command
         > du --help 
     Generally if you want to find out size of any folder run below 
-        > du -sh folder_name           # 's' argument simplifies and summarizes the output 'h' isplays size in human readable form
+        > du -sh <folder_name_or_path>        # 's' argument simplifies and summarizes the output 'h' displays size in human readable form
+        > du -sh *                            # '*' is used to get sizes of all files and folders under this folder
+
+
+## Different ways of running shell files :
+
+    SET1 type of running:
+        sh     my_shell_file.sh              # Uses SHEEL INTERPRETER
+        bash   my_shell_file.sh              # Uses BOURNE AGAIN SHELL INTERPRETER 
+        ./     myshell_file.sh               # Uses Which ever INTERPRETER was mentioned inside file using SHABANG
+
+    SET2 type of running
+        .      my_shell_file.sh
+        source my_shell_file.sh
+
+    The first set of commands where explicit mentioning of which shell interpreters to use will create new SHELL SESSIONS
+    Where variables and functions defined in one SHELL SESSION will not be known to PARENT SHELL SESSION or others
+
+    Where as in the second set , the main SHELL SESSION where the cmd is beind run from , will stay as the SESSION
+    for running the cmds that are inside the my_shell_file.sh
+
+
+
+## PROCESS vs SERVICE vs DAEMONS     -->> Subject to corrections 
+
+    PROCESS  = Any code that is running , either in background or in foreground . 
+               May it be small code snippets or entire applications
+
+    SERVICE  = A "PROCESS" whose purpose is to do some function and run continuously .
+               Typically but not necessarily are expected to run in Background.
+               Most SERVICES are invoked by "SYSTEM INIT" (system initialization process like SYSTEMD , SysVinit , Upstart)
+               
+    DAEMON   = A SERVICE which is more emphasized on running in the background like the ghost , hence the name .

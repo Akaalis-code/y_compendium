@@ -29,7 +29,14 @@ writing_df =    transform_df.writeStream\
                 .start().awaitTermination()
 
 
+# Other options :
+    .trigger(processingTime = "1 minute")
+    .option("maxFilesPerTrigger" , "1")
 
+# output modes : This feels wrong correct it later 
+    append = Insert only new records
+    Update = UPSERT 
+    Complete = OVERWRITE 
 ############################### To read while the above quer is running ############################################
 
 from pyspark.sql import SparkSession

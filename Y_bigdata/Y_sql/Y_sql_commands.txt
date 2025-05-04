@@ -59,4 +59,7 @@ Example : Q) Findout rolling sum of sales inside year for all years :-
 
 
 Lead() and Lag() functions in window functions
+WINDOW functions have types like :
+    TUMBLING window : when the current window doesnt intersect with previous or next window
+    SLIDING window  : when the current window intersect with previous or next window
 
