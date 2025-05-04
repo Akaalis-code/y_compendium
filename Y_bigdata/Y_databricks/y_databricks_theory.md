@@ -70,6 +70,11 @@
 		the Databricks workspaces under one account (Subject to corrections)
 	
 	- For cross platform Sharing study about DELTA sharing 
+	- One DataBricks Workspace can only be attached to one METASTORE
+	  But One Metastore can be attached to more than one Workspace 
+	- CONSTRAINTS BASED ON REGION (As of 2025May04)
+		Only One Metastore per region per account , If Exception is needed direct connection to DATABRICKS company is needed. 
+		More than one WORKSPACE can be created per region
 
 ## Heirarchy of UNITY CATALOG
 	1. Account level : 

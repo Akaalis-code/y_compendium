@@ -40,6 +40,8 @@ CL) Kafka can be deployed on bare-metal hardware
 CL) ACL s (Access Control Lists)
 CL) ATOMIC BROADCAST PROBLEM
 CL) ANSIBLE vs TERRAFORM
+
+CL) DBT like data bricks data engineering technology
 --------------------------------------- CET -- start -------------------------------------------------------------
 NUCLEAR FUSION:
     Z Machine 
