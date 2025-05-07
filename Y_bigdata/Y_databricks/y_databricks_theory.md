@@ -57,6 +57,8 @@
 
 # Unity catalog  :
 
+	Note:- "UCMETASTORE" is different from "LEGACY HIVE METASTORE" and "UC ENABLED HIVE METASTORE"
+
 	Go to "https://accounts.azuredatabricks.net/" to access all workspaces and metastores
 	Contributor role at IAM of workspace is required (Subject to change)
 	Although how other workspaces are supposed to show up here if Contributor role at one workspace is enough is the question ?
@@ -75,6 +77,12 @@
 	- CONSTRAINTS BASED ON REGION (As of 2025May04)
 		Only One Metastore per region per account , If Exception is needed direct connection to DATABRICKS company is needed. 
 		More than one WORKSPACE can be created per region
+
+	- Legacy Hive metastore is local to workspace before UNITY catalog (Subject to correction)
+	- The Hive metastore present inside UNITY catalog metastore is shared accross all workspaces attached to same UCMETASTORE
+
+	? is hive meta store catalog local to workspace
+	? does cluster being uc enabled or not have any effect on accesing data of UCMETASTORE
 
 ## Heirarchy of UNITY CATALOG
 	1. Account level : 
