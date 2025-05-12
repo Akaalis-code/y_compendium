@@ -79,7 +79,18 @@
 		More than one WORKSPACE can be created per region
 
 	- Legacy Hive metastore is local to workspace before UNITY catalog (Subject to correction)
-	- The Hive metastore present inside UNITY catalog metastore is shared accross all workspaces attached to same UCMETASTORE
+	- The Hive metastore present inside UNITY catalog metastore is shared accross all workspaces attached to same UCMETASTORE(need to check)
+	- LEGACY HIVE METASTORE requires COMPUTE to even see the tables and schemas under it 
+	-
+
+	CLUSTER SETTINGS :
+		POLICY :
+			Unrestricted
+		ACCESS MODE :
+			Single User
+			Shared
+			No isolation Shared
+
 
 	? is hive meta store catalog local to workspace
 	? does cluster being uc enabled or not have any effect on accesing data of UCMETASTORE
@@ -98,6 +109,16 @@
 	When cluster is not started or not attached there is the following behaviour :
 		1) Catalog will show tables present in all schemas except hive metastore
 		2) DBFS file browser will show "hive metastore tables" but not normal catalog schema tables
+
+# DELTA SHARING :
+	Used to share Data between either DATABRICKS to DATABRICKS or DATABRICKS to OUTSIDE WORLD
+	For this Unity catalog needs to be enabled (Need to confirm)
+
+	To Enable DELTA SHARING :
+		Go to metastore UI page (https://accounts.azuredatabricks.net/)
+		select the metastore 
+		Click on DATA tab 
+		Click on "Enable DELTA SHARING" option
 
 
 # storage areas of DATA bricks elements :

@@ -59,6 +59,10 @@ LIGHT MATTERS (Company):-   May be pioneer in PHOTONICS , Where the communicatio
 
 1x (Company):-  Promising in Humanoid robotics
 
+Wave energy from Ocean :
+    CorPower Ocean (Company)
+
+Magnetic coolers
 
 CL) DRAKE equation 
 --------------------------------------- CET -- end -------------------------------------------------------------
@@ -137,3 +141,14 @@ Shift + s = Move all strips starting point to the time LINER (the blue line that
 
 
 --------------------------------------- Blender shortcuts -- end ------------------------------------------------------------
+
+labcorp:
+    te :y90355-w78441
+    2 days office hybrid
+    2pm to 11pm
+    AWS Databricks
+    31.9
+    12% basic PF
+    21 days annual leave upto 15 days encash per year
+
+    10% of fixed is 
