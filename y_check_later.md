@@ -130,6 +130,8 @@ vocabulary :
     isochrome maps - Distance that can be covered in a constant time with constant velocity ,
                      Ideally speaking it would be CIRCLE in 2D and SPHERE in 3D,
                      But rethink the same thing when there are only certain curvy roads that you can take in a particular direction in 2D
+
+    contentious - causing or likely to cause an argument; controversial
 ---------------------------------------- English -- End ---------------------------------------------------------
 
 
