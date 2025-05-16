@@ -64,6 +64,13 @@ Wave energy from Ocean :
 
 Magnetic coolers
 
+The metal company (TMC)-
+    Publicaly traded company enlisted on NASDAQ
+    Mining 16 trillion dollar (subject to correction) worth of "METAL NODULE DEPOSITS" under OCEAN 
+    Polymetallic nodule - nickel, cobalt, copper, and manganese
+    NAURU country 
+    CLARION - CLIPPERTON ZONE  (Ocean bed contains these nodules on its deep surface )
+
 CL) DRAKE equation 
 --------------------------------------- CET -- end -------------------------------------------------------------
 
