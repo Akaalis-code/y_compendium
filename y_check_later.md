@@ -42,6 +42,7 @@ CL) ATOMIC BROADCAST PROBLEM
 CL) ANSIBLE vs TERRAFORM
 
 CL) DBT like data bricks data engineering technology
+    DBT vs ETL
 --------------------------------------- CET -- start -------------------------------------------------------------
 NUCLEAR FUSION:
     Z Machine 

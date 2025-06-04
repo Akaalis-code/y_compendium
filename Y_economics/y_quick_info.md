@@ -38,3 +38,6 @@ Demat account
 
 
 ---------------------- Trading Applications -- end -------------------------------------------------------------------------
+
+
+hdfc customer catogeries

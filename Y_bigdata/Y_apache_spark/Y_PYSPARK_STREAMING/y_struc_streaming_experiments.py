@@ -21,7 +21,7 @@ ss
 ss.conf.set("spark.sql.streaming.schemaInference", True)
 read_stream_df =    ss.readStream.format("csv")\
                     .options(header = True,delimiter = ",", recursiveFileLookup = True )\
-                    .load("file://"+os.environ['my_home_directory']+"/Documents/y_youtube/y_youtube_teaching/y_pyspark/y_datafiles/y_csv_files/")
+                    .load("file://"+os.environ['my_home_directory']+"/Documents/y_compendium/y_youtube_teaching/y_pyspark/y_datafiles/y_csv_files/")
 
 
 # In[4]:
@@ -69,8 +69,8 @@ transform_df_change_type.printSchema()
 writing_df_append =    transform_df.writeStream\
                 .format("csv")\
                 .options(header = True,delimiter = ",")\
-                .option("path", "file://"+os.environ['my_home_directory']+"/Documents/y_youtube/y_youtube_teaching/y_pyspark/y_datafiles/y_output_of_ss/")\
-                .option("checkpointLocation","file://"+os.environ['my_home_directory']+"/Documents/y_youtube/y_youtube_teaching/y_pyspark/y_datafiles/y_checkpointing_location/")\
+                .option("path", "file://"+os.environ['my_home_directory']+"/Documents/y_compendium/y_youtube_teaching/y_pyspark/y_datafiles/y_output_of_ss/")\
+                .option("checkpointLocation","file://"+os.environ['my_home_directory']+"/Documents/y_compendium/y_youtube_teaching/y_pyspark/y_datafiles/y_checkpointing_location/")\
                 .outputMode("append")\
                 .start()
 writing_df_append.awaitTermination()

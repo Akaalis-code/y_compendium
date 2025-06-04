@@ -65,6 +65,12 @@ MCP - MODEL CONTEXT PROTOCOL
 
 
 
-AI TOOLS for coding IDE:(Check later)
+AI TOOLS :
     Cursor 
     Windsurf
+    IBM watson x -> agent builder 
+
+
+Latest Breakthroughs :
+    Darwin Godel Machine :
+        Self improving AI system ,iteratively modifies its python code base.
