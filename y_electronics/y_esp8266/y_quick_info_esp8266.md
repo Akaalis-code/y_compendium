@@ -16,3 +16,27 @@
 
 2) Now run the "y_hello_world" program to check basic LED blink
     Note : the built in LED turns on when LOW , turns off when HIGH 
+
+
+3) BLYNK setup in ARDUINO IDE :
+    Sketches -> Include libraries -> manage lirary
+    Search for "Blynk"
+    select the one with "volodymyr" in the name
+    Install
+
+4) WI-FI functionalities of ESP8266 :
+
+        There are two modes here :
+
+            Station Mode (STA):
+                In this case your Board acts as a device like laptop or mobile phone which wants to connect to Internet 
+                through your home wifi router.
+                Once you connect to WIFI router you can read or send data to cloud or to outside world .
+
+            Access Point Mode (AP) (or) Soft Access Point (SoftAP):
+                In this mode you can make your ESP8266 as a mini router , 
+                which can even host its own WEBSITE( this is one of its use cases)
+
+            Station + Access Point Mode (STA+AP):
+                This is combination of above two methods ,
+                You can connect to Home router while also turing your bvoard as a router (need to check on this further)
