@@ -43,3 +43,33 @@
             Station + Access Point Mode (STA+AP):
                 This is combination of above two methods ,
                 You can connect to Home router while also turing your bvoard as a router (need to check on this further)
+
+
+
+
+        4.1) For Handling ID and Passwords follow below method : (Below approach is just my work around , its not a industry standard solution)
+
+                Instead of directly giving ID and password details in .ino file ,
+                Create a header file in "ARDUINO LIBRARIES" folder .
+                To find where "ARDUINO LIBRARIES" folder is , follow below path :
+                    File -> Preferences -> Sketchbook location
+                Create a folder structure like below :
+                    .                                           // Folder ( "." represents what ever folder that existed )
+                        .                                       // Folder
+                            .                                   // Folder
+                                Arduino                         // Folder
+                                    libraries                   // Folder
+                                        y_my_library            // Folder
+                                            y_my_library.h      // File
+
+                Inside the .h file the content should be like this
+
+                    #ifndef Y_SEC_H
+                    #define Y_SEC_H
+
+                    const char* MY_SSID = "what ever info";
+                    const char* MY_PWD = "what ever info";
+
+                    #endif 
+
+                Import that header file in your .ino file and you can access them directly as variables
