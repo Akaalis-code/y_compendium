@@ -1,3 +1,5 @@
+ESP8266 is a "EMBEDDED SYSTEM" , meaning its a combnation of microprocessor and RAM which has specific purpose , rather than
+general purpose like general USER COMPUTERS 
 
 0) Install ARDUINO IDE in your system 
 
@@ -53,10 +55,10 @@
                 Create a header file in "ARDUINO LIBRARIES" folder .
                 To find where "ARDUINO LIBRARIES" folder is , follow below path :
                     File -> Preferences -> Sketchbook location
-                Create a folder structure like below :
+                Create a folder structure like below : (WINDOWS OS SETUP)
                     .                                           // Folder ( "." represents what ever folder that existed )
                         .                                       // Folder
-                            .                                   // Folder
+                            .                                   // Folder (Come untill your sketch book location)
                                 Arduino                         // Folder
                                     libraries                   // Folder
                                         y_my_library            // Folder
@@ -73,3 +75,39 @@
                     #endif 
 
                 Import that header file in your .ino file and you can access them directly as variables
+
+
+5) STORAGE in ESP8266 :
+
+        Official document : https://arduino-esp8266.readthedocs.io/en/latest/filesystem.html
+
+        It has FLASH memory (Non volatile) and RAM (Volatile) .
+        Flash memory is where your code gets stored , from FLASH it will be loaded to RAM while running .
+        Flash memory has a limitation on number of times we WRITE on it , after that it becomes useless , so better practice is 
+        limit the number of times you write on to it .
+
+        If you want to store some sounds or some text files in your FLASH memory , we have two file systems on esp8266 :
+            SPIFFS (Serial Peripheral Interface Flash File System) : Old and depricated 
+            LIFFS
+        
+        Tool or plugin that helps to acheive this is :
+            ESP8266FS
+
+        SPIFFS is depricated , so we will work on setting up LIFFS .
+
+        LIFFS related plugin setup : (WINDOWS OS SETUP)
+            C
+                users
+                    <your user name folder>
+                        .arduinoIDE
+                            plugins                                     // Create this folder if its not already existing 
+                                arduino-littlefs-upload-1.5.4.vsix      // Download this file from below link
+                                (https://github.com/earlephilhower/arduino-littlefs-upload/releases)
+
+        Now in "Command Palette" you should be able to see the tool , press "CTRL+SHIFT+P" to open cmd pallet.
+
+        Folder where your sketch book resides (typically the folder will also be with same name) create a "data" folder,
+        inside that folder place your data file or mp3 file for sound.
+        
+        In cmd pallet type "Upload LittleFS to .." and click on it , that will upload the file inside data folder into 
+        esp8266 flash memory .
