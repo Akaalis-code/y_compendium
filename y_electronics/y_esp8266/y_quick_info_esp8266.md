@@ -1,6 +1,14 @@
 ESP8266 is a "EMBEDDED SYSTEM" , meaning its a combnation of microprocessor and RAM which has specific purpose , rather than
 general purpose like general USER COMPUTERS 
 
+--------- RESUME WORK INFO-- Start ----------------------------------------------------
+
+Last time where I left off , I made ESP8266 as "ACCESS POINT" and host a website 
+and loaded a sound file into the board  and websites's buttons should use that sound file when button is clicked .
+and it was working fine with some delays when buttons were clicked , have to resume from there .
+
+--------- RESUME WORK INFO-- Start ----------------------------------------------------
+
 0) Install ARDUINO IDE in your system 
 
 1) Install libraries required for recognizing ESP8266 from your ide:

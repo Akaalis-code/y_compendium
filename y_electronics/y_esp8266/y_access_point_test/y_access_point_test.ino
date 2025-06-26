@@ -1,3 +1,7 @@
+/// What this coed does :
+/// Turn ESP8266 into ACCESS POINT mode and connect to it from mobile on 192.168.4.1 , 
+/// it succesfully controlled the built in LED .
+
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <y_sec.h> // this is my custom library
