@@ -57,6 +57,8 @@
 
 # Unity catalog  :
 
+	Note:- "UCMETASTORE" is different from "LEGACY HIVE METASTORE" and "UC ENABLED HIVE METASTORE"
+
 	Go to "https://accounts.azuredatabricks.net/" to access all workspaces and metastores
 	Contributor role at IAM of workspace is required (Subject to change)
 	Although how other workspaces are supposed to show up here if Contributor role at one workspace is enough is the question ?
@@ -70,6 +72,28 @@
 		the Databricks workspaces under one account (Subject to corrections)
 	
 	- For cross platform Sharing study about DELTA sharing 
+	- One DataBricks Workspace can only be attached to one METASTORE
+	  But One Metastore can be attached to more than one Workspace 
+	- CONSTRAINTS BASED ON REGION (As of 2025May04)
+		Only One Metastore per region per account , If Exception is needed direct connection to DATABRICKS company is needed. 
+		More than one WORKSPACE can be created per region
+
+	- Legacy Hive metastore is local to workspace before UNITY catalog (Subject to correction)
+	- The Hive metastore present inside UNITY catalog metastore is shared accross all workspaces attached to same UCMETASTORE(need to check)
+	- LEGACY HIVE METASTORE requires COMPUTE to even see the tables and schemas under it 
+	-
+
+	CLUSTER SETTINGS :
+		POLICY :
+			Unrestricted
+		ACCESS MODE :
+			Single User
+			Shared
+			No isolation Shared
+
+
+	? is hive meta store catalog local to workspace
+	? does cluster being uc enabled or not have any effect on accesing data of UCMETASTORE
 
 ## Heirarchy of UNITY CATALOG
 	1. Account level : 
@@ -85,6 +109,16 @@
 	When cluster is not started or not attached there is the following behaviour :
 		1) Catalog will show tables present in all schemas except hive metastore
 		2) DBFS file browser will show "hive metastore tables" but not normal catalog schema tables
+
+# DELTA SHARING :
+	Used to share Data between either DATABRICKS to DATABRICKS or DATABRICKS to OUTSIDE WORLD
+	For this Unity catalog needs to be enabled (Need to confirm)
+
+	To Enable DELTA SHARING :
+		Go to metastore UI page (https://accounts.azuredatabricks.net/)
+		select the metastore 
+		Click on DATA tab 
+		Click on "Enable DELTA SHARING" option
 
 
 # storage areas of DATA bricks elements :

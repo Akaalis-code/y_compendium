@@ -13,3 +13,31 @@ Louis Bachelier (1870 - 1946) = pioneer of using maths to model financial market
 Galton board = Bachelier modeled the prediction of stock price at any point resembled that of "Galton board"
 
 Black-Scholes / Merton Equation
+
+
+
+
+---------------------- Trading Applications -- start -------------------------------------------------------------------------
+
+FULL SERVICE BROKERS :
+    Kotak Securities
+    HDFC Securities
+
+DISCOUNT BROKERS :
+    Zerodha
+        Kite - For stocks
+        Coin - For mutual funds
+    Groww
+    Upstox
+
+Trading account 
+Demat account
+
+"SEBI" rule is All the brokers should deposit its customers STOCK information in "CDSL" or "NSDL"
+"CDSL" and "NSDL" are  DEPOSITORY 
+
+
+---------------------- Trading Applications -- end -------------------------------------------------------------------------
+
+
+hdfc customer catogeries

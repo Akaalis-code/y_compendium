@@ -40,6 +40,9 @@ CL) Kafka can be deployed on bare-metal hardware
 CL) ACL s (Access Control Lists)
 CL) ATOMIC BROADCAST PROBLEM
 CL) ANSIBLE vs TERRAFORM
+
+CL) DBT like data bricks data engineering technology
+    DBT vs ETL
 --------------------------------------- CET -- start -------------------------------------------------------------
 NUCLEAR FUSION:
     Z Machine 
@@ -57,6 +60,17 @@ LIGHT MATTERS (Company):-   May be pioneer in PHOTONICS , Where the communicatio
 
 1x (Company):-  Promising in Humanoid robotics
 
+Wave energy from Ocean :
+    CorPower Ocean (Company)
+
+Magnetic coolers
+
+The metal company (TMC)-
+    Publicaly traded company enlisted on NASDAQ
+    Mining 16 trillion dollar (subject to correction) worth of "METAL NODULE DEPOSITS" under OCEAN 
+    Polymetallic nodule - nickel, cobalt, copper, and manganese
+    NAURU country 
+    CLARION - CLIPPERTON ZONE  (Ocean bed contains these nodules on its deep surface )
 
 CL) DRAKE equation 
 --------------------------------------- CET -- end -------------------------------------------------------------
@@ -124,6 +138,8 @@ vocabulary :
     isochrome maps - Distance that can be covered in a constant time with constant velocity ,
                      Ideally speaking it would be CIRCLE in 2D and SPHERE in 3D,
                      But rethink the same thing when there are only certain curvy roads that you can take in a particular direction in 2D
+
+    contentious - causing or likely to cause an argument; controversial
 ---------------------------------------- English -- End ---------------------------------------------------------
 
 
@@ -135,3 +151,14 @@ Shift + s = Move all strips starting point to the time LINER (the blue line that
 
 
 --------------------------------------- Blender shortcuts -- end ------------------------------------------------------------
+
+labcorp:
+    te :y90355-w78441
+    2 days office hybrid
+    2pm to 11pm
+    AWS Databricks
+    31.9
+    12% basic PF
+    21 days annual leave upto 15 days encash per year
+
+    10% of fixed is 

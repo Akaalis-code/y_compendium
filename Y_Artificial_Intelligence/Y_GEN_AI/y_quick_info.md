@@ -33,9 +33,19 @@ Terminology :
     chunking
     stop word removal
 
+    MOE : Mixture of Experts 
+        For any given query instead of engaging the entire billions of parameter , it only engages the section 
+        that will best be responsible for the QUERY'S topic.
+        Those are called ACTIVATED PARAMETERS
+    DENSE MODEL : opposite of MOE
 
 
-Attention mapping of words in a sentence to each other 
+
+Attention mapping of words in a sentence to each other
+
+
+emirates
+5 days 
 
 
 Foundational models :(Subject to correction)
@@ -55,6 +65,12 @@ MCP - MODEL CONTEXT PROTOCOL
 
 
 
-AI TOOLS for coding IDE:(Check later)
+AI TOOLS :
     Cursor 
     Windsurf
+    IBM watson x -> agent builder 
+
+
+Latest Breakthroughs :
+    Darwin Godel Machine :
+        Self improving AI system ,iteratively modifies its python code base.
