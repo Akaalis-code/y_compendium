@@ -140,6 +140,9 @@ vocabulary :
                      But rethink the same thing when there are only certain curvy roads that you can take in a particular direction in 2D
 
     contentious - causing or likely to cause an argument; controversial
+
+    STOCHASTIC - involving or characterized by a random probability distribution or pattern. It implies an element of chance or randomness, 
+                 where outcomes are not entirely predictable but can be analyzed statistically
 ---------------------------------------- English -- End ---------------------------------------------------------
 
 

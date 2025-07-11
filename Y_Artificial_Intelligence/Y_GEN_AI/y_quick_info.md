@@ -13,6 +13,7 @@ Terminology :
         sentence tokenizer
 
         Example tokenizers : BPE(Byte pair encoding) , Auto Tokenizer from transformers library hugging face
+        Website to test : https://tiktokenizer.vercel.app/
 
     Embedding :
         Word embeddings Examples :
@@ -74,3 +75,10 @@ AI TOOLS :
 Latest Breakthroughs :
     Darwin Godel Machine :
         Self improving AI system ,iteratively modifies its python code base.
+
+
+Andrej karpathy : open Ai researcher 
+
+LLM LEADER BOARDS :
+    https://lmarena.ai/?leaderboard
+    https://scale.com/leaderboard

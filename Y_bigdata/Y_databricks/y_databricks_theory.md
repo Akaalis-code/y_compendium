@@ -77,6 +77,7 @@
 	- CONSTRAINTS BASED ON REGION (As of 2025May04)
 		Only One Metastore per region per account , If Exception is needed direct connection to DATABRICKS company is needed. 
 		More than one WORKSPACE can be created per region
+		Workspace region matters because , In which region COMPUTE clusters gets spun up depends on Workspace region
 
 	- Legacy Hive metastore is local to workspace before UNITY catalog (Subject to correction)
 	- The Hive metastore present inside UNITY catalog metastore is shared accross all workspaces attached to same UCMETASTORE(need to check)
@@ -99,7 +100,7 @@
 	1. Account level : 
 			- Each Account (DataBricks or Azure) can contain N number of Workspaces and M number of 
 				metastores(but only one metastore per region)
-	2. Metastore :
+	2. Unity Catalog Metastore :
 			- Each metastore can contain N number of catalogs
 			- "Hive metastore" , "samples" , "system" , "<your workspace named catalog>" these catalogs come by default
 	3. Catalog : Collection of DATABASES or SCHEMAS
@@ -110,6 +111,10 @@
 		1) Catalog will show tables present in all schemas except hive metastore
 		2) DBFS file browser will show "hive metastore tables" but not normal catalog schema tables
 
+
+
+# DELTA LIVE TABLES :
+	Its a framework that works as a ready made solution for most of the ETL related 
 # DELTA SHARING :
 	Used to share Data between either DATABRICKS to DATABRICKS or DATABRICKS to OUTSIDE WORLD
 	For this Unity catalog needs to be enabled (Need to confirm)
@@ -154,6 +159,34 @@
 	Streaming table
 	Delta LIVE table
 	Streaming live table
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ####################################### Prof certificate ROUGH WORK ##START ###################################################
