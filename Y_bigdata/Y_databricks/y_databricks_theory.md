@@ -7,7 +7,13 @@
 <img src="./y_nontxt_resources/y_images/y_old_architech_of_Azdtbrks.png" alt="Old image of Architecture" width="700"/>
 
 
+------------------------------- Randomn points to note -- Start -----------------------------------------------------------------------------------
 
+1) Azure data bricks cost :
+		Usually in databricks COMPUTE should be the only high costing element of DBKS,
+		And creating workspace wont cost anything UNLESS 
+
+------------------------------- Randomn points to note -- End -----------------------------------------------------------------------------------
 
 
 # CONNECTION of DATABRICKS WORKSPACE to ADLS GEN2 :
