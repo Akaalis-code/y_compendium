@@ -10,10 +10,21 @@
 ------------------------------- Randomn points to note -- Start -----------------------------------------------------------------------------------
 
 1) Azure data bricks cost :
-		Usually in databricks COMPUTE should be the only high costing element of DBKS,
-		And creating workspace wont cost anything UNLESS 
+		Usually in databricks COMPUTE should be the only high costing element of DataBricks,
+		And creating workspace wont cost anything UNLESS below mentioned option is selected "yes"
+			{Deploy Azure Databricks workspace with Secure Cluster Connectivity (No Public IP)}
+		
+		If above option is selected yes , it creates a NAT GATEWAY , which continuously costs money .
+		If you are just testing out , you dont need NAT GATEWAY option .
 
 ------------------------------- Randomn points to note -- End -----------------------------------------------------------------------------------
+
+# CERTIFICATIONS :
+	Databricks certified data engineer associate 
+	Databricks certified data engineer professional
+
+	Academy Accredition - databricks fundamentals 
+	Databricks academy - Databricks partner accredition 
 
 
 # CONNECTION of DATABRICKS WORKSPACE to ADLS GEN2 :
