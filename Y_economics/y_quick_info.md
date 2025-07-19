@@ -18,8 +18,8 @@ Black-Scholes / Merton Equation
 JIM SIMONS - one of the greatest hedge fund managers 
 
 
-
----------------------- Trading Applications -- start -------------------------------------------------------------------------
+---------------------- Stock market -- Start -------------------------------------------------------------------------
+--- Trading Applications -- start ---
 
 FULL SERVICE BROKERS :
     Kotak Securities
@@ -39,15 +39,26 @@ Demat account
 "CDSL" and "NSDL" are  DEPOSITORY 
 
 
----------------------- Trading Applications -- end -------------------------------------------------------------------------
+--- Trading Applications -- End ---
 
----------------------- Stock market -- Start -------------------------------------------------------------------------
+--- Finance APIs -- start ---
+
+
+1) yfinance - YAHOO finance lets you get stock data through API call in python
+2) GOOGLE FINANCE - Seems to not have any API s ,
+                    For getting any static data we can WEB SCRAPE though "beautifulsoup"
+
+
+--- Finance APIs -- end ---
+
 
 ORDER BOOK - 
     LIMIT BUY ORDERS - 
     LIMIT SELL ORDERS -
 
 ---------------------- Stock market -- End -------------------------------------------------------------------------
+
+
 
 ---------------------- Real estate -- Start -------------------------------------------------------------------------
 
@@ -71,12 +82,4 @@ US "remittance tax" as of 20 th may 2025:
 
 
 
----------------------- Finance APIs -- start -------------------------------------------------------------------------
 
-
-1) yfinance - YAHOO finance lets you get stock data through API call in python
-2) GOOGLE FINANCE - Seems to not have any API s ,
-                    For getting any static data we can WEB SCRAPE though "beautifulsoup"
-
-
----------------------- Finance APIs -- end -------------------------------------------------------------------------

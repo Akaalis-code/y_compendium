@@ -7,7 +7,7 @@
 <img src="./y_nontxt_resources/y_images/y_old_architech_of_Azdtbrks.png" alt="Old image of Architecture" width="700"/>
 
 
-------------------------------- Randomn points to note -- Start -----------------------------------------------------------------------------------
+------------------------------- Randomn points to note -- Start --------------------------------------------
 
 1) Azure data bricks cost :
 		Usually in databricks COMPUTE should be the only high costing element of DataBricks,
@@ -17,7 +17,7 @@
 		If above option is selected yes , it creates a NAT GATEWAY , which continuously costs money .
 		If you are just testing out , you dont need NAT GATEWAY option .
 
-------------------------------- Randomn points to note -- End -----------------------------------------------------------------------------------
+------------------------------- Randomn points to note -- End ------------------------------------------------
 
 # CERTIFICATIONS :
 	Databricks certified data engineer associate 
@@ -26,6 +26,8 @@
 	Academy Accredition - databricks fundamentals 
 	Databricks academy - Databricks partner accredition 
 
+	Databricks champions (or) Databricks partner program -->> (need to look into this) 
+		https://credentials.databricks.com/group/231242
 
 # CONNECTION of DATABRICKS WORKSPACE to ADLS GEN2 :
 	WAY 1 :
