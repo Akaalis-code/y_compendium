@@ -56,6 +56,10 @@ ORDER BOOK -
     LIMIT BUY ORDERS - 
     LIMIT SELL ORDERS -
 
+
+    BID -
+    ASK -
+
 ---------------------- Stock market -- End -------------------------------------------------------------------------
 
 
