@@ -7,8 +7,27 @@
 <img src="./y_nontxt_resources/y_images/y_old_architech_of_Azdtbrks.png" alt="Old image of Architecture" width="700"/>
 
 
+------------------------------- Randomn points to note -- Start --------------------------------------------
 
+1) Azure data bricks cost :
+		Usually in databricks COMPUTE should be the only high costing element of DataBricks,
+		And creating workspace wont cost anything UNLESS below mentioned option is selected "yes"
+			{Deploy Azure Databricks workspace with Secure Cluster Connectivity (No Public IP)}
+		
+		If above option is selected yes , it creates a NAT GATEWAY , which continuously costs money .
+		If you are just testing out , you dont need NAT GATEWAY option .
 
+------------------------------- Randomn points to note -- End ------------------------------------------------
+
+# CERTIFICATIONS :
+	Databricks certified data engineer associate 
+	Databricks certified data engineer professional
+
+	Academy Accredition - databricks fundamentals 
+	Databricks academy - Databricks partner accredition 
+
+	Databricks champions (or) Databricks partner program -->> (need to look into this) 
+		https://credentials.databricks.com/group/231242
 
 # CONNECTION of DATABRICKS WORKSPACE to ADLS GEN2 :
 	WAY 1 :
@@ -77,6 +96,7 @@
 	- CONSTRAINTS BASED ON REGION (As of 2025May04)
 		Only One Metastore per region per account , If Exception is needed direct connection to DATABRICKS company is needed. 
 		More than one WORKSPACE can be created per region
+		Workspace region matters because , In which region COMPUTE clusters gets spun up depends on Workspace region
 
 	- Legacy Hive metastore is local to workspace before UNITY catalog (Subject to correction)
 	- The Hive metastore present inside UNITY catalog metastore is shared accross all workspaces attached to same UCMETASTORE(need to check)
@@ -99,7 +119,7 @@
 	1. Account level : 
 			- Each Account (DataBricks or Azure) can contain N number of Workspaces and M number of 
 				metastores(but only one metastore per region)
-	2. Metastore :
+	2. Unity Catalog Metastore :
 			- Each metastore can contain N number of catalogs
 			- "Hive metastore" , "samples" , "system" , "<your workspace named catalog>" these catalogs come by default
 	3. Catalog : Collection of DATABASES or SCHEMAS
@@ -110,6 +130,10 @@
 		1) Catalog will show tables present in all schemas except hive metastore
 		2) DBFS file browser will show "hive metastore tables" but not normal catalog schema tables
 
+
+
+# DELTA LIVE TABLES :
+	Its a framework that works as a ready made solution for most of the ETL related 
 # DELTA SHARING :
 	Used to share Data between either DATABRICKS to DATABRICKS or DATABRICKS to OUTSIDE WORLD
 	For this Unity catalog needs to be enabled (Need to confirm)
@@ -154,6 +178,34 @@
 	Streaming table
 	Delta LIVE table
 	Streaming live table
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ####################################### Prof certificate ROUGH WORK ##START ###################################################

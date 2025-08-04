@@ -15,9 +15,11 @@ Galton board = Bachelier modeled the prediction of stock price at any point rese
 Black-Scholes / Merton Equation
 
 
+JIM SIMONS - one of the greatest hedge fund managers 
 
 
----------------------- Trading Applications -- start -------------------------------------------------------------------------
+---------------------- Stock market -- Start -------------------------------------------------------------------------
+--- Trading Applications -- start ---
 
 FULL SERVICE BROKERS :
     Kotak Securities
@@ -37,7 +39,51 @@ Demat account
 "CDSL" and "NSDL" are  DEPOSITORY 
 
 
----------------------- Trading Applications -- end -------------------------------------------------------------------------
+--- Trading Applications -- End ---
+
+--- Finance APIs -- start ---
 
 
-hdfc customer catogeries
+1) yfinance - YAHOO finance lets you get stock data through API call in python
+2) GOOGLE FINANCE - Seems to not have any API s ,
+                    For getting any static data we can WEB SCRAPE though "beautifulsoup"
+
+
+--- Finance APIs -- end ---
+
+
+ORDER BOOK - 
+    LIMIT BUY ORDERS - 
+    LIMIT SELL ORDERS -
+
+
+    BID -
+    ASK -
+
+---------------------- Stock market -- End -------------------------------------------------------------------------
+
+
+
+---------------------- Real estate -- Start -------------------------------------------------------------------------
+
+
+RERA : Real Estate Regulatory Authorities
+
+EC : Encumbrance Certificate
+    Issued by Stamps and registration department 
+    It gives the ownership details (Not enough for land disputes),
+    It gives History of all transactions on the property
+    It gives any Mortgages or balances due on the land that needs to be paid 
+
+
+
+US "remittance tax" as of 20 th may 2025:
+    NRI s in America sending money earned in US to INDIAN families for investements are being taxed 
+    by US gov . will have effect on INDIAN REAL ESTATE
+
+
+---------------------- Real estate -- end -------------------------------------------------------------------------
+
+
+
+
