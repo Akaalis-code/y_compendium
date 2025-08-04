@@ -1,8 +1,8 @@
 ------ GIT controls from command prompt -- start ------------------------------
 
 
-1) git config --global user.name “your username”
-2) git config --global user.email “valid email”
+1) git config --global user.name "your username"
+2) git config --global user.email "valid email"
 3) git config --list 
 
 4) initialize an existing directory as a Git repository

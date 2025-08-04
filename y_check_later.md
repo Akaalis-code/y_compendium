@@ -2527,3 +2527,26 @@ FROM
 
 
 
+
+
+
+
+
+------------------ databricks cost checking 
+
+
+SELECT
+    t1.sku_name,
+    SUM(t1.usage_quantity * list_prices.pricing.effective_list.default) AS total_dollar_cost
+FROM
+    system.billing.usage AS t1
+JOIN
+    system.billing.list_prices AS list_prices ON t1.sku_name = list_prices.sku_name
+WHERE
+    t1.usage_date BETWEEN '2025-07-01' AND '2025-07-31'
+    AND t1.usage_start_time >= list_prices.price_start_time
+    AND (t1.usage_end_time <= list_prices.price_end_time OR list_prices.price_end_time IS NULL)
+GROUP BY
+    t1.sku_name
+ORDER BY
+    total_dollar_cost DESC;
