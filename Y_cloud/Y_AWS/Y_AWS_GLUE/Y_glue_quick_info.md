@@ -8,6 +8,6 @@
 5) It contains a job scheduler
 6) "AWS CRAWLER"
         AWS GLUE CRAWLER = Automated data discovery tools in GLUE that scan a data source to classify, group, and catalog the data within it automatically
-        GLUE CRAWLERS have CLASSIFIERS which help them to infer schema of the data , We caneven have CUSTOM CLASSIFIERS
+        GLUE CRAWLERS have CLASSIFIERS which help them to infer schema of the data , We can even have CUSTOM CLASSIFIERS
         What ever info it gathers AWS DATA CATALOG gets updated with that info
 ###################################### WHAT IS IT ## END ##################################################################################################################
