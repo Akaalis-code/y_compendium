@@ -95,20 +95,20 @@
 
 
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-check later --- start
-Study about what happens in cache() and persist()
-Dynamic partition pruning
-Column Pruning
+----- check later --- start -------------------------------------------------
+   Study about what happens in cache() and persist()
+   Dynamic partition pruning
+   Column Pruning
 
-READ EXCHANGE, WRITE EXCHANGE IN SPARK UI
+   READ EXCHANGE, WRITE EXCHANGE IN SPARK UI
 
-CATALYST OPTIMIZER
-TUNGSTEN
-AQE - ADAPTIVE QUERY EXECUTION
-PLAN can be adaptive enough to change based on RUNTIME statistics
+   CATALYST OPTIMIZER
+   TUNGSTEN
+   AQE - ADAPTIVE QUERY EXECUTION
+         PLAN can be adaptive enough to change based on RUNTIME statistics
 
 ---- check later --- end -----------------------
 
@@ -119,65 +119,67 @@ PYSPARK is a wrapper around JAVA API's of SPARK.
 - Both "Driver Program" and "Executor Program" are run as JVM processes.
 - When these are Run as JVM processes the memory structure starts off as below
 
--- Worker node
-    |-- Executors : 1) spark.executor.cores
-    |
-    |-- VCPUs: One VCPU will be able to work on one task
+|-- Worker node
+	|
+	|-- Executors : 1) spark.executor.cores
+		|
+		|-- VCPUs: One VCPU will be able to work on one task
 
-    NOTE : 1) A "WORKER NODE" can have more than one "EXECUTOR PROGRAM"
-           2) A "EXECUTOR PROGRAM" can have more than one "CPU CORE"
-           3) A "CPU CORE" is responsible for running a task
-              Number of CPU cores will decide how many TASKS can be run in PARALLEL
-           VVIP) Whatever the values that we define in "spark.executor.memory" or any other such
-              will be at EXECUTOR level, So if a Executor has more than one CPU, They will
-              have to share these resources among the CPU CORES in an executors.
+NOTE :	1) A "WORKER NODE" can have more than one "EXECUTOR PROGRAM"
+		2) A "EXECUTOR PROGRAM" can have more than one "CPU CORE"
+		3) A "CPU CORE" is responsible for running a task
+		   Number of CPU cores will decide how many TASKS can be run in PARALLEL
+		VVIP) Whatever the values that we define in "spark.executor.memory" or any other such
+			  will be at EXECUTOR level, So if a Executor has more than one CPU, They will
+			  have to share these resources among the CPU CORES in an executors.
 
-              So in interviews While calculating MEMORY AND CORE calculations,
-              keep 1 core per executor for simplicity. later you can improve on it in practical scenario
+			So in interviews While calculating MEMORY AND CORE calculations,
+			keep 1 core per executor for simplicity. later you can improve on it in practical scenario.
 
--- Computer Memory
-   |-- On Heap Memory : 1) spark.executor.memory -->> For executors
-   |                  spark.driver.memory   -->> For driver
-   |                  2) Used by JVM processes and GC(Garbage collector) handles this region .
-   |                     primary location for dynamically allocating memory for java objects,
-   |                     class instances, and arrays during program execution
-   |                  3) spark.executor.memory shoud be > 1.5 * (Reserved Memory)
-   |
-   |-- Reserved Memory (System Memory) : 300 MB fixed for spark internals .
-   |                                     Spark's internal objects and system-level operations which
-   |                                     helps for spark to run itself .
-   |
-   |-- User Memory : 1) (40 % default) or ((Java Heap - Reserved Memory) * (1.0-Spark.memory.fraction))
-   |                  2) User-defined data structures, variables, UDFs (User Defined Functions),
-   |                     and RDD (Not the data but the Lazy evaluation operations) conversion operations .
-   |                  3) Not managed by Spark's internal memory manager,
-   |                     allocated and released based on the application's code
-   |
-   |-- Unified Spark Memory : 1) spark.memory.fraction = 0.6
-   |                          2) 60 % memory Dynamically shared among below two
-   |
-   |-- Storage memory : 0) spark.memory.storageFraction = 0.5
-   |                    1) 50 % of 60 % = 30 %.
-   |                    2) "Cache of RDD's and DataFrames", unroll data, and broadcast variables
-   |
-   |-- Execution memory : 1) 50 % of 60 % = 30 %.
-   |                      2) Used for temporary data during computation-intensive operations like
-   |                         shuffles, joins, sorts, aggregations, and hash tables for hash aggregations
-   |
-   |-- Off Heap memory : 1) "spark.memory.offHeap.size" , "spark.memory.offHeap.size"
-   |                    2) Memory outside the "JVM process and GC" control
-   |                    3) Spark uses "Offheap" to store CACHE, BROADCAST and SERIALIZED data .
-   |                    4) Data here will be in SERIALIZED way (subject to correction)
-   |
-   |-- Memory overhead : 1) For executor
-   |                    spark.executor.memoryOverhead = max(384 MB, 10 % of spark.executor.memory)
-   |                    2) For driver
-   |                    spark.driver.memoryOverhead = max(384 MB , 10 % of spark.driver.memory)
-   |
-   |                    3) Used for running any SYSTEM DAEMONS or network buffer (subject to correction)
+|-- Computer Memory
+	|
+	|-- On Heap Memory : 1) spark.executor.memory -->> For executors
+	|	|					spark.driver.memory   -->> For driver
+	|	|				 2) Used by JVM processes and GC(Garbage collector) handles this region .
+	|	|					primary location for dynamically allocating memory for java objects,
+	|	|					class instances, and arrays during program execution
+	|	|				 3) spark.executor.memory shoud be > 1.5 * (Reserved Memory)
+	|	|
+	|	|-- Reserved Memory (System Memory) :	300 MB fixed for spark internals .
+	|	|										Spark's internal objects and system-level operations which
+	|	|										helps for spark to run itself .
+	|	|
+	|	|-- User Memory : 	1) (40 % default) or ((Java Heap - Reserved Memory) * (1.0-Spark.memory.fraction))
+	|	|					2) User-defined data structures, variables, UDFs (User Defined Functions),
+	|	|						and RDD (Not the data but the Lazy evaluation operations) conversion operations .
+	|   |              		3) Not managed by Spark's internal memory manager,
+	|   |                 		allocated and released based on the application's code
+	|	|
+	|	|-- Unified Spark Memory : 1) spark.memory.fraction = 0.6
+	|		|                      2) 60 % memory Dynamically shared among below two
+	|		|
+	|		|-- Storage memory : 0) spark.memory.storageFraction = 0.5
+	|		|                    1) 50 % of 60 % = 30 %.
+	|		|                    2) "Cache of RDD's and DataFrames", unroll data, and broadcast variables
+	|		|
+	|		|-- Execution memory : 1) 50 % of 60 % = 30 %.
+	|		                       2) Used for temporary data during computation-intensive operations like
+	|		                          shuffles, joins, sorts, aggregations, and hash tables for hash aggregations
+	|
+	|-- Off Heap memory : 	1) "spark.memory.offHeap.size" , "spark.memory.offHeap.size"
+	|						2) Memory outside the "JVM process and GC" control
+	|                    	3) Spark uses "Offheap" to store CACHE, BROADCAST and SERIALIZED data .
+	|                    	4) Data here will be in SERIALIZED way (subject to correction)
+	|
+	|-- Memory overhead : 	1) For executor :
+	                    			spark.executor.memoryOverhead = max(384 MB, 10 % of spark.executor.memory)
+	                    	2) For driver :
+	                    			spark.driver.memoryOverhead = max(384 MB , 10 % of spark.driver.memory)
+	                    	3) Used for running any SYSTEM DAEMONS or network buffer (subject to correction)
 
 ?) SPARK EXECUTOR PYSPARK MEMORY
-------------------------- SER DE --START
+
+------------------------- SER DE --START------------------------- 
 
 1) Serialization is a software-level process to prepare complex data and convert into BYTE or JSON or XML format
    for storage or transmission or interoperability
@@ -203,9 +205,9 @@ A1) Any data which requires to maintain any form of connections in between the d
     Programming objects            = classes with references, pointers, inheritance
     Big data formats               = HDFS (Hierarchical Data Format) or Apache Parquet
 
-------------------------- SER DE --End
+------------------------- SER DE --End------------------------- 
 
-------------------------- SPARK UI --START
+------------------------- SPARK UI --START------------------------- 
 
 DAG : Directed Acyclic Graph
       Directed ---->> It has a direction in which steps are run sequentially
