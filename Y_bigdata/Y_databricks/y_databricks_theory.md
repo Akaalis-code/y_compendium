@@ -31,13 +31,7 @@
 
 # CONNECTION of DATABRICKS WORKSPACE to ADLS GEN2 :
 	WAY 1 :
-		- In databricks there is "DBFS" file system 
-		- DBFS is a distributed file system for interacting with cloud object storage.
-		- You can see that in CATALOG panel top middle
-		- If its not visible for first time you have to enable visibility in settings, follow below steps
-			1. Go to the settings page.
-			2. Click the Advanced tab.
-			3. Click the DBFS File Browser toggle to enable or disable the setting.
+		- Using DBFS .
 		- For mounting any cloud object storage to DBFS , you have to use below command
 			configs = {.....} #depending on your authentication method used configs gets keys and values accordingly
 			dbutils.fs.mount(
@@ -181,9 +175,15 @@
 
 
 
-
-
-
+# DBFS : Databricks File System
+   
+	 1) Its a LOGICAL WRAPPER around the cloud object storage from where your databricks is hosted.
+	 2) Use dbutils.fs.ls('dbfs:/your_folders_hierarchy') to see files structure (Use spark API format file path)
+	 3) Even if you create files under this location . Physically they are stored in cloud 
+	 4) To access DBFS UI :
+	 			Catalog -->> on right panel top side you can see the DBFS UI
+	 5) By default UI might not be enabled , To enable it follow below path :
+	 			TOP RIGHT corner your profile -->> Settings -->> Workspace ADMIN -->> Advanced -->> DBFS File Browser (Enable this)
 
 
 
