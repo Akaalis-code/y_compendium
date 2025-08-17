@@ -1,5 +1,7 @@
 ## Black-Scholes / Merton Equation
 
+MARKOV Chains -- Predicts anything 
+
 ref = https://www.youtube.com/watch?v=A5w-dEgIU1M
 
 Thales of miletus (600 BC) = "Earliest known options was bought by this guy "
