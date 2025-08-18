@@ -272,17 +272,17 @@
 
 
 
-	Functionality						|	Databricks UI	|	dbutils.secrets	|	Databricks CLI	|	Python SDK
+	Functionality					|	Databricks UI	|	dbutils.secrets	|	Databricks CLI	|	Python SDK
 	Secret Scope Management				
-	Create a scope					| Yes						| No							| Yes							| Yes
-	List scopes							| No						| Yes							| Yes							| Yes
-	Delete a scope					| No						| No							| Yes							| Yes
-	Set permissions (ACLs)	| No						| No							| Yes							| Yes
+	Create a scope					| Yes				| No					| Yes					| Yes
+	List scopes						| No				| Yes					| Yes					| Yes
+	Delete a scope					| No				| No					| Yes					| Yes
+	Set permissions (ACLs)			| No				| No					| Yes					| Yes
 	Secret Management				
-	Add/Put a secret				| No						| No							| Yes							| Yes
-	List secrets in a scope	| No						| Yes							| Yes							| Yes
-	Get a secret value			| No						| Yes							| Yes							| Yes
-	Delete a secret					| No						| No							| Yes							| Yes
+	Add/Put a secret				| No				| No					| Yes					| Yes
+	List secrets in a scope			| No				| Yes					| Yes					| Yes
+	Get a secret value				| No				| Yes					| Yes					| Yes
+	Delete a secret					| No				| No					| Yes					| Yes
 
 
 
