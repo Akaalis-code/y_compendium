@@ -81,3 +81,24 @@ pip cache checking and purging
 
 
 
+########################### Virtual envs ## START #############################################################################
+
+In ubuntu SYSTEM wide python doesnt allow you to install any python libraries ,
+So you will have to use a virtual environment to work .
+
+
+- VENV :
+
+        INSTALLATION :
+                > sudo apt install python3.12-venv
+
+        Create a virtual env :
+                > python3 -m venv my_env
+        
+        Activate that virtual env :
+                > source ../../my_env/bin/activate
+        
+        To deactivate :
+                > Ctrl + c
+
+########################### Virtual envs ## END #############################################################################
