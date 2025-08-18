@@ -185,6 +185,27 @@
 	 5) By default UI might not be enabled , To enable it follow below path :
 	 			TOP RIGHT corner your profile -->> Settings -->> Workspace ADMIN -->> Advanced -->> DBFS File Browser (Enable this)
 
+		## DBFS Mount :
+				storage_account_name = "<your-storage-account-name>"
+				container_name = "<your-container-name>"
+				sas_token = "<your-sas-token>"
+
+				configs = {f"fs.azure.sas.{container_name}.{storage_account_name}.dfs.core.windows.net": sas_token}
+				configs = {f"fs.azure.account.key.{storage_account_name}.dfs.core.windows.net": storage_account_key}
+				configs = {"fs.azure.account.auth.type": "SharedKey"}
+
+				source = f"wasbs://{container_name}@{storage_account_name}.blob.core.windows.net/"
+				mount_point = "/mnt/my-sas-mount"
+
+				dbutils.fs.mount(
+														source=source,
+														mount_point=mount_point,
+														extra_configs=configs
+												)
+
+				Shared Access Signatures (SAS)
+				Shared Key Authorization (Account Keys)
+				Managed Identities
 
 
 
@@ -192,10 +213,52 @@
 
 
 
+# DATABRICKS SECRETS :
+		There are two types of secret scopes:
+			Databricks-backed scopes :	
+				1) Managed by Databricks and stored in an encrypted database
+			Azure Key Vault-backed scopes :	
+				1) These scopes are a read-only interface to secrets stored in an Azure Key Vault .
+				2) Databricks secret scope acts as a bridge for you to connect to AZURE KEY VAULT .
+				3) To establish connection from databricks to AZURE , establish that connection through below link 
+					 https://<databricks-instance>#secrets/createScope
+					 <databricks-instance> = Your workspace main link 
+		
+		Key Concepts :
+			Secret scopes : 
+				1) A secret scope is a named entity that acts as a container for secrets .
+				2) ACL (Permissions Read , Write , Manage) are at SECRET SCOPE level , not at individual SECRETS level .
+			Secrets : 
+				1) Within a secret scope, a secret is a key-value pair
+			Access Control Lists (ACLs) : 
+				1) Databricks uses ACLs to manage permissions on secret scopes. 
+				2) These permissions determine who can read, write, or manage(read , write , give permissions) the secrets 
+					 within a scope.
+		
+		FINAL USAGE : 
+			dbutils.secrets.get(scope="<scope-name>", key="<secret-key>")
 
 
 
 
+# DATABRICKS CLI :
+
+	Command line interface to access your databricks .
+
+	Installation :
+		> pip install databricks-cli
+	
+	USAGE :
+		Whatever the cmd you want to type in databricks cli , the format is as below
+		> databricks {followed by whatever cmd is allowed , without curly braces}
+
+		HELP SECTION :
+			> databricks --help
+
+	Configuration of CLI to connect to your workspace :
+		1) Create a ACCESS TOKEN in databricks UI , follow below path .
+				Profile_pic -->> settings -->> User -->> developer_settings -->> ACCESS_TOKENS (click on MANAGE) 
+				-->> Generate token 
 
 
 
