@@ -243,6 +243,10 @@
 
 # DATABRICKS CLI :
 
+	NOTE :	In terms of databricks SECRETS management , DATABRICKS CLI and PYTHON SDK have full powers , 
+					Compared to DATABRICKS SECRETS UI and DBUTILS() .
+					DBUTILS is helpful with listing things and accessing secret values programatically 
+
 	Command line interface to access your databricks .
 
 	Installation :
@@ -259,6 +263,26 @@
 		1) Create a ACCESS TOKEN in databricks UI , follow below path .
 				Profile_pic -->> settings -->> User -->> developer_settings -->> ACCESS_TOKENS (click on MANAGE) 
 				-->> Generate token 
+		
+		2) CLI configure :
+
+				In ubuntu or windows open CMD PROMPT and configure as below 
+				> databricks configure -t
+				Above cmd will prompt for URL and TOKEN . give them .
+
+
+
+	Functionality						|	Databricks UI	|	dbutils.secrets	|	Databricks CLI	|	Python SDK
+	Secret Scope Management				
+	Create a scope					| Yes						| No							| Yes							| Yes
+	List scopes							| No						| Yes							| Yes							| Yes
+	Delete a scope					| No						| No							| Yes							| Yes
+	Set permissions (ACLs)	| No						| No							| Yes							| Yes
+	Secret Management				
+	Add/Put a secret				| No						| No							| Yes							| Yes
+	List secrets in a scope	| No						| Yes							| Yes							| Yes
+	Get a secret value			| No						| Yes							| Yes							| Yes
+	Delete a secret					| No						| No							| Yes							| Yes
 
 
 
