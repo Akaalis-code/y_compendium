@@ -223,6 +223,13 @@
 				3) To establish connection from databricks to AZURE , establish that connection through below link 
 					 https://<databricks-instance>#secrets/createScope
 					 <databricks-instance> = Your workspace main link 
+				4) Create Scope by giving VAULT details , details can be gathered from PROPERTIES SECTION on key vault.
+
+				ISSUE FACED :
+					Even after creating secret scope with VAULT URI and IDs , unable to access secrets .
+				SOLUTION :
+					I had to go to {AZURE KEY VAULT -->> Access policy } and 
+					Change permission model from {RBAC to VAULT ACCESS POLICY}   (Study more about this )
 		
 		Key Concepts :
 			Secret scopes : 
