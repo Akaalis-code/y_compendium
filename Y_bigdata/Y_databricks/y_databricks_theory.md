@@ -296,7 +296,13 @@
 
 
 
+# DATABRICKS SPARK UI :
 
+		To access the UI navigate to COMPUTE -->> your cluster -->> On top pane you will have the options .
+
+		TWO UI OPTIONS : ( Need to figure out whats the difference , Now more or less both feels the same )
+			SPARK UI 
+			Spark compute UI - Master
 
 
 
