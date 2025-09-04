@@ -128,6 +128,7 @@
 
 # DELTA LIVE TABLES :
 	Its a framework that works as a ready made solution for most of the ETL related 
+	
 # DELTA SHARING :
 	Used to share Data between either DATABRICKS to DATABRICKS or DATABRICKS to OUTSIDE WORLD
 	For this Unity catalog needs to be enabled (Need to confirm)
