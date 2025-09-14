@@ -1,3 +1,16 @@
+## RANDOM STUFF :
+    0)  Check thje version of ubuntu you are using :
+        >lsb_release -a         (Confirm its authenticity later )
+
+    1)  Check which UBUNTU DESKTOP are you using :
+        > echo $XDG_CURRENT_DESKTOP
+    
+    2)  Check List of all PCI connected HARDWARE :
+        > lspci
+    
+    3)  Check for Graphics drivers :
+        > lspci | grep -iE 'VGA|3D|Display'
+
 ## APT :
     Advanced Packaging Tool is a package manager in Debian-based Linux distributions
     

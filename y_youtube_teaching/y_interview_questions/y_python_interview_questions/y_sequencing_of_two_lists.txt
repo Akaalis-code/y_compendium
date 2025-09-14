@@ -30,8 +30,6 @@ LIST_OUTPUT    =    []
 ## Output Expectation 
 ## ['RAJU' , 'SAI' , 'SITA' , 'RAMU' , 'SAI' , 'NARESH']
 
-
-
 ######### Connecting two lists ## start ########
 
 temp_connect_tuple  = ()
@@ -46,8 +44,6 @@ print(temp_connect_list)
 
 ######### Connecting two lists ## end ########
 
-
-
 ######### Sorting part ## start ########
 
 for i in range(0,len(temp_connect_list)) :
@@ -61,8 +57,6 @@ for i in range(0,len(temp_connect_list)) :
 print(temp_connect_list)
 
 ######### Sorting part ## end ########
-
-
 
 ######### Extracting only required part ## start ########
 
