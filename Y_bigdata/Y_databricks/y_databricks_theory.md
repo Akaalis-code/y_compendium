@@ -307,6 +307,81 @@
 
 
 
+# DELTA LIVE TABLES (DLT) :
+
+	DLT WORKS with three types of datasets :
+		Streaming tables (PERMANANT or TEMPORARY)
+		Materialized views
+		Views
+
+	DLT Notebook can only be run using "JOB COMPUTE"
+
+
+	@dlt.table()	-->>	for Streaming and Materializs views
+	@dlt.view()		-->>	For Views 
+
+
+	DLT PRODUCT EDITION : This will come during creation of DLT pipeline .
+		CORE	: Create or Read data sets , can do aggregations . Cannot do CDC and Data quality 
+		PRO		: Can do CDC along with CORE functionalities , Cannot do Data quality
+		ADVANCED: "CORE" + "PRO" + "DATA QUALITY"
+
+
+	PIPELINE MODE :
+		Triggered : Manually or schedule wise trigger once .
+
+					QUESTION1	-->>	If one of the DLT assets is STREAMING table and streaming is of continuous in nature
+										How does it handle this "TRIGGER MODE".
+					ANSWER1		-->>	When the pipeline is next triggered , the STREAMING DATA ASSET will
+										only send NEW data that has come from previous trigger , to further
+										steps , Thus staying true to its streaming nature .
+					
+					Materializs views and VIEWS will be read in full everytime  
+		Continuous:
+
+	If you delete a DLT pipeline , All the Dataassets that were created will also be deleted .
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ####################################### Prof certificate ROUGH WORK ##START ###################################################
