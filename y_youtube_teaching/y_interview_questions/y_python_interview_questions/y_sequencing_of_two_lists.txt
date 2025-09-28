@@ -1,6 +1,5 @@
 #### QUESTION ## START #########################################################
 
-COMPLEXITY LEVEL 1  :
     You have two lists , 
 
     LIST_ORDER     =   [2,0,1,3,1,2]

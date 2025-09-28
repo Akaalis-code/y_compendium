@@ -1,6 +1,6 @@
 Yet to do this video .
 
-In a list of values just find out if the list of lentgth 20 numbers 
+In a list of values just find out if the list of length 20 numbers 
 where a list of first 20 values have been randomly placed
 have any duplicates or not .
 
@@ -11,3 +11,67 @@ Bad logic :
 Good logic :
     Just check if the sum of values in list is equal to sum of first N integers value 
     Complexity = O(n)
+
+
+--------------------------------- CODE -- START --------------------------------------------------
+
+
+given_list = [5,5,3,4,2,6,9,7,10,8]
+
+
+
+#### Bad logic ## Start ##
+
+Do_we_have_an_issue = 0
+
+for i in given_list :
+  
+    temp_counter = 0
+    for j in given_list :
+        if j == i :
+            temp_counter = temp_counter+1
+    
+    if temp_counter >1 :
+      print("Encountered duplicates")
+      Do_we_have_an_issue = 1
+      break
+
+if Do_we_have_an_issue == 0 :
+  print("All Distinct values")
+
+#### Bad logic ## End ##
+
+
+
+
+
+
+
+#### GOOD logic ## Start ##
+
+size_of_list = len(given_list)
+
+
+
+Sum_from_formula = (size_of_list * (size_of_list+1) ) / 2
+print("Sum_from_formula :" , Sum_from_formula)
+
+
+
+sum_of_values_in_list = 0
+for i in given_list :
+  sum_of_values_in_list = sum_of_values_in_list + i  
+print("sum_of_values_in_list :" , sum_of_values_in_list)
+
+
+
+if sum_of_values_in_list != Sum_from_formula :
+  print("There is a duplicate or mistake , check list once")
+else :
+  print("Your list is Perfect")
+
+#### GOOD logic ## End ##
+
+
+--------------------------------- CODE -- END --------------------------------------------------
+
