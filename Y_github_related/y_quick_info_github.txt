@@ -34,6 +34,7 @@ git diffs
 
 ------ GIT controls from command prompt -- End ------------------------------
 
+------ GIT divergent branches issue -- start --------------------------------
 
 # GIT MERGE VS GIT REBASE 
    Merge is used to blend changes from one branch to another .
@@ -42,6 +43,9 @@ git diffs
    Rebase is used similar to git merge but the source branch will be removed after merge,
    by making target branch as the base for even source branch
 
+# Commands to solve this issue :
+
+------ GIT divergent branches issue -- end --------------------------------
 
 --------------------------- Personal Access Tokens -- Start ------------------------------------
 
