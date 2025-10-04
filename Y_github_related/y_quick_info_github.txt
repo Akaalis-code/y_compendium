@@ -1,3 +1,12 @@
+Some random knowledge :
+   1) origin = short form for "ORIGINAL" branch in remote repo .
+   2) origin/<your_branch_name> = your branch in REMOTE REPO , not in your local repo .
+   3) While commiting , in VS code repo graph , you will get two things while pull/push :
+         origin/<your_branch_name> = your branch in REMOTE REPO , not in your local repo
+         <your_branch_name>        = Your local repo .
+
+
+
 ------ GIT controls from command prompt -- start ------------------------------
 
 
