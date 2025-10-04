@@ -31,13 +31,7 @@
 
 # CONNECTION of DATABRICKS WORKSPACE to ADLS GEN2 :
 	WAY 1 :
-		- In databricks there is "DBFS" file system 
-		- DBFS is a distributed file system for interacting with cloud object storage.
-		- You can see that in CATALOG panel top middle
-		- If its not visible for first time you have to enable visibility in settings, follow below steps
-			1. Go to the settings page.
-			2. Click the Advanced tab.
-			3. Click the DBFS File Browser toggle to enable or disable the setting.
+		- Using DBFS .
 		- For mounting any cloud object storage to DBFS , you have to use below command
 			configs = {.....} #depending on your authentication method used configs gets keys and values accordingly
 			dbutils.fs.mount(
@@ -134,6 +128,7 @@
 
 # DELTA LIVE TABLES :
 	Its a framework that works as a ready made solution for most of the ETL related 
+	
 # DELTA SHARING :
 	Used to share Data between either DATABRICKS to DATABRICKS or DATABRICKS to OUTSIDE WORLD
 	For this Unity catalog needs to be enabled (Need to confirm)
@@ -178,6 +173,187 @@
 	Streaming table
 	Delta LIVE table
 	Streaming live table
+
+
+
+# DBFS : Databricks File System
+   
+	 1) Its a LOGICAL WRAPPER around the cloud object storage from where your databricks is hosted.
+	 2) Use dbutils.fs.ls('dbfs:/your_folders_hierarchy') to see files structure (Use spark API format file path)
+	 3) Even if you create files under this location . Physically they are stored in cloud 
+	 4) To access DBFS UI :
+	 			Catalog -->> on right panel top side you can see the DBFS UI
+	 5) By default UI might not be enabled , To enable it follow below path :
+	 			TOP RIGHT corner your profile -->> Settings -->> Workspace ADMIN -->> Advanced -->> DBFS File Browser (Enable this)
+
+		## DBFS Mount :
+				storage_account_name = "<your-storage-account-name>"
+				container_name = "<your-container-name>"
+				sas_token = "<your-sas-token>"
+
+				configs = {f"fs.azure.sas.{container_name}.{storage_account_name}.dfs.core.windows.net": sas_token}
+				configs = {f"fs.azure.account.key.{storage_account_name}.dfs.core.windows.net": storage_account_key}
+				configs = {"fs.azure.account.auth.type": "SharedKey"}
+
+				source = f"wasbs://{container_name}@{storage_account_name}.blob.core.windows.net/"
+				mount_point = "/mnt/my-sas-mount"
+
+				dbutils.fs.mount(
+														source=source,
+														mount_point=mount_point,
+														extra_configs=configs
+												)
+
+				Shared Access Signatures (SAS)
+				Shared Key Authorization (Account Keys)
+				Managed Identities
+
+
+
+
+
+
+
+# DATABRICKS SECRETS :
+		There are two types of secret scopes:
+			Databricks-backed scopes :	
+				1) Managed by Databricks and stored in an encrypted database
+			Azure Key Vault-backed scopes :	
+				1) These scopes are a read-only interface to secrets stored in an Azure Key Vault .
+				2) Databricks secret scope acts as a bridge for you to connect to AZURE KEY VAULT .
+				3) To establish connection from databricks to AZURE , establish that connection through below link 
+					 https://<databricks-instance>#secrets/createScope
+					 <databricks-instance> = Your workspace main link 
+				4) Create Scope by giving VAULT details , details can be gathered from PROPERTIES SECTION on key vault.
+
+				ISSUE FACED :
+					Even after creating secret scope with VAULT URI and IDs , unable to access secrets .
+				SOLUTION :
+					I had to go to {AZURE KEY VAULT -->> Access policy } and 
+					Change permission model from {RBAC to VAULT ACCESS POLICY}   (Study more about this )
+		
+		Key Concepts :
+			Secret scopes : 
+				1) A secret scope is a named entity that acts as a container for secrets .
+				2) ACL (Permissions Read , Write , Manage) are at SECRET SCOPE level , not at individual SECRETS level .
+			Secrets : 
+				1) Within a secret scope, a secret is a key-value pair
+			Access Control Lists (ACLs) : 
+				1) Databricks uses ACLs to manage permissions on secret scopes. 
+				2) These permissions determine who can read, write, or manage(read , write , give permissions) the secrets 
+					 within a scope.
+		
+		FINAL USAGE : 
+			dbutils.secrets.get(scope="<scope-name>", key="<secret-key>")
+
+
+
+
+# DATABRICKS CLI :
+
+	NOTE :	In terms of databricks SECRETS management , DATABRICKS CLI and PYTHON SDK have full powers , 
+					Compared to DATABRICKS SECRETS UI and DBUTILS() .
+					DBUTILS is helpful with listing things and accessing secret values programatically 
+
+	Command line interface to access your databricks .
+
+	Installation :
+		> pip install databricks-cli
+	
+	USAGE :
+		Whatever the cmd you want to type in databricks cli , the format is as below
+		> databricks {followed by whatever cmd is allowed , without curly braces}
+
+		HELP SECTION :
+			> databricks --help
+
+	Configuration of CLI to connect to your workspace :
+		1) Create a ACCESS TOKEN in databricks UI , follow below path .
+				Profile_pic -->> settings -->> User -->> developer_settings -->> ACCESS_TOKENS (click on MANAGE) 
+				-->> Generate token 
+		
+		2) CLI configure :
+
+				In ubuntu or windows open CMD PROMPT and configure as below 
+				> databricks configure -t
+				Above cmd will prompt for URL and TOKEN . give them .
+
+
+
+	Functionality					|	Databricks UI	|	dbutils.secrets	|	Databricks CLI	|	Python SDK
+	Secret Scope Management				
+	Create a scope					| Yes				| No					| Yes					| Yes
+	List scopes						| No				| Yes					| Yes					| Yes
+	Delete a scope					| No				| No					| Yes					| Yes
+	Set permissions (ACLs)			| No				| No					| Yes					| Yes
+	Secret Management				
+	Add/Put a secret				| No				| No					| Yes					| Yes
+	List secrets in a scope			| No				| Yes					| Yes					| Yes
+	Get a secret value				| No				| Yes					| Yes					| Yes
+	Delete a secret					| No				| No					| Yes					| Yes
+
+
+
+
+
+
+# DATABRICKS SPARK UI :
+
+		To access the UI navigate to COMPUTE -->> your cluster -->> On top pane you will have the options .
+
+		TWO UI OPTIONS : ( Need to figure out whats the difference , Now more or less both feels the same )
+			SPARK UI 
+			Spark compute UI - Master
+
+
+
+# DELTA LIVE TABLES (DLT) :
+
+	DLT WORKS with three types of datasets :
+		Streaming tables (PERMANANT or TEMPORARY)
+		Materialized views
+		Views
+
+	DLT Notebook can only be run using "JOB COMPUTE"
+
+
+	@dlt.table()	-->>	for Streaming and Materializs views
+	@dlt.view()		-->>	For Views 
+
+
+	DLT PRODUCT EDITION : This will come during creation of DLT pipeline .
+		CORE	: Create or Read data sets , can do aggregations . Cannot do CDC and Data quality 
+		PRO		: Can do CDC along with CORE functionalities , Cannot do Data quality
+		ADVANCED: "CORE" + "PRO" + "DATA QUALITY"
+
+
+	PIPELINE MODE :
+		Triggered : Manually or schedule wise trigger once .
+
+					QUESTION1	-->>	If one of the DLT assets is STREAMING table and streaming is of continuous in nature
+										How does it handle this "TRIGGER MODE".
+					ANSWER1		-->>	When the pipeline is next triggered , the STREAMING DATA ASSET will
+										only send NEW data that has come from previous trigger , to further
+										steps , Thus staying true to its streaming nature .
+					
+					Materializs views and VIEWS will be read in full everytime  
+		Continuous:
+
+	If you delete a DLT pipeline , All the Dataassets that were created will also be deleted .
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

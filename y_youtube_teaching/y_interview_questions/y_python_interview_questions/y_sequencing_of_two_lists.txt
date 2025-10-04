@@ -1,0 +1,89 @@
+#### QUESTION ## START #########################################################
+
+    You have two lists , 
+
+    LIST_ORDER     =   [2,0,1,3,1,2]
+    LIST_NAMES     =   ['RAMU' , 'RAJU' , 'SAI' , 'NARESH' , 'SITA' , 'SAI']
+
+    Create a OUTPUT_ORDERED_LIST where the sequence in LIST_NAMES will be in the order based 
+    on the values present in respective positions of LIST_ORDER.
+
+    If the there is a duplicate in ORDER value in LIST_ORDER , 
+    follow the order in which corresponding values are in the LIST_NAMES
+
+    OUTPUT_ORDERED_LIST =   ['RAJU' , 'SAI' , 'SITA' , 'RAMU' , 'SAI' , 'NARESH']
+
+
+#### QUESTION ## END #########################################################
+
+
+
+
+#### ANSWERS ## START ########################################################################################################
+
+LIST_ORDER     =   [2,0,1,3,1,2]
+LIST_NAMES     =   ['RAMU' , 'RAJU' , 'SAI' , 'NARESH' , 'SITA' , 'SAI']
+
+
+LIST_OUTPUT    =    []
+## Output Expectation 
+## ['RAJU' , 'SAI' , 'SITA' , 'RAMU' , 'SAI' , 'NARESH']
+
+######### Connecting two lists ## start ########
+
+temp_connect_tuple  = ()
+temp_connect_list   = []
+
+for i,j in zip(LIST_ORDER , LIST_NAMES):
+  print(i,':',j)
+  temp_connect_tuple  = (i,j)
+  temp_connect_list.append(temp_connect_tuple)
+
+print(temp_connect_list)
+
+######### Connecting two lists ## end ########
+
+######### Sorting part ## start ########
+
+for i in range(0,len(temp_connect_list)) :
+  for j in range(0,(len(temp_connect_list)-1)) :
+    #print(temp_connect_list[j][0] , ':' , temp_connect_list[j][1])
+    if temp_connect_list[j][0] > temp_connect_list[j+1][0] :
+      holder                  = temp_connect_list[j]  
+      temp_connect_list[j]    = temp_connect_list[j+1]
+      temp_connect_list[j+1]  = holder
+
+print(temp_connect_list)
+
+######### Sorting part ## end ########
+
+######### Extracting only required part ## start ########
+
+for i in temp_connect_list:
+  LIST_OUTPUT.append(i[1])
+
+print(LIST_OUTPUT)
+######### Extracting only required part ## end ########
+
+#### ANSWERS ## END ########################################################################################################
+
+
+
+
+
+#### TIPS ### START ##############################################
+
+ALways remember these things 
+
+for i in DICT_TO_CONNECT.items():
+  print(i)
+  
+print('\n')
+
+for i in DICT_TO_CONNECT.keys():
+  print(i)
+
+print('\n')
+
+for i in DICT_TO_CONNECT.values():
+  print(i)

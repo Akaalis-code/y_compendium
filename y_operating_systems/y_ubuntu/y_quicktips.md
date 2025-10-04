@@ -1,3 +1,16 @@
+## RANDOM STUFF :
+    0)  Check thje version of ubuntu you are using :
+        >lsb_release -a         (Confirm its authenticity later )
+
+    1)  Check which UBUNTU DESKTOP are you using :
+        > echo $XDG_CURRENT_DESKTOP
+    
+    2)  Check List of all PCI connected HARDWARE :
+        > lspci
+    
+    3)  Check for Graphics drivers :
+        > lspci | grep -iE 'VGA|3D|Display'
+
 ## APT :
     Advanced Packaging Tool is a package manager in Debian-based Linux distributions
     
@@ -53,3 +66,49 @@
                Most SERVICES are invoked by "SYSTEM INIT" (system initialization process like SYSTEMD , SysVinit , Upstart)
                
     DAEMON   = A SERVICE which is more emphasized on running in the background like the ghost , hence the name .
+
+## KERNEL INFO :
+
+        To get some basic SYSTEM kernel and software info being used :
+
+            > uname -a 
+
+            Care full with the "Network node name" that it gives ,
+            Its PII so keep it private .
+
+## Installing VIRTUALBOX on ubuntu  :
+
+
+## Installing VMWARE on ubuntu  :
+
+    Summary : 
+
+        Before 2023 for free usage of vmware , we were supposed to download "PLAYER" version with diminished functionalities ,
+        and for full functionalities we wered supposed to install "PRO" version along wiith buying license .
+
+        After 2023  "PRO" itself is being made available for free for non comercial use , so "PLAYER" is being discontinued .
+
+
+        PRO : 
+            VMware Workstation Pro : for Windows and Linux
+            VMware Fusion pro : For mac
+        
+        PLAYER : 
+            VMware Workstation Player : for Windows and Linux
+            VMware Fusion player : For mac
+    
+
+    ### Installation steps :
+
+            1)  Download the bundle file from broadcome website after creating an account .
+            2)  sudo apt update 
+            3)  sudo apt install build-essential
+            4)  sudo apt install dkms linux-headers-$(uname -r)
+                Not sure on above commands legitamacy .
+
+            5)  chmod +x VMware-Workstation-Full-17.6.2-24409262.x86_64.bundle
+                Make file runnable 
+
+
+
+        

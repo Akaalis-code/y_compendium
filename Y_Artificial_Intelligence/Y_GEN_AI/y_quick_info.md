@@ -40,6 +40,10 @@ Terminology :
         Those are called ACTIVATED PARAMETERS
     DENSE MODEL : opposite of MOE
 
+    RAG
+    MCP
+    EVAL
+
 
 
 Attention mapping of words in a sentence to each other

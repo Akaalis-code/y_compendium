@@ -1,5 +1,5 @@
 
-###################################### WHAT IS IT ## START ##################################################################################################################
+###################################### WHAT IS IT ## START ##########################################################
 
 1) AWS GLUE is serverless option for ETL based necessities
 2) It is better alternative to AWS EMR if our jobs are ETL centric 
@@ -8,6 +8,10 @@
 5) It contains a job scheduler
 6) "AWS CRAWLER"
         AWS GLUE CRAWLER = Automated data discovery tools in GLUE that scan a data source to classify, group, and catalog the data within it automatically
-        GLUE CRAWLERS have CLASSIFIERS which help them to infer schema of the data , We caneven have CUSTOM CLASSIFIERS
+        GLUE CRAWLERS have CLASSIFIERS which help them to infer schema of the data , We can even have CUSTOM CLASSIFIERS
         What ever info it gathers AWS DATA CATALOG gets updated with that info
-###################################### WHAT IS IT ## END ##################################################################################################################
+
+7) to dynamically read jobs parameters in your code :
+        from awsglue.utils import getResolvedOptions
+        args = getResolvedOptions(sys.argv, ['JOB_NAME', 'source_path', 'target_path'])
+###################################### WHAT IS IT ## END ###############################################################
