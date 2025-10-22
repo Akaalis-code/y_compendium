@@ -58,7 +58,7 @@ final_cte as
         sum(b.price) over(order by b.price,b.product_name,a.nbr) as total_price
     from cten a 
     inner join product b on b.product_name=a.product_name
-    order by b.price,b.product_name,a.nbr
+    order by b.price
 )
 select count(nbr) 
 from final_cte 
@@ -67,20 +67,25 @@ where total_price<=100
 ------------------------------ Solution -- END --------------------------------------------------------
 
 
+
 ------------------------------ Explanation -- start --------------------------------------------------------
 
 --- CHUNK 1
+
+    -- Possibilities = [(10,5,4) , (2,3,2) , (...).....]
+
+    -- for(i=1 , i<some_value ; i++):
 with recursive cten as
 (
     select
-      product_name,
+      product_name , price , quantity,
       1 as nbr
     from product
 
     union all
 
     select
-      a.product_name,
+      a.product_name, a.price , a.quantity,
       a.nbr+1
     from cten a 
     inner join product b on a.product_name=b.product_name
@@ -90,67 +95,67 @@ select * from cten;
 
 
 --- CHUNK 2
-with recursive cten as
-(
-    select
-      product_name,
-      1 as nbr
-    from product
+-- with recursive cten as
+-- (
+--     select
+--       product_name,
+--       1 as nbr
+--     from product
 
-    union all
+--     union all
 
-    select
-      a.product_name,
-      a.nbr+1
-    from cten a 
-    inner join product b on a.product_name=b.product_name
-    where a.nbr<b.quantity
-),
-final_cte as 
-(
-    select
-        a.nbr,
-        b.product_name,
-        b.price,
-        sum(b.price) over(order by b.price,b.product_name,a.nbr) as total_price
-    from cten a 
-    inner join product b on b.product_name=a.product_name
-    order by b.price,b.product_name,a.nbr
-)
-select * from final_cte
+--     select
+--       a.product_name,
+--       a.nbr+1
+--     from cten a 
+--     inner join product b on a.product_name=b.product_name
+--     where a.nbr<b.quantity
+-- ),
+-- final_cte as 
+-- (
+--     select
+--         a.nbr,
+--         b.product_name,
+--         b.price,
+--         sum(b.price) over(order by b.price,b.product_name,a.nbr) as total_price
+--     from cten a 
+--     inner join product b on b.product_name=a.product_name
+--     order by b.price
+-- )
+-- select * from final_cte
 
 
 --- CHUNK 3 and final solution 
 
-with recursive cten as
-(
-    select
-      product_name,
-      1 as nbr
-    from product
+-- with recursive cten as
+-- (
+--     select
+--       product_name,
+--       1 as nbr
+--     from product
 
-    union all
+--     union all
 
-    select
-      a.product_name,
-      a.nbr+1
-    from cten a 
-    inner join product b on a.product_name=b.product_name
-    where a.nbr<b.quantity
-),
-final_cte as 
-(
-    select
-        a.nbr,
-        b.product_name,
-        b.price,
-        sum(b.price) over(order by b.price,b.product_name,a.nbr) as total_price
-    from cten a 
-    inner join product b on b.product_name=a.product_name
-    order by b.price,b.product_name,a.nbr
-)
-select count(nbr) 
-from final_cte 
-where total_price<=100
+--     select
+--       a.product_name,
+--       a.nbr+1
+--     from cten a 
+--     inner join product b on a.product_name=b.product_name
+--     where a.nbr<b.quantity
+-- ),
+-- final_cte as 
+-- (
+--     select
+--         a.nbr,
+--         b.product_name,
+--         b.price,
+--         sum(b.price) over(order by b.price,b.product_name,a.nbr) as total_price
+--     from cten a 
+--     inner join product b on b.product_name=a.product_name
+--     order by b.price
+-- )
+-- select count(nbr) 
+-- from final_cte 
+-- where total_price<=100
 
 ------------------------------ Explanation -- end --------------------------------------------------------
