@@ -44,7 +44,17 @@ Terminology :
     MCP
     EVAL
 
-
+    Types of Models :
+        Auto regressor 
+        Diffusion
+        Flow based model
+        Energy based models
+        Variational model
+        GAN
+        Normalizing flows
+        Score based models
+        Neural ODE s
+        
 
 Attention mapping of words in a sentence to each other
 
