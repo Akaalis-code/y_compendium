@@ -25,3 +25,9 @@
     To be able to see all ACC1 resources from ACC2 Azure portal , From SUBSCRIPTION of Azure 1 READ ROLE has been assigned 
     to ACC2 from ACC1
 
+
+3) Azure root account and external account clarification :
+        Lets say you created AZURE account and logged in with "xyz@outlook.com" .
+        If you check your entra id you will have an account like :
+                xyz_outlook.com#EXT#@xyzoutlook.onmicrosoft.com
+        Q) You need to understand the "xyz@outlook.com" vs "xyz_outlook.com#EXT#@xyzoutlook.onmicrosoft.com"
