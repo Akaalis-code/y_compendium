@@ -1,3 +1,7 @@
+## QUICK SUMMARY :
+    Goal :
+        Create a new user and use that user credentials to do experiments in a work space 
+
 ## Environment info around azure :
     Suppose the root account at AZURE used for login is "azureroot@outlook.com".
     There will already be an "USER PRINCIPLE NAME" in ENTRA ID as "azureroot_outlook.com#EXT#@azurerootoutlook.onmicrosoft.com"
