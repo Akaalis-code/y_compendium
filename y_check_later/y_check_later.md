@@ -43,6 +43,8 @@ CL) ANSIBLE vs TERRAFORM
 
 CL) DBT like data bricks data engineering technology
     DBT vs ETL
+
+CL) Emergent behaviours  
 --------------------------------------- CET -- start -------------------------------------------------------------
 NUCLEAR FUSION:
     Z Machine 
