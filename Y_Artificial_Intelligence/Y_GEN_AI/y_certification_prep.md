@@ -37,6 +37,9 @@ Distance formulas for similarities :
     Euclidean Distance
     Cosine similarity 
     Manhattan distance 
+
+Creating indexs :
+    create_delta_sync_index   vs   create_direct_access_index
 --------- Check later -- End -------------------------------------------------------
 
 
@@ -189,11 +192,42 @@ RAG (Retrieval Augmented Generation) :
 RAG Code :
 
     PDF -> Text chunks
+
     Text chunks -> Embeddings
+
     Store in Vector store
-    Build Vector Search Index
-    Query via Vector Search Client 
+
+    Build Vector Search Index - 
+        It does indexing based on similarities , rather than exact match 
+        I think this can be done on any delta table (Subject to correction ) if you want to do a similarity search .
+
+    Query via Vector Search Client - communicating point with vector store for Adding or retrieving embeddings or indexes or do similaity search
         from databricks .vector_search.client import VectorSearchClient
         client = VectorSearchClient()
+        # Or, if outside Databricks:
+        # vsc = VectorSearchClient(
+        #                           workspace_url="https://adb-xxx.azuredatabricks.net",
+        #                           personal_access_token="dapi..."
+        #                          )
+        vs_index = client.create_index (
+                                            endpoint_name      = "vs_endpoint",
+                                            index_name         = "documents_index"
+                                            source_table_name  = "catalog.schema.table_with_chunks" # Not yet embedded I think 
+                                            embedding_column   = "<column which has the text chunks>"
+                                            id_column          = "<Primary key column in chunks table>"
+                                        )
+        
+        clent.list_endpoints()
+        client.list_indexes(<vector store name>)
+        index = client.get_index(index_name = "<catalog.schema.indexname")
 
-Resume at 33.Vector Search index 
+        # Simiarity Search 
+        result_dict = index.similarity_search(
+                                                query_text  = "<your query , like the usual prompt or questions>"
+                                                columns     = ["<primary_key_column>","<data_chunks_col>"] # Check if all columns need to be given or not
+                                                num_results = 3
+                                              )
+        
+        # Reranker - suppose if you know a chunk needs to be considered with more priority , thank what was given by the index .
+
+Resume at 40.langchain 
