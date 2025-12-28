@@ -155,6 +155,8 @@ vocabulary :
 
     STOCHASTIC - involving or characterized by a random probability distribution or pattern. It implies an element of chance or randomness, 
                  where outcomes are not entirely predictable but can be analyzed statistically
+    
+    INFERENCE - a conclusion reached on the basis of evidence and reasoning.
 ---------------------------------------- English -- End ---------------------------------------------------------
 
 
