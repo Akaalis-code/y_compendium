@@ -5,32 +5,6 @@ Autogen agentic framework .
 Embedding vs Vector embedding 
 
 
-Code snippet used :
-
-    %pip install -U --quiet databricks-sdk==0.49.0
-                            "databricks-langchain>=0.4.0"
-                            databricks-agents mlflow[databricks]
-                            databricks-vectorsearch==0.55
-                            langchain==0.3.25
-                            langchain_core==0.3.59
-                            bs4=0.0.2
-                            markdownify==0.14.1
-                            pydantic==2.10.1
-                            mlflow
-                            openai
-                            pyMuPDF
-    dbutils.library.restartPython()
-
-    from databricks_langchain import chatDatabricks
-
-    chat_model = chatDatabricks(
-                                    endpoint = "databricks-meta-llama-3-3-70b-instruct" ,
-                                    temperature = 0.1 , 
-                                    max_token = 250 ,
-                                )
-    
-    chat_model.invoke("<My query>")
-
 
 
 Distance formulas for similarities :
@@ -39,7 +13,7 @@ Distance formulas for similarities :
     Manhattan distance 
 
 Creating indexs :
-    create_delta_sync_index   vs   create_direct_access_index
+   create_index   vs   create_delta_sync_index   vs   create_direct_access_index
 --------- Check later -- End -------------------------------------------------------
 
 
@@ -202,7 +176,7 @@ RAG Code :
         I think this can be done on any delta table (Subject to correction ) if you want to do a similarity search .
 
     Query via Vector Search Client - communicating point with vector store for Adding or retrieving embeddings or indexes or do similaity search
-        from databricks .vector_search.client import VectorSearchClient
+        from databricks.vector_search.client import VectorSearchClient
         client = VectorSearchClient()
         # Or, if outside Databricks:
         # vsc = VectorSearchClient(
@@ -230,4 +204,84 @@ RAG Code :
         
         # Reranker - suppose if you know a chunk needs to be considered with more priority , thank what was given by the index .
 
-Resume at 40.langchain 
+    LANGCHAIN -
+
+        CODE SNIPPET -
+            %pip install -U --quiet databricks-sdk==0.49.0
+                                    "databricks-langchain>=0.4.0"
+                                    databricks-agents mlflow[databricks]
+                                    databricks-vectorsearch==0.55
+                                    langchain==0.3.25
+                                    langchain_core==0.3.59
+                                    bs4=0.0.2
+                                    markdownify==0.14.1
+                                    pydantic==2.10.1
+                                    mlflow
+                                    openai
+                                    pyMuPDF
+            dbutils.library.restartPython()
+
+            from databricks_langchain import chatDatabricks
+            # Below three lines are config , if you run from local machine (subjet to correction)
+            # Optional: Set environment variables in code if not set in system
+            # os.environ["DATABRICKS_HOST"] = "https://your-workspace-url"
+            # os.environ["DATABRICKS_TOKEN"] = "dapi..."
+            chat_model = chatDatabricks(
+                                            endpoint = "databricks-meta-llama-3-3-70b-instruct" ,
+                                            temperature = 0.1 , 
+                                            max_token = 250 ,
+                                        )
+            
+            chat_model.invoke("<My query>")
+        
+        Retriever - 
+            from databricks_langchain import DatabricksVectorSearch
+
+            vector_store = DatabricksVectorSearch(index_name = "<Your Vector Search Index Name>")
+            retriever    = vector_store.as_retriever(search_kwargs =    {{
+                                                                            "k": 3,   # Number of chunks that should be retured
+                                                                            "distance_threshold": 0.5,  # Only return results with a score better than 0.5 (Subject to verification)
+                                                                            "filters": {"department": "Engineering"} # Metadata filter (Subject to verification)
+                                                                        }}
+                                                    )
+            relavant_document = retriever.invoke("what is Databricks")
+        
+        Format relavant info into context -
+
+            def format_context(docs):
+                chunk_contents = [f"Passage: {d.page_content}\n" for d in docs]
+                return "".join(chunk_contents)
+            
+            format_context(relavant_document)
+        
+        Now work on PROMPT Template - query + context 
+
+            Chain Config -
+                chain_config =  {   "llm_model_serving_endpoint_name" : "databricks-meta-llama-3-3-70b-instruct" #The foundation model 
+                                    "vector_search_endpoint_name"     : "demoeps"
+                                    "vector_search_index"             : "workspace.default.my_index"
+                                    "llm_prompt_template"             : """you are an helpful AI assistant , use the context {context}""",
+                                } 
+            
+            from langchain_core.prompts import ChatPromptTemplate
+            from databricks_langchain.chat_models import ChatDatabricks
+            from operator import itemgetter
+
+            prompt = ChatPromptTemplate.from_message    (
+                                                            [
+                                                                ("system",chain_config.get("llm_prompt_template")),
+                                                                ("user","{question}")
+                                                            ]
+                                                        )
+        
+        Building Chains -
+
+            model  = chat_model
+            answer = (prompt | model | StrOutputParser()).invoke(   {
+                                                                        'question':'who is data fudiciary?' ,
+                                                                        'context':relevant_docs # check the variable correctly 
+                                                                    }
+                                                                )
+
+
+#### Resume at 56 
