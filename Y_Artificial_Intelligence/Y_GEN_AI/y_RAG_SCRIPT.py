@@ -1,3 +1,5 @@
+#pip install databricks-vectorsearch
+
 from databricks.vector_search.client import VectorSearchClient
 client = VectorSearchClient()
 # Or, if outside Databricks:
@@ -23,3 +25,16 @@ result_dict = index.similarity_search(
                                         columns     = ["<primary_key_column>","<data_chunks_col>"] # Check if all columns need to be given or not
                                         num_results = 3
                                         )
+
+
+from databricks_langchain import DatabricksVectorSearch
+
+
+vector_store = DatabricksVectorSearch(index_name = "<Your Vector Search Index Name>")
+retriever    = vector_store.as_retriever(search_kwargs =    {{
+                                                                "k": 3,   # Number of chunks that should be retured
+                                                                "distance_threshold": 0.5,  # Only return results with a score better than 0.5 (Subject to verification)
+                                                                "filters": {"department": "Engineering"} # Metadata filter (Subject to verification)
+                                                            }}
+                                        )
+relavant_document = retriever.invoke("what is Databricks")

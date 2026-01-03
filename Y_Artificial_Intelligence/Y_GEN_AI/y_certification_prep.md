@@ -219,6 +219,21 @@ RAG Code :
                                     mlflow
                                     openai
                                     pyMuPDF
+
+            pip install -U  databricks-sdk==0.49.0 \
+                            "databricks-langchain>=0.4.0" \
+                            databricks-agents \
+                            mlflow[databricks] \
+                            databricks-vectorsearch==0.55 \
+                            langchain==0.3.25 \
+                            langchain_core==0.3.59 \
+                            bs4==0.0.2 \
+                            markdownify==0.14.1 \
+                            pydantic==2.10.1 \
+                            mlflow \
+                            openai \
+                            pyMuPDF
+
             dbutils.library.restartPython()
 
             from databricks_langchain import chatDatabricks

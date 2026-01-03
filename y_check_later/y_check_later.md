@@ -103,6 +103,9 @@ PCB WAY -->> for 3d printing , CNC cutting PCB
 
 Video Editing :
     PICSART web based tool for AI enhaced removals 
+
+Probability visualisation website :
+ seeing theory brown  -->> good animated website for probability concepts 
     
 ---------------------------------------- Various tools -- End -------------------------------------------------------------
 
