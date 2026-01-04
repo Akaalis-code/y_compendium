@@ -1,3 +1,39 @@
+---------------------------------------------- Dont run this script , its just for reference ----------------------------------------------
+from databricks.sdk import WorkspaceClient
+import os
+
+w = WorkspaceClient(
+                        host=os.environ.get('var_workspace'),
+                        token=os.environ.get('var_pat')
+                    )
+
+dbutils = w.dbutils
+
+# Example: List files in a Volume
+display(dbutils.fs.ls('/Volumes/y_ws_250705/y_schema_for_ai/y_volume_for_rag/'))
+
+
+created_schema = w.schemas.create   ( 
+                                        name         = "y_schema_for_AI",
+                                        catalog_name = "y_ws_250705",
+                                        comment      = "Created schema especially for AI related content"
+                                    )
+
+from databricks.sdk.service.catalog import VolumeType
+created_volume = w.volumes.create  (
+                                        catalog_name = "y_ws_250705",
+                                        schema_name  = "y_schema_for_AI",
+                                        name         = "y_volume_for_RAG",
+                                        volume_type  = VolumeType.MANAGED,
+                                        comment      = "Volumes to store my RAG source PDFs"
+                                    )
+
+
+
+
+
+
+
 #pip install databricks-vectorsearch
 
 from databricks.vector_search.client import VectorSearchClient
