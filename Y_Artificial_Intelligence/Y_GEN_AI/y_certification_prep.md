@@ -164,6 +164,20 @@ RAG (Retrieval Augmented Generation) :
                 It is specifically designed to support Retrieval Augmented Generation (RAG)
 
 RAG Code :
+    PDF file -> DBKS tables 
+        CODE :
+            from databricks.sdk import WorkspaceClient
+            import os
+
+            # Replace with your actual workspace URL and Personal Access Token (PAT)
+            w = WorkspaceClient(
+                                    host="https://adb-1234567890.12.azuredatabricks.net",
+                                    token="dapiexample1234567890abc"
+                                )
+
+            # Test the connection by listing your catalogs
+            for catalog in w.catalogs.list():
+                print(catalog.name)
 
     PDF -> Text chunks
 
@@ -220,19 +234,20 @@ RAG Code :
                                     openai
                                     pyMuPDF
 
-            pip install -U  databricks-sdk==0.49.0 \
-                            "databricks-langchain>=0.4.0" \
-                            databricks-agents \
-                            mlflow[databricks] \
-                            databricks-vectorsearch==0.55 \
-                            langchain==0.3.25 \
-                            langchain_core==0.3.59 \
-                            bs4==0.0.2 \
-                            markdownify==0.14.1 \
-                            pydantic==2.10.1 \
-                            mlflow \
-                            openai \
-                            pyMuPDF
+            Or Use below cmd if you are running in your terminal                 
+                %pip install -U databricks-sdk \
+                                databricks-langchain \
+                                databricks-agents \
+                                mlflow[databricks] \
+                                databricks-vectorsearch \
+                                langchain \
+                                langchain_core \
+                                bs4 \
+                                markdownify \
+                                pydantic \
+                                mlflow \
+                                openai \
+                                pyMuPDF
 
             dbutils.library.restartPython()
 

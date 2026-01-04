@@ -3,7 +3,7 @@
 from databricks.vector_search.client import VectorSearchClient
 client = VectorSearchClient()
 # Or, if outside Databricks:
-# vsc = VectorSearchClient(
+# client = VectorSearchClient(
 #                           workspace_url="https://adb-xxx.azuredatabricks.net",
 #                           personal_access_token="dapi..."
 #                          )
