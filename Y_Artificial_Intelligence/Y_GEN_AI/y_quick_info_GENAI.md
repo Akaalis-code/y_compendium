@@ -75,8 +75,12 @@ Foundational models :(Subject to correction)
 Day 4 12:28 starting 
 
 
-
+LLM
+RAG
+AGENTS
 MCP - MODEL CONTEXT PROTOCOL
+Agent 2 Agent 
+DAG - subject to correction
 
 
 
@@ -90,9 +94,11 @@ Latest Breakthroughs :
     Darwin Godel Machine :
         Self improving AI system ,iteratively modifies its python code base.
 
-
-Andrej karpathy : open Ai researcher 
+Ai researchers :
+    Andrej karpathy - open AI
+    Yan leecun - Meta 
 
 LLM LEADER BOARDS :
     https://lmarena.ai/?leaderboard
     https://scale.com/leaderboard
+    https://arcprize.org/leaderboard
