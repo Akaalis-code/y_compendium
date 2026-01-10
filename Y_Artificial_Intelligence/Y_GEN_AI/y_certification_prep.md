@@ -53,8 +53,19 @@ Exam evaluation syllabus : 45 questions 90 minutes
 
 
 
+MOSAIC AI PLATFORM :
+    The Databricks Mosaic AI platform is a unified suite of tools designed to help organizations build, deploy, govern, and monitor 
+    enterprise-grade AI applications, particularly those using generative AI and large language models (LLMs).
+
+    - Model Training -- A scalable framework for fine-tuning or training open-source LLMs
+    - Model Serving
+    - AI Gateway
+    - Vector Search
+    - Agent Framework & Evaluation
+    - MLflow Integration
 
 
+    Note : Each component of MOSAIC AI PLATFORM interacts with MLFLOW to provide observability and lifecycle management (Subject to correction)
 
 LLM -> reasoning and generate content 
 Agentic AI -> LLM+Actions in real world
@@ -333,3 +344,9 @@ RAG Code :
         Abstarctive summa
         Tokenized sentence reduction
         Frequence based summarization 
+
+- Vector library like FAISS instead of a vector database
+- keyword matching (like BM25
+- Lost-in-the-Middle Problem:   Research indicates that LLMs pay a disproportionate amount of attention to the 
+                                beginning and end of a very long prompt, often overlooking critical information 
+                                placed in the middle section of the input text. 

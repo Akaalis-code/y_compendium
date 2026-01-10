@@ -26,6 +26,19 @@
           - If you spin up a customized model , even if its based on any foundation model , you will be given dedicated serverless GPUs.
           - This Model and its resource are being used by only you or your team , not by the world .
 
+# MOSAIC AI PLATFORM :
+    The Databricks Mosaic AI platform is a unified suite of tools designed to help organizations build, deploy, govern, and monitor 
+    enterprise-grade AI applications, particularly those using generative AI and large language models (LLMs).
+
+    - Model Training -- A scalable framework for fine-tuning or training open-source LLMs
+    - Model Serving
+    - AI Gateway
+    - Vector Search
+    - Agent Framework & Evaluation
+    - MLflow Integration
+
+
+    Note : Each component of MOSAIC AI PLATFORM interacts with MLFLOW to provide observability and lifecycle management (Subject to correction)
 
 # Databricks VECTOR Database :
     - Mosaic AI Vector Search is SERVERLESS (End point based) vector database on top of DELTA TABLES.
