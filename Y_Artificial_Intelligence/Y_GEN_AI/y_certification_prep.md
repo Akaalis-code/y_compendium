@@ -54,15 +54,20 @@ Exam evaluation syllabus : 45 questions 90 minutes
 
 
 MOSAIC AI PLATFORM :
-    The Databricks Mosaic AI platform is a unified suite of tools designed to help organizations build, deploy, govern, and monitor 
-    enterprise-grade AI applications, particularly those using generative AI and large language models (LLMs).
+    WHAT IS IT :
+        - A unified suite of tools in DATABRICKS designed to help organizations 
+          build, deploy, govern, and monitor enterprise-grade AI applications.
 
-    - Model Training -- A scalable framework for fine-tuning or training open-source LLMs
-    - Model Serving
-    - AI Gateway
-    - Vector Search
-    - Agent Framework & Evaluation
-    - MLflow Integration
+    HISTORY:
+       - DATABRICKS bought "MOSAIC ML" in 2023 for $1.3B 
+
+    Components :
+        - Model Training -> A framework for fine-tuning or training opensource LLMS
+        - Model Serving
+        - AI Gateway
+        - Vector Search
+        - Agent Framework & Evaluation
+        - MLflow Integration
 
 
     Note : Each component of MOSAIC AI PLATFORM interacts with MLFLOW to provide observability and lifecycle management (Subject to correction)
