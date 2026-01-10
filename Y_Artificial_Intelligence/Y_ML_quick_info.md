@@ -1,7 +1,9 @@
 
 Machine learning algorithms :
 
-    Supervised learning :
+    Supervised learning :   The model is trained on labeled datasets, meaning every input has a corresponding "correct answer".
+                            The goal is to next send unlabelled data and make model guess the lable correctly .
+
         Regression :
             Linear regression 
             Logistic regression
@@ -17,7 +19,8 @@ Machine learning algorithms :
                 k= higher number (moving towards under fitting)
             Naive bayes
 
-    Unsupervised learning :
+    Unsupervised learning : The AI analyzes unlabeled data without any guidance on what the output should be.
+                            The goal of this model is to group data into meaningful sets .
         K means clustering :
             K is hyper parameter
         Heirarichal clustering
@@ -26,7 +29,9 @@ Machine learning algorithms :
         Guassian mix model
         Hidden markov process
 
-    Reinforcement learning :
+    Reinforcement learning :    Think of a scenario where there is a clear task or goal , but there is infinite possibilities to acheive it.
+                                For example a robot learning to walk . You design the model to try all the possibilities and only reward the 
+                                model when it acheives progress in best way .
         Q learning
         Temporal learning
         Generative adversarial Networks
@@ -41,15 +46,6 @@ Machine learning algorithms :
 
 
 
-
-TOKENIZATION = 
-
-EMBEDDING = 
-
-AI WORKFLOWS = "AI MODEL"+"some tools" orchestrated in flow by human
-
-AI AGENT = an "AI MODEL" + Ability to be aware of its environment and learn how to react as need autonomously
-            with out any human suggestion.
 
 
 

@@ -1,4 +1,13 @@
+---------------------------------- Check later -- start ------------------------------------------
 
+LLM
+RAG
+AGENTS
+MCP - MODEL CONTEXT PROTOCOL
+Agent 2 Agent 
+DAG - subject to correction
+
+---------------------------------- check later -- end ----------------------------------------------
 
 Terminology :
     Tokenization : Dividing a much complex item in simpler possible item according to the necessity
@@ -75,12 +84,10 @@ Foundational models :(Subject to correction)
 Day 4 12:28 starting 
 
 
-LLM
-RAG
-AGENTS
-MCP - MODEL CONTEXT PROTOCOL
-Agent 2 Agent 
-DAG - subject to correction
+AI WORKFLOWS = "AI MODEL"+"some tools" orchestrated in flow by human
+
+AI AGENT = an "AI MODEL" + Ability to be aware of its environment and learn how to react as need autonomously
+            with out any human suggestion.
 
 
 

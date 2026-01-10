@@ -315,3 +315,21 @@ RAG Code :
 
 
 #### Resume at 56 
+
+
+
+--------------------- Practise exam concepts -- start ------------------------------------------------------
+- GAN
+- CNN
+- Zero shot classification :
+        Defined as an AI's ability to categorize data into classes it was never explicitly trained on.
+        Unlike traditional models that require thousands of labeled examples, zero-shot models leverage "world knowledge" 
+        from massive pre-training to recognize new categories via semantic descriptions or relationships.
+
+- when would you use fine tuning technique
+
+- Summarization :
+        Extractive summarization
+        Abstarctive summa
+        Tokenized sentence reduction
+        Frequence based summarization 
