@@ -14,6 +14,49 @@ Distance formulas for similarities :
 
 Creating indexs :
    create_index   vs   create_delta_sync_index   vs   create_direct_access_index
+
+
+Architecture:
+
+    Decoder-only (e.g., GPT-2, GPT-3, LLaMA, Falcon) → best for text generation.
+
+    Encoder-only (e.g.,  BERT, RoBERTa, DistilBERT) → best for classification, embeddings, retrieval tasks.
+
+    Encoder-decoder (e.g., T5-style, Seq2Seq) → versatile, good for translation and summarization.
+
+
+
+    Architecture	Input Context	Output Style	                        Best Use Cases
+    Decoder-only	Left-to-right	Autoregressive	                        Text generation, dialogue, creative writing
+    Encoder-only	Bidirectional	Non-generative	                        Classification, embeddings, retrieval
+    Encoder-decoder	Bidirectional   (encoder) + autoregressive (decoder)	Seq2Seq	Translation, summarization, text-to-text
+
+Databricks GenAI Indemnity -->> post this to linkedin 
+
+
+Building LLM application :
+    The industry has standardized around a few key pillars: 
+        Framework orchestration -
+            LANGCHAIN -
+                LCEL (LangChain Expression Language)
+                LangChain is mostly Directed Acyclic
+            LANGGRAPH
+            Other tools -
+                Data-Centric Frameworks (RAG Specialists) - 
+                    LlamaIndex
+                    Haystack (by deepset)
+                Multi-Agent & Orchestration Frameworks - 
+                    CrewAI
+                    Microsoft AutoGen
+                    OpenAI Swarm
+                Enterprise & Developer-First Frameworks - 
+                    Semantic Kernel (Microsoft)
+                    DSPy (Stanford)
+                    Vellum
+
+        Prompt engineering, 
+        Security guardrails,
+        Agentic reasoning.
 --------- Check later -- End -------------------------------------------------------
 
 
@@ -129,7 +172,7 @@ RAG (Retrieval Augmented Generation) :
         A)  I think (Subject to correction) , Suppose if the knowledge we have to send as context is 1000 pages , 
             Generaly we have to send all the 1000 pages text in our prompt in which may be 10 pages are related to our query,
             But what RAG solution gives us is , Store all the knowledge in EMBEDING form in Vector data base , 
-            and this time our prompt will conssts of our query augmented with only those few pages relavant to our question .
+            and this time our prompt will consists of our query augmented with only those few pages relavant to our question .
     
     RAG STEPS :
         Index and Embedding
@@ -355,3 +398,44 @@ RAG Code :
 - Lost-in-the-Middle Problem:   Research indicates that LLMs pay a disproportionate amount of attention to the 
                                 beginning and end of a very long prompt, often overlooking critical information 
                                 placed in the middle section of the input text. 
+
+- Eval tools :
+    Open Source :
+        - RAGAS
+        - Deep eval 
+        - Arize Phoenix
+    Integrated Platform Tools (Databricks / Enterprise) :
+        - MLflow LLM Evaluate
+        - Mosaic AI Agent Evaluation
+        - 
+
+
+- Metrics:
+    Accuracy / Exact Match	    Factual correctness
+    BLEU / ROUGE	            Overlap with reference text
+    Recall@K / NDCG	            Retrieval relevance (RAG)
+    LLM-as-a-Judge	            Semantic correctness
+    Human Evaluation	        Gold standard
+
+- AI in SQL queries :
+    SELECT 
+        product_name,
+        review_text,
+        -- Calling an LLM to summarize a review
+        ai_query    (
+                        "gpt-4o", 
+                        "Summarize this review in 10 words: " || review_text
+                    ) AS short_summary
+    FROM customer_reviews;
+
+    Other tools :
+        ai_summarize
+        ai_translate
+        ai_fix_grammar
+        ai_classify
+        ai_embedding()-->> to embed the any text or column of text .
+    
+    SELECT title, author
+    FROM library_table
+    ORDER BY vector_similarity(title_vector, ai_embedding('A story about a small adventurer')) DESC
+    LIMIT 5;
