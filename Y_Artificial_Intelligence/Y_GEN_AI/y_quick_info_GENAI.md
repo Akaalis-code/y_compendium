@@ -109,3 +109,23 @@ LLM LEADER BOARDS :
     https://lmarena.ai/?leaderboard
     https://scale.com/leaderboard
     https://arcprize.org/leaderboard
+
+DATABRICKS GENAI :
+    MOSAIC AI PLATFORM :
+        WHAT IS IT :
+            - A unified suite of tools in DATABRICKS designed to help organizations 
+            build, deploy, govern, and monitor enterprise-grade AI applications.
+
+        HISTORY:
+        - DATABRICKS bought "MOSAIC ML" in 2023 for $1.3B 
+
+        Components :
+            - Model Training -> A framework for fine-tuning or training opensource LLMS
+            - Model Serving
+            - AI Gateway
+            - Vector Search
+            - Agent Framework & Evaluation
+            - MLflow Integration
+
+        Note :  Each component of MOSAIC AI PLATFORM interacts with MLFLOW to provide observability 
+                and lifecycle management (Subject to correction)
