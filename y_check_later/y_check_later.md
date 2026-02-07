@@ -103,6 +103,9 @@ PCB WAY -->> for 3d printing , CNC cutting PCB
 
 Video Editing :
     PICSART web based tool for AI enhaced removals 
+
+Probability visualisation website :
+ seeing theory brown  -->> good animated website for probability concepts 
     
 ---------------------------------------- Various tools -- End -------------------------------------------------------------
 
@@ -155,6 +158,8 @@ vocabulary :
 
     STOCHASTIC - involving or characterized by a random probability distribution or pattern. It implies an element of chance or randomness, 
                  where outcomes are not entirely predictable but can be analyzed statistically
+    
+    INFERENCE - a conclusion reached on the basis of evidence and reasoning.
 ---------------------------------------- English -- End ---------------------------------------------------------
 
 
