@@ -100,6 +100,7 @@ VALUES
     from        EVEN_PAGE_TITLES as EPT 
     LEFT JOIN  ODD_PAGE_TITLES  as OPT
       on        (EPT.PAGE_NUMBER+1) = OPT.PAGE_NUMBER
+    order by PAGES ASC
 ---------------- FINAL SOLUTION -- END ----------------------------------------
 
 ---------------- EXPLANATION CHUNKS -- START ----------------------------------------
@@ -176,7 +177,7 @@ VALUES
     from        EVEN_PAGE_TITLES as EPT 
     LEFT JOIN  ODD_PAGE_TITLES  as OPT
       on        (EPT.PAGE_NUMBER+1) = OPT.PAGE_NUMBER
-        
+    order by PAGES ASC
 ---------------- EXPLANATION CHUNKS  -- END ----------------------------------------
 
 

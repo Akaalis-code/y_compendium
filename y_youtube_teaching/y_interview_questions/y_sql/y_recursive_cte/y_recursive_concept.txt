@@ -1,0 +1,53 @@
+-------------- Complex way -- start ---------------------------------------
+
+--------------------------------- Mysql
+
+DELIMITER //
+
+CREATE PROCEDURE generate_sequence()
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    CREATE TEMPORARY TABLE temp_name (col_a INT);
+    
+    WHILE i <= 10 DO
+        INSERT INTO temp_name (col_a) VALUES (i);
+        SET i = i + 1;
+    END WHILE;
+    
+    SELECT * FROM temp_name;
+    DROP TEMPORARY TABLE temp_name;
+END //
+
+DELIMITER ;
+
+-- Call the stored procedure to run it
+CALL generate_sequence();
+
+-------------- complex way -- end ---------------------------------------
+
+------------- Simple way -- start ----------------------------------------
+----- Oracle sql 
+WITH temp_name (col_a) AS 
+(
+  SELECT 1 as col_a FROM dual
+  UNION ALL
+  SELECT col_a + 1
+  FROM temp_name
+  WHERE col_a < 10
+)
+SELECT * FROM temp_name;
+
+
+----- Mysql
+with recursive temp_name as
+(
+  select 1 as col_a
+  
+  union
+  
+  select col_a+1 as col_a
+  from temp_name
+  where col_a<10
+)
+select * from temp_name
+------------- Simple way -- end ----------------------------------------

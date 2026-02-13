@@ -62,6 +62,13 @@ ORDER BOOK -
     BID -
     ASK -
 
+
+SPAC -> Special Purpose Acquisition Companies
+
+Investment firms :
+    Private Equity Fund
+    Venture Fund
+    Hedge Fund 
 ---------------------- Stock market -- End -------------------------------------------------------------------------
 
 

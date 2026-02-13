@@ -1,3 +1,12 @@
+Some random knowledge :
+   1) origin = short form for "ORIGINAL" branch in remote repo .
+   2) origin/<your_branch_name> = your branch in REMOTE REPO , not in your local repo .
+   3) While commiting , in VS code repo graph , you will get two things while pull/push :
+         origin/<your_branch_name> = your branch in REMOTE REPO , not in your local repo
+         <your_branch_name>        = Your local repo .
+
+
+
 ------ GIT controls from command prompt -- start ------------------------------
 
 
@@ -35,12 +44,40 @@ git diffs
 ------ GIT controls from command prompt -- End ------------------------------
 
 
+
+
+------ GIT divergent branches issue -- start --------------------------------
+
 # GIT MERGE VS GIT REBASE 
    Merge is used to blend changes from one branch to another .
    In this merge source branch can continue even after merging unless explicitly deleting the branch
 
    Rebase is used similar to git merge but the source branch will be removed after merge,
    by making target branch as the base for even source branch
+
+# Solve Pull issue : (Could be wrong study in detail later)
+      There are two ways , You can either 
+         1) Run commands that will specificaly affect this particular pull issue , not the future ones .
+         2) Or Run the commands which will modify the CONFIG of this repo , so that this config change 
+            gives the info to GIT on how to handle even future PULL issues.
+
+
+      WAY 1 : (elaborate later right now I dont have time)
+         Use any of the below based on your requirement
+            > git pull origin <branch-name> --no-rebase
+            > git pull origin <branch-name> --rebase
+
+      WAY 2 : (elaborate later right now I dont have time)
+         Use any of the below three commands based on your requirement
+            > git config pull.rebase false # merge
+            > git config pull.rebase true # rebase
+            > git config pull.ff only # fast-forward only
+      
+
+
+------ GIT divergent branches issue -- end --------------------------------
+
+
 
 
 --------------------------- Personal Access Tokens -- Start ------------------------------------

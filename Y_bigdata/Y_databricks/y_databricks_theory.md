@@ -218,6 +218,8 @@
 		There are two types of secret scopes:
 			Databricks-backed scopes :	
 				1) Managed by Databricks and stored in an encrypted database
+				2) You Use databricks CLI for this , No UI as of now .
+				
 			Azure Key Vault-backed scopes :	
 				1) These scopes are a read-only interface to secrets stored in an Azure Key Vault .
 				2) Databricks secret scope acts as a bridge for you to connect to AZURE KEY VAULT .
