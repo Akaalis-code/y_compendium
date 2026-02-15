@@ -39,6 +39,8 @@ SELECT * FROM temp_name;
 
 
 ----- Mysql
+Note : Recursive CTE s cannot contain WINDOW functions and aggregate functions
+
 with recursive temp_name as
 (
   select 1 as col_a
