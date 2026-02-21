@@ -31,17 +31,25 @@ INSERT INTO candidates (id, position, level, salary) VALUES
 (7, 'senior', 3, 20000),
 (8, 'junior', 2, 10000),
 (9, 'senior', 3, 15000),
-(10, 'senior', 3, 30000),
-(11, 'Intern', 1, 500),
-(12, 'Intern', 1, 200),
-(13, 'Intern', 1, 800);
+(10, 'senior', 3, 30000);
+-- (11, 'Intern', 1, 500),
+-- (12, 'Intern', 1, 200),
+-- (13, 'Intern', 1, 800),
+-- (14, 'Super senior', 4, 20000),
+-- (15, 'Super senior', 4, 50000),
+-- (16, 'Super senior', 4, 60000);
+
+
+select * 
+from candidates 
+order by level DESC , salary ASC;
 
 
 -------------------------------- Data Setup -- end ------------------------------------------------------------
 
 
 
-------------------------------- Solution -- start -------------------------------------------------------------
+-------------------------------Bad  Solution -- start -------------------------------------------------------------
 
 WITH SENIOR AS 
 (
@@ -101,7 +109,7 @@ SELECT juniors, seniors
 FROM final_summary 
 WHERE RNK = 1;
 
--------------------------------------------- Solution -- end ----------------------------------------------
+-------------------------------------------- Bad Solution  -- end ----------------------------------------------
 
 ------------------------- More dynamic solution -- start -------------------------------------------------------
 with recursive Rolling_sum_data as 
@@ -129,8 +137,9 @@ expense_tracking_data as
         running_expenses,
         intended_order,
         50000-running_expenses as remaining_amt,
-        case when 50000-running_expenses>=0 then 'Hired'
-        else 'Not possible to hire'
+        case 
+            when 50000-running_expenses>=0 then 'Hired'
+            else 'Not possible to hire'
         end as hire_or_no,
         1 as cnt
   from Rolling_sum_data
@@ -144,11 +153,13 @@ expense_tracking_data as
         rsd.level,
         rsd.running_expenses,
         rsd.intended_order,
-        case when etd.remaining_amt-rsd.salary <0 then etd.remaining_amt
+        case 
+            when etd.remaining_amt-rsd.salary <0 then etd.remaining_amt
              else etd.remaining_amt-rsd.salary
         end as remaining_amt,
-        case when etd.remaining_amt-rsd.salary >=0 then 'Hired'
-        else 'Not possible to hire'
+        case 
+            when etd.remaining_amt-rsd.salary >=0 then 'Hired'
+            else 'Not possible to hire'
         end as hire_or_no,
         etd.cnt+1
   from Rolling_sum_data as rsd
@@ -161,61 +172,58 @@ group by position
 ------------------------- More dynamic solution  -- End -------------------------------------------------------
 
 
-------------------------- Explanation  -- Start -------------------------------------------------------
+------------------------- Explanation  chunks-- Start -------------------------------------------------------
 
-with recursive Rolling_sum_data as 
+with recursive Buy_order_of_employees as 
 (
- SELECT
+SELECT
         id,
         position,
         salary,
         level,
-        sum(salary) over (
-                            partition by level
-                              order by level desc ,salary asc , id asc
-                              rows between unbounded preceding and current row
-                          ) as running_expenses,
-        Row_number() over (order by level desc ,salary asc , id asc) as intended_order
+        Row_number() over (order by level desc ,salary asc , id asc) as intended_order_to_buy
     FROM candidates 
 
 ),
 expense_tracking_data as 
 (
-  select id,
-        position,
-        salary,
-        level,
-        running_expenses,
-        intended_order,
-        50000-running_expenses as remaining_amt,
-        case when 50000-running_expenses>=0 then 'Hired'
-        else 'Not possible to hire'
+  select id,                                    id as iid,
+        position,                               position as ip,
+        level,                                  level as il,
+        intended_order_to_buy,                  intended_order_to_buy as iiotb,
+        salary,                                 salary as isa,
+        50000-salary as budget_remaining_amt,
+        case 
+            when 50000-salary>=0 then 'Hired'
+            else 'Not possible to hire'
         end as hire_or_no,
-        1 as cnt
-  from Rolling_sum_data
-  where intended_order = 1
+        1 as counter
+  from Buy_order_of_employees
+  where intended_order_to_buy = 1
   
   union 
   
-  select rsd.id,
-        rsd.position,
-        rsd.salary,
-        rsd.level,
-        rsd.running_expenses,
-        rsd.intended_order,
-        case when etd.remaining_amt-rsd.salary <0 then etd.remaining_amt
-             else etd.remaining_amt-rsd.salary
-        end as remaining_amt,
-        case when etd.remaining_amt-rsd.salary >=0 then 'Hired'
-        else 'Not possible to hire'
-        end as hire_or_no,
-        etd.cnt+1
-  from Rolling_sum_data as rsd
-  inner join expense_tracking_data as etd on rsd.intended_order = etd.cnt+1
+  select  boe.id  ,                             etd.id  , 
+          boe.position  ,                       etd.position,
+          boe.level,                            etd.level,
+          boe.intended_order_to_buy,            etd.intended_order_to_buy,
+          boe.salary  ,                         etd.salary,
+          case 
+              when  etd.budget_remaining_amt-boe.salary <0 then etd.budget_remaining_amt
+              else  etd.budget_remaining_amt-boe.salary
+          end as budget_remaining_amt,
+          case 
+              when etd.budget_remaining_amt-boe.salary >=0 then 'Hired'
+              else 'Not possible to hire'
+          end as hire_or_no,
+          etd.counter+1 as counter
+  from        expense_tracking_data as etd 
+  inner join  Buy_order_of_employees as boe 
+          on  boe.intended_order_to_buy = etd.counter+1
 )
-select count(id),position 
-from expense_tracking_data
-where hire_or_no = 'Hired'
-group by position
-
-------------------------- Explanation  -- End -------------------------------------------------------
+-- select count(id),position 
+-- from expense_tracking_data
+-- where hire_or_no = 'Hired'
+-- group by position
+select * from expense_tracking_data
+------------------------- Explanation chunks -- End -------------------------------------------------------
