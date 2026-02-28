@@ -1,3 +1,7 @@
+# Flow chart of Recursive CTE :
+  <img src="./y_recursive_cte_flowchart.svg" alt="recursive cte flow chart" width="1000"/>
+
+
 -------------- Complex way -- start ---------------------------------------
 
 --------------------------------- Mysql
