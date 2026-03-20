@@ -16,6 +16,11 @@
     
         - Install the OPENAI lib :
             > pip install openai
+        
+        - Install JUPYTER notebook       
+        (y_AI_ENV) > pip install jupyter             ## Install JUPYTER inside your my_venv using pip
+        (y_AI_ENV) > jupyter notebook                ## To start Jupyter Notebook server , open "http://localhost:8888/" in any browser
+        (y_AI_ENV) > ctrl + c                        ## To stop Jupyter Notebook server
 
 # Script for using it as a chatbot :
 
