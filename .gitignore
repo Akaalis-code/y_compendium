@@ -1,0 +1,8 @@
+# --- Jupyter & Notebooks ---
+.ipynb_checkpoints/
+.virtual_documents/
+
+# --- Python Junk ---
+__pycache__/
+venv/
+.env

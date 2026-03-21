@@ -47,9 +47,7 @@
       Now you have to use that end point and connect to your local system .
       GENAI model is in databricks cloud , Talk to it from your local computer .
 
-
   ## Setup in your local system :
-
       - INSTALL OPENAI library :
             - Create a virtual environment for installing these libs , as System level python doesnt allow to install new libs
                 > sudo apt install python3.12-venv          ## To install venv into your system
@@ -81,16 +79,12 @@
                     OpenAI(..... , base_url = "<paste here>")
 
   ## Script for using it as a chatbot :
-
         from openai import OpenAI
         import os
-
         var_client = OpenAI(
                                 api_key = os.getenv("var_AI_API_sec", "null"),
                                 base_url = os.getenv("var_end_point", "null")
                             )
-
-
         while True:
             var_user_prompt = input("Your prompt message here: ")
             if var_user_prompt == 'y_done':
@@ -110,10 +104,14 @@
                                                                 model="databricks-meta-llama-3-1-8b-instruct",
                                                                 max_tokens=256
                                                             )
-
             print(var_response.choices[0].message.content)
-
         print('Thank you for chatting')
+
+  ## RAG SETUP :
+        (my_env) > pip install databricks-sdk                   ## For running databricks scripts locally
+        (my_env) > pip install databricks-vectorsearch          ## For vector database 
+
+  ## RAG SCRIPT :
 
 # Databricks VECTOR Database :
     - Mosaic AI Vector Search is SERVERLESS (End point based) vector database on top of DELTA TABLES.

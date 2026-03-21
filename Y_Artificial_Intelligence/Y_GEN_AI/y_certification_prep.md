@@ -162,17 +162,29 @@ Prompt Engineering types :
 
 RAG (Retrieval Augmented Generation) :
     Limitations of traditional LLM :
-        LLM tend to hallucinate 
-        LLM has limited context window 
-        LLM has knowledge cutoff
-        LLM may not have domain specific info 
+        MODEL tends to hallucinate 
+        MODEL has limited context window 
+        MODEL has knowledge cutoff
+        MODEL may not have domain specific info 
     
-    My question :   
-        Q)  How does RAG differ from sending my prompt by just adding all the context it requires to answer along with question ?
-        A)  I think (Subject to correction) , Suppose if the knowledge we have to send as context is 1000 pages , 
-            Generaly we have to send all the 1000 pages text in our prompt in which may be 10 pages are related to our query,
-            But what RAG solution gives us is , Store all the knowledge in EMBEDING form in Vector data base , 
-            and this time our prompt will consists of our query augmented with only those few pages relavant to our question .
+    Question :   
+        How does RAG differ from sending "my prompt + all the context it requires to answer" to a model ?
+
+    Answer :
+        In a way it is same when you are talking about 10 to 20 lines of context window, 
+        But the actual difference comes when the context scales up to thousand of documents .
+
+        Example : 
+            Suppose you know your question has an awnser in 5000 PDF docs , Manually attaching all the text isnt practical.
+            Moreover doing that will make you run out of TOKEN WINDOW , and its costly .
+
+            In RAG it follows below steps :-
+                1) Embed the entire 5000 docs 
+                2) Store in vector DB 
+                3) Do a Semantic search to extract only related info to your original question
+                    "5000 docs" became -->> "Few related line of info" 
+                4) ADD the extracted similar items to your question 
+                5) send the "QUESTION + only related info from Semantic search" as PROMPT
     
     RAG STEPS :
         Index and Embedding
@@ -197,7 +209,7 @@ RAG (Retrieval Augmented Generation) :
         Create delta table with those chunks 
 
         Embedding - Converting text into numerical representation
-            Embedding model is resonsible for doing that 
+            Embedding model is responsible for doing that 
             Embedding dimension size 
             Examples Embedding models -
                 databricks-bge-large-en -- by databricks   -- Free(preview)      -- English language only -- Native in DBX
