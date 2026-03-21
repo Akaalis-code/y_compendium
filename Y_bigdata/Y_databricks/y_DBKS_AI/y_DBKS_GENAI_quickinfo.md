@@ -40,6 +40,81 @@
 
     Note : Each component of MOSAIC AI PLATFORM interacts with MLFLOW to provide observability and lifecycle management (Subject to correction)
 
+
+# DATABRICKS AI ENDPOINTS :
+  ## Goal :
+      There is an Databricks AI endpoint being served .
+      Now you have to use that end point and connect to your local system .
+      GENAI model is in databricks cloud , Talk to it from your local computer .
+
+
+  ## Setup in your local system :
+
+      - INSTALL OPENAI library :
+            - Create a virtual environment for installing these libs , as System level python doesnt allow to install new libs
+                > sudo apt install python3.12-venv          ## To install venv into your system
+                > python3 -m venv y_AI_ENV                  ## Create an vitual env 
+                > cd y_AI_ENV/bin/                          ## Your activate and deactivate files for venv are present here
+                > source activate                           ## Activate the venv "my_env" 
+                (my_env) > deactivate                       ## This a shell function inside activate file , to comeout of venv
+        
+            - Install the OPENAI lib :
+                > pip install openai
+            
+            - Install JUPYTER notebook :      
+                (y_AI_ENV) > pip install jupyter             ## Install JUPYTER inside your my_venv using pip
+                (y_AI_ENV) > jupyter notebook                ## To start Jupyter Notebook server , open "http://localhost:8888/" in any browser
+                (y_AI_ENV) > ctrl + c                        ## To stop Jupyter Notebook server
+        
+            - Setup API key to access served model :
+                1) Open databricks wiyh your main account , NOTE : " Only 'PAY PER TOKEN existing FOUNDATION MODELS' are working with non primary account's API" 
+                2) Click on your profile icon top right 
+                        -->> Click on setting
+                            -->> Go to 'USER' Section and click on 'DEVELOPER' tab
+                                -->> In 'DEVELOPER' tab near 'Access token' click on 'MANAGE'
+                                    -->> Under 'MANAGE" generate new token and use it in your code at 
+                                         OpenAI(api_key = "<paste Here>" , ....)
+            
+            - Get base url for OpenAI() function :
+                1) DATABRICKS HOEM -->> Left panel -->> AI?ML section -->> servings endpoint -->>
+                    Copy the URL at the top section and use it in 
+                    OpenAI(..... , base_url = "<paste here>")
+
+  ## Script for using it as a chatbot :
+
+        from openai import OpenAI
+        import os
+
+        var_client = OpenAI(
+                                api_key = os.getenv("var_AI_API_sec", "null"),
+                                base_url = os.getenv("var_end_point", "null")
+                            )
+
+
+        while True:
+            var_user_prompt = input("Your prompt message here: ")
+            if var_user_prompt == 'y_done':
+                break
+            var_response = var_client.chat.completions.create(
+                                                                messages = [
+                                                                                {
+                                                                                    "role": "system",
+                                                                                    #"content": "You are 3 year old child who doesnt know much"
+                                                                                    "content": "You are a general helpful question answer assistant , answer briefly"
+                                                                                },
+                                                                                {
+                                                                                    "role": "user",
+                                                                                    "content": var_user_prompt
+                                                                                }
+                                                                            ],
+                                                                model="databricks-meta-llama-3-1-8b-instruct",
+                                                                max_tokens=256
+                                                            )
+
+            print(var_response.choices[0].message.content)
+
+        print('Thank you for chatting')
+
 # Databricks VECTOR Database :
     - Mosaic AI Vector Search is SERVERLESS (End point based) vector database on top of DELTA TABLES.
     - It performs all the VECTOR DB functionalities like STORAGE , INDEXING , SIMILARITY SEARCH.

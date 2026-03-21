@@ -51,7 +51,7 @@
     The first set of commands where explicit mentioning of which shell interpreters to use will create new SHELL SESSIONS
     Where variables and functions defined in one SHELL SESSION will not be known to PARENT SHELL SESSION or others
 
-    Where as in the second set , the main SHELL SESSION where the cmd is beind run from , will stay as the SESSION
+    Where as in the second set , the main SHELL SESSION where the cmd is being run from , will stay as the SESSION
     for running the cmds that are inside the my_shell_file.sh
 
 
