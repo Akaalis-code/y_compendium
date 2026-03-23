@@ -50,7 +50,8 @@ NUCLEAR FUSION:
     Z Machine 
     Tokamak
     Stellarator
-
+DIGITAL STORAGE :
+    Microsoft project silica
 ELECTRONICS :
     SEMICONDUCTOR FABRICATION FACILITIES (FAB)
         FOUP is a machine that carries waffers from one machine to another in FAB
