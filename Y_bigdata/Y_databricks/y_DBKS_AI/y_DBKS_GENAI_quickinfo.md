@@ -33,7 +33,11 @@
     - Model Training -- A scalable framework for fine-tuning or training open-source LLMs
     - Model Serving
     - AI Gateway
-    - Vector Search
+    - Vector Search :
+            1) For vector DB , (check about delta sync)
+            2) Two main ways tp manage you r vectors
+                2.1) Delta sync index 
+                2.2) Direct vector access index
     - Agent Framework & Evaluation
     - MLflow Integration
 
