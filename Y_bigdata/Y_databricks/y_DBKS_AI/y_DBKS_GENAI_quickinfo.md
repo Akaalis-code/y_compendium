@@ -111,13 +111,60 @@
             print(var_response.choices[0].message.content)
         print('Thank you for chatting')
 
-  ## RAG SETUP :
+  ## Unity catalog setup :
         (my_env) > pip install databricks-sdk                   ## For running databricks scripts locally
         (my_env) > pip install databricks-vectorsearch          ## For vector database 
 
-  ## RAG SCRIPT :
+  ## Unity catalog script :
+        from databricks.sdk import WorkspaceClient
+        import os
 
-# Databricks VECTOR Database :
+        w = WorkspaceClient(
+                                host  = os.getenv("var_base_url", "null"),
+                                token = os.getenv("var_AI_API_mn", "null")
+                            )
+
+        display(w.dbutils.fs.ls('/Volumes/y_ws_250705/y_schema_for_ai/y_volume_for_rag/'))
+
+        created_schema = w.schemas.create   ( 
+                                                name         = "y_schema_for_AI",
+                                                catalog_name = "y_ws_250705",
+                                                comment      = "Created schema especially for AI related content"
+                                            )
+
+        from databricks.sdk.service.catalog import VolumeType
+        created_volume = w.volumes.create  (
+                                                catalog_name = "y_ws_250705",
+                                                schema_name  = "y_schema_for_AI",
+                                                name         = "y_volume_for_RAG",
+                                                volume_type  = VolumeType.MANAGED,
+                                                comment      = "Volumes to store my RAG source PDFs"
+                                            )
+                    
+  ## Chunking setup :
+        (my_env) > pip install langchain-text-splitters
+        (my_env) > pip install langchain
+
+  ## Chunking scripts :
+        from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ROUGH work / BACKUP :
     - Mosaic AI Vector Search is SERVERLESS (End point based) vector database on top of DELTA TABLES.
     - It performs all the VECTOR DB functionalities like STORAGE , INDEXING , SIMILARITY SEARCH.
     - Code :

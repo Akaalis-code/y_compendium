@@ -202,7 +202,7 @@ RAG (Retrieval Augmented Generation) :
 
         chunking - Example website for practical "chunkviz.up.railway.app"
             Code -
-                from langchain.text_splitter import RecursiveCharacterTextSplitter
+                from langchain.text_splitter import RecursiveCharacterTextSplitter ## depricated 
                 raw_text = ....read(my_files.pdf)
                 text_splitter_object = RecursiveCharacterTextSplitter(chunk_size = 200 , chunk_overlap = 20)
 
