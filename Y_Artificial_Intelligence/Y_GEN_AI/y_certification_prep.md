@@ -257,7 +257,7 @@ RAG Code :
     Store in Vector store
 
     Build Vector Search Index - 
-        It does indexing based on similarities , rather than exact match 
+        It does indexing based on semantics , rather than exact match 
         I think this can be done on any delta table (Subject to correction ) if you want to do a similarity search .
 
     Query via Vector Search Client - communicating point with vector store for Adding or retrieving embeddings or indexes or do similaity search

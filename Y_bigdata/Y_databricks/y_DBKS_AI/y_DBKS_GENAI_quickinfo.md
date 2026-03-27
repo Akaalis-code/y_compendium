@@ -141,14 +141,162 @@
                                                 comment      = "Volumes to store my RAG source PDFs"
                                             )
                     
-  ## Chunking setup :
+  ## Chunking setup : 
         (my_env) > pip install langchain-text-splitters
         (my_env) > pip install langchain
 
-  ## Chunking scripts :
+  ## Chunking scripts : Note this script is to be run in databricks notebook . local script gets complicated but doable .
+        import pandas as pd
+        from pyspark.sql.functions import monotonically_increasing_id, col
         from langchain_text_splitters import RecursiveCharacterTextSplitter
 
+        CATALOG = "y_ws_250705"
+        SCHEMA = "y_schema_for_ai"
+        VOLUME_NAME = "y_volume_for_rag"
+        FILE_NAME = "y_info_for_rag.txt"
+        TABLE_NAME = f"{CATALOG}.{SCHEMA}.y_tbl_for_chunking"
+        VOLUME_PATH = f"/Volumes/{CATALOG}/{SCHEMA}/{VOLUME_NAME}/{FILE_NAME}"
 
+        with open(VOLUME_PATH, "r") as f:
+            text = f.read()
+
+        splitter = RecursiveCharacterTextSplitter(
+                                                    chunk_size=100,
+                                                    chunk_overlap=10,
+                                                    separators=["\n\n", "\n", " ", ""]
+                                                )
+        chunks = splitter.split_text(text)
+        print(text)
+        print(chunks)
+
+        data = [{"id": i, "content": chunk} for i, chunk in enumerate(chunks)]
+        df = spark.createDataFrame(data)
+        df.display()
+
+        df.write.format("delta")\
+                .mode("overwrite")\
+                .option("delta.enableChangeDataFeed", "true")\
+                .saveAsTable(TABLE_NAME)
+
+        print(f"Success: Data indexed into Delta Table {TABLE_NAME}")
+
+
+  ## INDEXING Work :
+
+        ### Create Search engine end point :
+                from databricks.vector_search.client import VectorSearchClient
+                import time
+
+                vsc = VectorSearchClient()
+                VS_ENDPOINT_NAME = "gwinzol_search_compute"
+
+                #### 1. Create the Vector Search Endpoint
+                #### Check if it exists first to avoid errors
+                existing_endpoints = [e['name'] for e in vsc.list_endpoints().get('endpoints', [])]
+
+                if VS_ENDPOINT_NAME not in existing_endpoints:
+                    print(f"Creating endpoint {VS_ENDPOINT_NAME}...")
+                    vsc.create_endpoint(name=VS_ENDPOINT_NAME, endpoint_type="STANDARD")
+                else:
+                    print(f"Endpoint {VS_ENDPOINT_NAME} already exists.")
+
+                #### 2. Wait for it to be ready (it takes a few minutes)
+                while vsc.get_endpoint(VS_ENDPOINT_NAME).get("endpoint_status", {}).get("state") != "ONLINE":
+                    print("Waiting for endpoint to come online...")
+                    time.sleep(30)
+
+                print("Endpoint is ONLINE.")
+        
+        ### Create the Index (The Map) :
+                INDEX_NAME = f"{CATALOG}.{SCHEMA}.gwinzol_vsearch_index"
+
+                #### Create the index
+                vsc.create_delta_sync_index(
+                endpoint_name=VS_ENDPOINT_NAME,
+                source_table_name=TABLE_NAME,
+                index_name=INDEX_NAME,
+                pipeline_type='TRIGGERED', # Use 'CONTINUOUS' if you want real-time updates
+                primary_key="id",
+                embedding_source_column="content",
+                embedding_model_endpoint_name="databricks-bge-large-en" 
+                )
+
+                print(f"Index {INDEX_NAME} creation initiated. It will now begin embedding your Gwinzol data.")
+        
+        ### Similarity search :
+
+                #### 1. Get the index object
+                index = vsc.get_index(endpoint_name=VS_ENDPOINT_NAME, index_name=INDEX_NAME)
+
+                #### 2. Ask a question!
+                query = "Tell me about the Gwinzol's battery and charging speed."
+
+                #### 3. Perform the similarity search
+                results = index.similarity_search(
+                query_text=query,
+                columns=["content"], # Return the text chunk
+                num_results=2        # Get the top 2 most relevant chunks
+                )
+
+                #### 4. Extract the text to pass to an LLM later
+                search_results = results.get('result', {}).get('data_array', [])
+
+                for i, res in enumerate(search_results):
+                    print(f"Result {i+1}: {res[0]}")
+        
+        ### Rough knowledge using mlflow :
+                import mlflow.deployments
+
+                # Connect to the Databricks Foundation Model API
+                client = mlflow.deployments.get_deploy_client("databricks")
+
+                # We will use Llama-3-70b as our "expert"
+                LLM_ENDPOINT = "databricks-meta-llama-3-70b-instruct"
+
+
+                def ask_gwinzol_expert(question):
+                    # 1. RETRIEVAL: Find the most relevant facts from your index
+                    results = index.similarity_search(
+                        query_text=question,
+                        columns=["content"],
+                        num_results=3
+                    )
+                    
+                    # 2. EXTRACT: Flatten the results into a single string of "Context"
+                    data_array = results.get('result', {}).get('data_array', [])
+                    context_text = "\n---\n".join([res[0] for res in data_array])
+                    
+                    # 3. AUGMENT & GENERATE: Build the prompt and call the LLM
+                    prompt = f"""You are a luxury automotive expert for Gwinzol. 
+                    Use the following pieces of retrieved context to answer the question. 
+                    If you don't know the answer based on the context, say you don't know. 
+                    Keep the answer professional and exciting.
+
+                    Context:
+                    {context_text}
+
+                    Question: 
+                    {question}
+
+                    Answer:"""
+
+                    response = client.predict(
+                        endpoint=LLM_ENDPOINT,
+                        inputs={
+                            "messages": [
+                                {"role": "user", "content": prompt}
+                            ],
+                            "max_tokens": 500,
+                            "temperature": 0.1 # Low temperature for factual accuracy
+                        }
+                    )
+                    
+                    return response.choices[0]['message']['content']
+
+                # Now we ask a complex question
+                answer = ask_gwinzol_expert("What makes the Gwinzol's suspension so special?")
+
+                print(f"AI RESPONSE:\n{answer}")
 
 
 
