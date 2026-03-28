@@ -183,12 +183,19 @@
 
   ## INDEXING Work :
 
-        ### Create Search engine end point :
+        ### DATABRICKS ENDPOINTS FOR RAG :
+
+            LLM Model End point     --> BRAIN
+            Embedding endpoint      --> Translator from TEXT to MATH
+            Vector search endpoint  --> Resource for SIMILARITY and SEMANTIC search
+
+        ### Create Vector Search Endpoint : This provides the compute resources needed to host and query vector search indexes
                 from databricks.vector_search.client import VectorSearchClient
                 import time
 
+                VS_ENDPOINT_NAME = "y_vector_search_endpoint"
                 vsc = VectorSearchClient()
-                VS_ENDPOINT_NAME = "gwinzol_search_compute"
+
 
                 #### 1. Create the Vector Search Endpoint
                 #### Check if it exists first to avoid errors
@@ -232,11 +239,11 @@
                 query = "Tell me about the Gwinzol's battery and charging speed."
 
                 #### 3. Perform the similarity search
-                results = index.similarity_search(
-                query_text=query,
-                columns=["content"], # Return the text chunk
-                num_results=2        # Get the top 2 most relevant chunks
-                )
+                results = index.similarity_search   (
+                                                        query_text=query,
+                                                        columns=["content"], # Return the text chunk
+                                                        num_results=2        # Get the top 2 most relevant chunks
+                                                    )
 
                 #### 4. Extract the text to pass to an LLM later
                 search_results = results.get('result', {}).get('data_array', [])
@@ -312,7 +319,7 @@
 
 
 
-# ROUGH work / BACKUP :
+# ################################################################################ ROUGH work / BACKUP ################################################################################
     - Mosaic AI Vector Search is SERVERLESS (End point based) vector database on top of DELTA TABLES.
     - It performs all the VECTOR DB functionalities like STORAGE , INDEXING , SIMILARITY SEARCH.
     - Code :
@@ -343,3 +350,100 @@
 
 
 
+        SELECT 
+        product_name, 
+        ai_similarity(product_name, 'wireless headphones') AS match_score
+        FROM products
+        WHERE ai_similarity(product_name, 'wireless headphones') > 0.8
+        ORDER BY match_score DESC
+
+
+
+        ai_analyze_sentiment() -->> Detects if text is positive, negative, or neutral instantly.
+        SELECT ai_analyze_sentiment("I love this product!")
+
+        ai_classify() -->> Sorts text into custom categories you define.
+        SELECT ai_classify(feedback, ARRAY('billing', 'tech', 'sales'))
+
+        ai_extract() -->> Pulls specific data like dates or IDs out of messy text.
+        SELECT ai_extract(email_body, ARRAY('order_number'))
+
+        ai_summarize() -->> Condenses long articles or logs into a few short sentences.
+        SELECT ai_summarize(meeting_notes, 2)
+
+        ai_similarity() -->> Scores how closely two sentences match in meaning (0-1).
+        SELECT ai_similarity('Apple iPhone', 'iPhone 15 Pro')
+
+        ai_translate() -->> Converts text into any target language automatically.
+        SELECT ai_translate(comment, 'es')
+
+        ai_fix_grammar() -->> Polishes user-generated text by fixing typos and syntax.
+        SELECT ai_fix_grammar('he do not know nothing')
+
+        ai_gen() -->> Uses a prompt to generate custom content for every row.
+        SELECT ai_gen('Write a polite reply to: ' || customer_query)
+
+        ai_query() -->> Calls any custom or external LLM (like GPT-4) via endpoint.
+        SELECT ai_query('gpt-4-endpoint', 'Analyze this risk: ' || report)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PROMPT for learning : 
+    Teach me about databricks sql function "ai_analyze_sentiment()" in the below given format ,
+    1- What is it and what does it do ?
+    2- When was it introduced into databricks sql ?
+    3- Which AI model it uses , and is it PAY per token or something else
+    4- Any other important points that I should know about this 
+
+ai_analyze_sentiment() -->> Detects if text is positive, negative, or neutral instantly.
+SELECT ai_analyze_sentiment("I love this product!")
+
+ai_classify() -->> Sorts text into custom categories you define.
+SELECT ai_classify(feedback, ARRAY('billing', 'tech', 'sales'))
+
+ai_extract() -->> Pulls specific data like dates or IDs out of messy text.
+SELECT ai_extract(email_body, ARRAY('order_number'))
+
+ai_summarize() -->> Condenses long articles or logs into a few short sentences.
+SELECT ai_summarize(meeting_notes, 2)
+
+ai_similarity() -->> Scores how closely two sentences match in meaning (0-1).
+SELECT ai_similarity('Apple iPhone', 'iPhone 15 Pro')
+
+ai_translate() -->> Converts text into any target language automatically.
+SELECT ai_translate(comment, 'es')
+
+ai_fix_grammar() -->> Polishes user-generated text by fixing typos and syntax.
+SELECT ai_fix_grammar('he do not know nothing')
+
+ai_gen() -->> Uses a prompt to generate custom content for every row.
+SELECT ai_gen('Write a polite reply to: ' || customer_query)
+
+ai_query() -->> Calls any custom or external LLM (like GPT-4) via endpoint.
+SELECT ai_query('gpt-4-endpoint', 'Analyze this risk: ' || report)
