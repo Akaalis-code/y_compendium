@@ -1,7 +1,17 @@
 ---------------------------------- Check later -- start ------------------------------------------
 
 LLM
-RAG
+RAG :
+    TYPES :
+        1) Corrective RAG
+        2) SELF RAG
+        3) AGENTIC RAG 
+    CHUNKING STEP :
+        1) Fixed size chunking  -->> ineffocient , because it may loose meaning if a statement is broken at wrong point
+        2) Semantic Chunking    -->> (Check in LANGCHAIN and LlamaIndex for tools to acheive this )
+        3) Hierarchical chunking -->> apparently its the best , study about this later 
+    Embedding Models : 
+
 AGENTS
 MCP - MODEL CONTEXT PROTOCOL
 Agent 2 Agent 
