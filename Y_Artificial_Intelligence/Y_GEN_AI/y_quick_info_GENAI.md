@@ -6,16 +6,28 @@ RAG :
         1) Corrective RAG
         2) SELF RAG
         3) AGENTIC RAG 
-    CHUNKING STEP :
-        1) Fixed size chunking  -->> ineffocient , because it may loose meaning if a statement is broken at wrong point
-        2) Semantic Chunking    -->> (Check in LANGCHAIN and LlamaIndex for tools to acheive this )
-        3) Hierarchical chunking -->> apparently its the best , study about this later 
+
+    RAG CHUNKING TYPES :
+        1)  FixedSize chunking          = Breaks at every N number of chars
+        2)  RecursiveCharacter Chunking = Recursively drills down until the pieces fit your size 
+                                          limit without breaking a sentence or paragraph apart.
+        3)  Semantic Chunking           = Break happens based on meaning 
+        4)  Hierarchical or 
+            parent-child or 
+            Big-small chunking          = Data will be chunked in small to big possible lengths
+
     Embedding Models : 
 
 AGENTS
 MCP - MODEL CONTEXT PROTOCOL
 Agent 2 Agent 
 DAG - subject to correction
+
+
+
+
+
+
 
 ---------------------------------- check later -- end ----------------------------------------------
 
