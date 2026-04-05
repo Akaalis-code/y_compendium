@@ -1,6 +1,6 @@
 ---------------------------------- Check later -- start ------------------------------------------
 
-LLM
+LLM :
 RAG :
     TYPES :
         1) Corrective RAG
@@ -18,10 +18,14 @@ RAG :
 
     Embedding Models : 
 
-AGENTS
-MCP - MODEL CONTEXT PROTOCOL
-Agent 2 Agent 
-DAG - subject to correction
+AGENTS :
+MCP - MODEL CONTEXT PROTOCOL :
+Agent 2 Agent :
+DAG - subject to correction :
+
+
+
+
 
 
 
