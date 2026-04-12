@@ -17,7 +17,7 @@ RAG :
             Big-small chunking          = Data will be chunked in small to big possible lengths
 
     Embedding Models : 
-
+AI WORKFLOWS :
 AGENTS :
 MCP - MODEL CONTEXT PROTOCOL :
 Agent 2 Agent :

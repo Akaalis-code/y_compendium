@@ -1,5 +1,5 @@
 ## RANDOM STUFF :
-    0)  Check thje version of ubuntu you are using :
+    0)  Check the version of ubuntu you are using :
         >lsb_release -a         (Confirm its authenticity later )
 
     1)  Check which UBUNTU DESKTOP are you using :
