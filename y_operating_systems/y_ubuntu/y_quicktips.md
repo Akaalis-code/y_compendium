@@ -26,7 +26,8 @@
         > sudo apt purge <package_name>         # This will remove any pre existing config files 
         > sudo apt autoremove                   # This will remove any unused dependent libraries that were auto installed
 
-
+## Vulnerabilities fix and checks :
+    
 ## Get file or folder sizes 
     
     Use "du" command which is short for (disk usage)

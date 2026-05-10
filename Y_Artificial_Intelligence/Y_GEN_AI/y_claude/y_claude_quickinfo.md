@@ -22,3 +22,12 @@
 # 2026 :
     > Claude MYTHOS : 
             - RIP Software industry 
+
+
+
+
+Check later :
+    Claude Desktop Application 
+    Claude Projects 
+    Claude Artifacts
+    Claude cowork 
