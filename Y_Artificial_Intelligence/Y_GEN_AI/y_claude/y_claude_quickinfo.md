@@ -30,4 +30,8 @@ Check later :
     Claude Desktop Application 
     Claude Projects 
     Claude Artifacts
-    Claude cowork 
+    Claude Cowork 
+    Claude Dispatch
+    Claude Code
+    Claude Plugins
+    Claude Skills
