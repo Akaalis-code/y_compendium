@@ -111,5 +111,24 @@
                 Make file runnable 
 
 
+## SHELL Operators :
 
+    |   :   Output of one command goes into another .
+            > ls -l | grep ".txt"
+
+    ||  :   If first command fails only then run second command
+            > mkdir /root/test || echo "Failed to create folder!"
+
+    &   :   Run this command in background
+            > python3 server.py &
+
+    &&  :   Run the second command only when first command succeeds
+            > sudo apt update && sudo apt upgrade
+
+    $   :   Give value of the variable
+            > echo $name
+
+    $$  :   Give the current sessions process ids 
+            > echo $$
+            Output: 12345  (your current shell's PID)
         

@@ -34,5 +34,22 @@ Check later :
     Claude Dispatch
     Claude Code
     Claude Plugins
-    
     Claude Skills
+
+
+    When to use What :
+
+        Claude OPUS : 
+            -Complex research and reasoning 
+            -Multi step tasks
+            -Quality over Speed or low cost
+
+        Claude SONNET :
+            -Everyday tasks 
+            -Solid balance of quality and speed
+            -writing, coding, and analysis where Opus is overkill
+
+        Claude HAIKU :
+            -Fast, real-time responses 
+            -For simple questions and quick discussions
+            -High-volume or cost-sensitive building with the API
