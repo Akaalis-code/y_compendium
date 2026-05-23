@@ -53,3 +53,7 @@ When to use What :
         -Fast, real-time responses 
         -For simple questions and quick discussions
         -High-volume or cost-sensitive building with the API
+
+
+Some Links :
+    claude.ai/new
