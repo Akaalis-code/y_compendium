@@ -1,8 +1,5 @@
 # Setup in UBUNTU 
-    ## Using NPM (Node package manager) :
 
-        - SETUP NPM in UBUNTU :
-            > sudo apt update 
-            > sudo apt install nodejs npm -y
-            > node -v
-            > npm -v
+    curl -fsSL https://claude.ai/install.sh -o y_claude_code_install.sh
+    cat y_claude_code_install.sh        # review it
+    bash y_claude_code_install.sh       # run only if happy
