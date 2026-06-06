@@ -37,6 +37,12 @@ Check later :
     Claude Skills
 
 
+Check what is firecrawl 
+
+    Claude desktop --> settings --> capabilities --> understand all the underlying options 
+
+Social media carousel 
+
 When to use What :
 
     Claude OPUS : 
@@ -56,4 +62,6 @@ When to use What :
 
 
 Some Links :
-    claude.ai/new
+    https://claude.ai/new
+    https://claude.ai/upgrade
+    platform.claude.com/usage
