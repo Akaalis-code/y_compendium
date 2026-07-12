@@ -65,3 +65,28 @@ Some Links :
     https://claude.ai/new
     https://claude.ai/upgrade
     platform.claude.com/usage
+
+# CLAUDE USAGE and BILLING :
+    - Consumer subscriptions (Subscription Model (Pro/Max)):
+        - Claude Pro or Max subscription authenticating via your gmail accounts 
+          It doesnt track the cost through API usage , it has flat fee and usage limit per time .
+            - Check usage in claude code :
+                > /usage
+    - Developer API platform (API / Pay-Per-Token Model):
+        - You can buy API credits and use that money in form of API communication to LLM .
+          Keep in mind this is different from your SUBSCRIPTION model of (PRO , MAX) etc
+        - For Claude code to take the API key , you need to set it ".bashrc" file as below 
+          > export ANTHROPIC_API_KEY="your_sk_ant_key_here"
+          Save the file as .bashrc itself
+          > source .bashrc
+        
+    Note : (subject to correction)
+        If claude code notices that API key , it prefers to use Pay per token model through API .
+        In my experience Pay per token used up all 5 dollars in span of 15 mins work .
+        But if ANthropic has to support your code outside of CLAUDE code it needs API .
+        other wise if you are using just claude code  prefer subscription model over pay per token model.
+
+        If you want your claude code to use "Subscription Model" over its prefered "API / Pay-Per-Token Model"
+        >/logout
+        and enter into claude once again and do web authentication.
+        .claude
