@@ -25,7 +25,7 @@ Execution Order :
 
 
 # Window Function 
-Reference : https://www.javatpoint.com/mysql-window-functions
+
 
 SYNATX : 
     SELECT  expression 1, 
@@ -46,9 +46,20 @@ SYNATX :
         Example : ORDER BY col1,col2,....coln ASC|DESC
     
     [frame_definition] :
+        -   Types :
+                - ROWS BETWEEN
+                - RANGE BETWEEN :
+                        - INTERVAL type mentioning Time and date :
+                            RANGE BETWEEN INTERVAL 90 <HOUR/DAY/MONTH/YEAR> PRECEDING AND CURRENT ROW
+                        - NON INTERVAL type :
+                            RANGE BETWEEN 90 PRECEDING AND CURRENT ROW
+                - GROUPS BETWEEN
+            
         -   This frame definition helps you to have a subset inside the set defined in [partition_defintion]
             with the order defined in [order_definition]
+
         -   Default is "ROWS BETWEEN UNBOUNDED PRECEDING and CURRENT ROW"
+
         -   Examples : agg_func() OVER(PARTITION BY col1  ORDER BY col2 ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)
             Possible values :   1) UNBOUNDED PRECEDING
                                 2) UNBOUNDED FOLLOWING
@@ -71,9 +82,6 @@ SYNATX :
         FIRST_VALUE(col_name)   - careful with its default [frame_definition] , its "ROWS BETWEEN UNBOUNDED PRECEDING and CURRENT ROW"
         LAST_VALUE(col_name)    - careful with its default [frame_definition] , its "ROWS BETWEEN UNBOUNDED PRECEDING and CURRENT ROW"
         NTH_VALUE(col, n)       - careful with its default [frame_definition] , its "ROWS BETWEEN UNBOUNDED PRECEDING and CURRENT ROW"
-################### Window Function ## End ######################################################################
-
-
 
 
 
@@ -82,3 +90,15 @@ WINDOW functions have types like :
     TUMBLING window : when the current window doesnt intersect with previous or next window
     SLIDING window  : when the current window intersect with previous or next window
 
+
+# Conditional statements :
+
+    - CASE : 
+            CASE 
+                WHEN condition1 THEN result1
+                WHEN condition2 THEN result2
+                ELSE default_result
+            END
+            
+    - IF ELSE :
+            IF(condition, value_if_true, value_if_false)
