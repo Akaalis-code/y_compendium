@@ -89,4 +89,4 @@ Some Links :
         If you want your claude code to use "Subscription Model" over its prefered "API / Pay-Per-Token Model"
         >/logout
         and enter into claude once again and do web authentication.
-        .claude
+        >claude
