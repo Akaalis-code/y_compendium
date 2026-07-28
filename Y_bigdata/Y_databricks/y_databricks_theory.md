@@ -345,7 +345,49 @@
 
 
 
+# CDC and CDF :
+	CDC - Change Data Capture is industry term used to indicate tracking row level changes in a table
+	CDF - Change Data Feed is a Data bricks functionality to implement CDC .
+	
+	CDF is useful when only small fraction of data is changed in each batch
+	table_changes ( table_name, start_time [, end_time ] )
 
+	If you run above method using select , it returns below cols along with tables cols
+
+	_change_type STRING NOT NULL
+	Specifies the change: delete, insert, update_preimage, or update_postimage
+
+	_commit_version BIGINT NOT NULL
+	Specifies the commit version of the table associated with the change.
+
+	_commit_timestamp TIMESTAMP NOT NULL
+
+	CREATE TABLE myschema.t(c1 INT, c2 STRING) TBLPROPERTIES(delta.enableChangeDataFeed=true);
+	(spark.readStream
+	.option("readChangeFeed", "true")
+	.table("myDeltaTable")
+	)
+
+	-- providing only the startingVersion/timestamp
+	SELECT * FROM table_changes('tableName', 0)
+
+	-- database/schema names inside the string for table name, with backticks for escaping dots and special characters
+	SELECT * FROM table_changes('dbName.`dotted.tableName`', '2021-04-21 06:45:46' , '2021-05-21 12:00:00')
+
+	spark.read \
+	.option("readChangeFeed", "true") \
+	.option("startingVersion", 0) \
+	.option("endingVersion", 10) \
+	.table("myDeltaTable")
+
+
+	spark.read \
+	.option("readChangeFeed", "true") \
+	.option("startingTimestamp", '2021-04-21 05:45:46') \
+	.option("endingTimestamp", '2021-05-21 12:00:00') \
+	.table("myDeltaTable")
+
+	set spark.databricks.delta.properties.defaults.enableChangeDataFeed = true;
 
 
 
@@ -421,46 +463,7 @@ dbutils.widgets.get('fruits_combobox')
 
 
 
-CDC vs CDF 
-	CDF is useful when only small fraction of data is changed in each batch
-	table_changes ( table_name, start_time [, end_time ] )
 
-	If you run above method using select , it returns below cols along with tables cols
-
-	_change_type STRING NOT NULL
-	Specifies the change: delete, insert, update_preimage, or update_postimage
-
-	_commit_version BIGINT NOT NULL
-	Specifies the commit version of the table associated with the change.
-
-	_commit_timestamp TIMESTAMP NOT NULL
-
-	CREATE TABLE myschema.t(c1 INT, c2 STRING) TBLPROPERTIES(delta.enableChangeDataFeed=true);
-	(spark.readStream
-	.option("readChangeFeed", "true")
-	.table("myDeltaTable")
-	)
-
-	-- providing only the startingVersion/timestamp
-	SELECT * FROM table_changes('tableName', 0)
-
-	-- database/schema names inside the string for table name, with backticks for escaping dots and special characters
-	SELECT * FROM table_changes('dbName.`dotted.tableName`', '2021-04-21 06:45:46' , '2021-05-21 12:00:00')
-
-	spark.read \
-	.option("readChangeFeed", "true") \
-	.option("startingVersion", 0) \
-	.option("endingVersion", 10) \
-	.table("myDeltaTable")
-
-
-	spark.read \
-	.option("readChangeFeed", "true") \
-	.option("startingTimestamp", '2021-04-21 05:45:46') \
-	.option("endingTimestamp", '2021-05-21 12:00:00') \
-	.table("myDeltaTable")
-
-	set spark.databricks.delta.properties.defaults.enableChangeDataFeed = true;
 
 
 
