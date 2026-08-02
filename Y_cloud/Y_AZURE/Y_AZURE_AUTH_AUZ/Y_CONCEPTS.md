@@ -15,7 +15,8 @@
 
         
         USER 
-        TENANT / Directory : I think its related to DOMAIN or ORAGANIZATION level you can create users with domain name after @ symbol
+        TENANT / Directory :    I think its related to DOMAIN or ORAGANIZATION level you can create users 
+                                with domain name after @ symbol
         SUBSCRIPTION
         LICESENCE
 
@@ -31,3 +32,10 @@
         If you check your entra id you will have an account like :
                 xyz_outlook.com#EXT#@xyzoutlook.onmicrosoft.com
         Q) You need to understand the "xyz@outlook.com" vs "xyz_outlook.com#EXT#@xyzoutlook.onmicrosoft.com"
+
+
+## ADLS GEN2 Access methods :
+
+        Managed Identities, 
+        Service Principals, 
+        Access Connectors

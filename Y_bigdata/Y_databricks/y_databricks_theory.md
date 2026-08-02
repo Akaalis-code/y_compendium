@@ -49,13 +49,68 @@
 		- or in your program alone you can set it (more safe)
 
 # Authentication types to connect to cloud OBJECT storage :
-	- ACCESS KEYS :
-		spark.conf.set(
-						"fs.azure.account.key.<storage-account>.dfs.core.windows.net",
-						"<storage-account-access-key>"
-						)
-	- Shared Access Signature (SAS) :
-	- Service principle
+
+	Accessing Azure Data Lake Storage Gen2 (ADLS Gen2) from Databricks uses the ABFSS driver 
+	(abfss://<container>@<storage-account>.dfs.core.windows.net/<path>).
+
+	## Ways to access the ADLS from databricks :
+
+		1) Mounting ADLS to DBFS (Legacy / Deprecated) :
+
+				configs = 	{
+								"fs.azure.account.auth.type": "OAuth",
+								"fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azureblob.OAuthProvider",
+								"fs.azure.account.oauth2.client.id": client_id,
+								"fs.azure.account.oauth2.client.secret": client_secret,
+								"fs.azure.account.oauth2.client.endpoint": f"https://login.microsoftonline.com/{tenant_id}/oauth2/token"
+							}
+				dbutils.fs.mount(
+									source = f"abfss://{container_name}@{storage_account}.dfs.core.windows.net/",
+									mount_point = "/mnt/adls_data",
+									extra_configs = configs
+								)
+				df = spark.read.parquet("/mnt/adls_data/raw/")
+
+
+		2) ACCESS KEYS / ACCOUNT KEYS:
+
+				storage_account = "mystorageaccount"
+				account_key 	= dbutils.secrets.get(scope="my-scope", key="storage-key")
+				spark.conf.set	(
+									f"fs.azure.account.key.{storage_account}.dfs.core.windows.net",
+									account_key
+								)
+				df = spark.read.csv(f"abfss://my-container@{storage_account}.dfs.core.windows.net/sales.csv")
+
+		3) Shared Access Signature (SAS) :
+
+				storage_account = "mystorageaccount"
+				container_name 	= "my-container"
+				sas_token 		= dbutils.secrets.get(scope="my-scope", key="adls-sas-token")
+				spark.conf.set(f"fs.azure.account.auth.type.{storage_account}.dfs.core.windows.net", "SAS")
+				spark.conf.set(f"fs.azure.account.sas.token.provider.type.{storage_account}.dfs.core.windows.net", 
+								"org.apache.hadoop.fs.azureblob.sas.FixedSASTokenProvider"
+								)
+				spark.conf.set(f"fs.azure.sas.fixed.token.{storage_account}.dfs.core.windows.net", sas_token)
+				df = spark.read.json(f"abfss://{container_name}@{storage_account}.dfs.core.windows.net/logs/")
+
+		4) Service Principle :
+
+				storage_account = "mystorageaccount"
+				container_name 	= "my-container"
+				client_id 		= dbutils.secrets.get(scope="my-scope", key="sp-client-id")
+				client_secret 	= dbutils.secrets.get(scope="my-scope", key="sp-client-secret")
+				tenant_id 		= dbutils.secrets.get(scope="my-scope", key="sp-tenant-id")
+				spark.conf.set(f"fs.azure.account.auth.type.{storage_account}.dfs.core.windows.net", "OAuth")
+				spark.conf.set(f"fs.azure.account.oauth.provider.type.{storage_account}.dfs.core.windows.net",
+								 "org.apache.hadoop.fs.azureblob.OAuthProvider"
+								)
+				spark.conf.set(f"fs.azure.account.oauth2.client.id.{storage_account}.dfs.core.windows.net", client_id)
+				spark.conf.set(f"fs.azure.account.oauth2.client.secret.{storage_account}.dfs.core.windows.net", client_secret)
+				spark.conf.set(f"fs.azure.account.oauth2.client.endpoint.{storage_account}.dfs.core.windows.net",
+								 f"https://login.microsoftonline.com/{tenant_id}/oauth2/token"
+								 )
+				df = spark.read.parquet(f"abfss://{container_name}@{storage_account}.dfs.core.windows.net/path/to/data")
 
 
 
@@ -348,7 +403,7 @@
 # CDC and CDF :
 	CDC - Change Data Capture is industry term used to indicate tracking row level changes in a table
 	CDF - Change Data Feed is a Data bricks functionality to implement CDC .
-	
+
 	CDF is useful when only small fraction of data is changed in each batch
 	table_changes ( table_name, start_time [, end_time ] )
 
