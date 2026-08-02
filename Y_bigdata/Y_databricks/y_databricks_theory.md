@@ -112,7 +112,59 @@
 								 )
 				df = spark.read.parquet(f"abfss://{container_name}@{storage_account}.dfs.core.windows.net/path/to/data")
 
+		5) Unity Catalog (Modern Best Practice) :
 
+				Unity Catalog eliminates the need to manage storage keys, service principals, or secret scopes inside notebook code. 
+				Access is governed via Azure Managed Identity.
+
+				+-----------------------------------------------------------------------------------+
+				| 1. Azure Access Connector (Azure Level)                                           |
+				|    Managed Identity with 'Storage Blob Data Contributor' role on ADLS             |
+				+-----------------------------------------------------------------------------------+
+														│
+														▼
+				+-----------------------------------------------------------------------------------+
+				| 2. Storage Credential (Databricks UC Level)                                       |
+				|    Wraps the Azure Access Connector's Resource ID (Zero secrets stored in code)   |
+				+-----------------------------------------------------------------------------------+
+														│
+														▼
+				+-----------------------------------------------------------------------------------+
+				| 3. External Location (Databricks UC Level)                                        |
+				|    Combines a Storage Credential with an ABFSS URL path                           |
+				+-----------------------------------------------------------------------------------+
+														│
+														▼
+				+-----------------------------------------------------------------------------------+
+				| 4. Catalogs, Schemas, Tables & Volumes (Data Access Level)                        |
+				|    Users query data via standard SQL grants (e.g., GRANT SELECT ON TABLE...)      |
+				+-----------------------------------------------------------------------------------+
+
+				For Setting up the credentials :
+					1) copy the Resource ID of the unity catalog Access Connector (found in its Overview tab).
+					2) Assign "Storage Blob Data Contributor" to unity catalog Access Connector in ADLS -> IAM section
+					3) Create the Storage Credential :
+							CREATE STORAGE CREDENTIAL azure_adls_credential
+							AZURE_MANAGED_IDENTITY (
+														RESOURCE_ID = '<That you copied in step 1>'
+													)
+							COMMENT 'Keyless authentication for ADLS Gen2 via Azure Access Connector';
+
+
+
+
+
+
+				For Reading after access is set :
+					-- Read directly using ABFSS path governed by Unity Catalog
+					SELECT * FROM delta.`abfss://my-container@mystorageaccount.dfs.core.windows.net/data/sales`;
+
+					-- Or create a Managed/External Volume
+					CREATE EXTERNAL VOLUME my_catalog.my_schema.sales_volume
+					LOCATION 'abfss://my-container@mystorageaccount.dfs.core.windows.net/data/sales';
+
+					-- Read from Volume path
+					SELECT * FROM csv.`/Volumes/my_catalog/my_schema/sales_volume/raw_sales.csv`;
 
 # Architecture elements of AZURE DATA BRICKS :
 	Contol plane :
