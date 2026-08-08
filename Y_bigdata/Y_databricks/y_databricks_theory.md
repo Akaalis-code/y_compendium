@@ -140,31 +140,41 @@
 				|    Users query data via standard SQL grants (e.g., GRANT SELECT ON TABLE...)      |
 				+-----------------------------------------------------------------------------------+
 
-				For Setting up the credentials :
+				-For Setting up the credentials :
 					1) copy the Resource ID of the unity catalog Access Connector (found in its Overview tab).
 					2) Assign "Storage Blob Data Contributor" to unity catalog Access Connector in ADLS -> IAM section
 					3) Create the Storage Credential :
-							CREATE STORAGE CREDENTIAL azure_adls_credential
+
+							CREATE STORAGE CREDENTIAL <azure_adls_credential_name_your_wish>
 							AZURE_MANAGED_IDENTITY (
 														RESOURCE_ID = '<That you copied in step 1>'
 													)
 							COMMENT 'Keyless authentication for ADLS Gen2 via Azure Access Connector';
 
+					4) Create Storage Location :
+
+							CREATE EXTERNAL LOCATION adls_sales_data
+							URL 'abfss://sales-container@mystorageaccount.dfs.core.windows.net/raw/'
+							WITH (STORAGE CREDENTIAL <azure_adls_credential_name_your_wish that you have in step 3>)
+							COMMENT 'External location for raw sales data in ADLS';
+
+					5) GRANT Access to users and groups :
+
+							GRANT READ FILES, WRITE FILES ON EXTERNAL LOCATION adls_sales_data TO `data_engineers`;
 
 
+				-For Reading after the access is set :
+					1) Read directly using ABFSS path governed by Unity Catalog :
+					
+							SELECT * FROM delta.`abfss://my-container@mystorageaccount.dfs.core.windows.net/data/sales`;
 
+					2) Or create a Managed/External Volume
 
+							CREATE EXTERNAL VOLUME my_catalog.my_schema.sales_volume
+							LOCATION 'abfss://my-container@mystorageaccount.dfs.core.windows.net/data/sales';
 
-				For Reading after access is set :
-					-- Read directly using ABFSS path governed by Unity Catalog
-					SELECT * FROM delta.`abfss://my-container@mystorageaccount.dfs.core.windows.net/data/sales`;
-
-					-- Or create a Managed/External Volume
-					CREATE EXTERNAL VOLUME my_catalog.my_schema.sales_volume
-					LOCATION 'abfss://my-container@mystorageaccount.dfs.core.windows.net/data/sales';
-
-					-- Read from Volume path
-					SELECT * FROM csv.`/Volumes/my_catalog/my_schema/sales_volume/raw_sales.csv`;
+							-- Read from Volume path
+							SELECT * FROM csv.`/Volumes/my_catalog/my_schema/sales_volume/raw_sales.csv`;
 
 # Architecture elements of AZURE DATA BRICKS :
 	Contol plane :
