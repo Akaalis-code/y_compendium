@@ -450,6 +450,44 @@
 
 	If you delete a DLT pipeline , All the Dataassets that were created will also be deleted .
 
+	SCD 1 and SCD 2 syntax :
+		dlt.apply_changes(target = "target_table_name" , Source = "source name" , keys = ["join cols"] , )
+
+# DATABRICKS ASSET BUNDLES :
+	It is used to deploy the DATABRICKS resources from one workspace or environment into another workspace or env .
+	The information will be held in YAML files 
+
+	CMD LINE :
+		> databricks bundle deploy -t "qa"
+		> databricks bundle init
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # CDC and CDF :
