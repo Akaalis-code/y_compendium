@@ -244,7 +244,41 @@
 
 
 # DELTA LIVE TABLES :
-	Its a framework that works as a ready made solution for most of the ETL related 
+	Its a framework that works as a ready made solution for most of the ETL related work .
+	DLT WORKS with three types of datasets :
+		STREAMING LIVE TABLE
+		LIVE TABLE  or  Materialized Views 
+		TEMPORARY LIVE VIEW
+
+	DLT Notebook can only be run using "JOB COMPUTE"
+
+
+	@dlt.table()	-->>	for Streaming and Materializs views
+	@dlt.view()		-->>	For Views 
+
+
+	DLT PRODUCT EDITION : This will come during creation of DLT pipeline .
+		CORE	: Create or Read data sets , can do aggregations . Cannot do CDC and Data quality 
+		PRO		: Can do CDC along with CORE functionalities , Cannot do Data quality
+		ADVANCED: "CORE" + "PRO" + "DATA QUALITY"
+
+
+	PIPELINE MODE :
+		Triggered : Manually or schedule wise trigger once .
+
+					QUESTION1	-->>	If one of the DLT assets is STREAMING table and streaming is of continuous in nature
+										How does it handle this "TRIGGER MODE".
+					ANSWER1		-->>	When the pipeline is next triggered , the STREAMING DATA ASSET will
+										only send NEW data that has come from previous trigger , to further
+										steps , Thus staying true to its streaming nature .
+					
+					Materializs views and VIEWS will be read in full everytime  
+		Continuous:
+
+	If you delete a DLT pipeline , All the Dataassets that were created will also be deleted .
+
+	SCD 1 and SCD 2 syntax :
+		dlt.apply_changes(target = "target_table_name" , Source = "source name" , keys = ["join cols"] , )
 	
 # DELTA SHARING :
 	Used to share Data between either DATABRICKS to DATABRICKS or DATABRICKS to OUTSIDE WORLD
@@ -291,8 +325,6 @@
 	Delta LIVE table
 	Streaming live table
 
-
-
 # DBFS : Databricks File System
    
 	 1) Its a LOGICAL WRAPPER around the cloud object storage from where your databricks is hosted.
@@ -324,12 +356,6 @@
 				Shared Access Signatures (SAS)
 				Shared Key Authorization (Account Keys)
 				Managed Identities
-
-
-
-
-
-
 
 # DATABRICKS SECRETS :
 		There are two types of secret scopes:
@@ -364,9 +390,6 @@
 		
 		FINAL USAGE : 
 			dbutils.secrets.get(scope="<scope-name>", key="<secret-key>")
-
-
-
 
 # DATABRICKS CLI :
 
@@ -412,10 +435,6 @@
 	Delete a secret					| No				| No					| Yes					| Yes
 
 
-
-
-
-
 # DATABRICKS SPARK UI :
 
 		To access the UI navigate to COMPUTE -->> your cluster -->> On top pane you will have the options .
@@ -424,45 +443,6 @@
 			SPARK UI 
 			Spark compute UI - Master
 
-
-
-# DELTA LIVE TABLES (DLT) :
-
-	DLT WORKS with three types of datasets :
-		Streaming tables (PERMANANT or TEMPORARY)
-		Materialized views
-		Views
-
-	DLT Notebook can only be run using "JOB COMPUTE"
-
-
-	@dlt.table()	-->>	for Streaming and Materializs views
-	@dlt.view()		-->>	For Views 
-
-
-	DLT PRODUCT EDITION : This will come during creation of DLT pipeline .
-		CORE	: Create or Read data sets , can do aggregations . Cannot do CDC and Data quality 
-		PRO		: Can do CDC along with CORE functionalities , Cannot do Data quality
-		ADVANCED: "CORE" + "PRO" + "DATA QUALITY"
-
-
-	PIPELINE MODE :
-		Triggered : Manually or schedule wise trigger once .
-
-					QUESTION1	-->>	If one of the DLT assets is STREAMING table and streaming is of continuous in nature
-										How does it handle this "TRIGGER MODE".
-					ANSWER1		-->>	When the pipeline is next triggered , the STREAMING DATA ASSET will
-										only send NEW data that has come from previous trigger , to further
-										steps , Thus staying true to its streaming nature .
-					
-					Materializs views and VIEWS will be read in full everytime  
-		Continuous:
-
-	If you delete a DLT pipeline , All the Dataassets that were created will also be deleted .
-
-	SCD 1 and SCD 2 syntax :
-		dlt.apply_changes(target = "target_table_name" , Source = "source name" , keys = ["join cols"] , )
-
 # DATABRICKS ASSET BUNDLES :
 	It is used to deploy the DATABRICKS resources from one workspace or environment into another workspace or env .
 	The information will be held in YAML files 
@@ -470,35 +450,6 @@
 	CMD LINE :
 		> databricks bundle deploy -t "qa"
 		> databricks bundle init
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # CDC and CDF :
 	CDC - Change Data Capture is industry term used to indicate tracking row level changes in a table

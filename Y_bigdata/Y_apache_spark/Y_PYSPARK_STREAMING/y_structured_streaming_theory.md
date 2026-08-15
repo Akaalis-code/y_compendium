@@ -13,6 +13,17 @@
 
 
 
+
+ Problem                         | Solution
+---------------------------------|---------------------------
+Answers change over time         | output modes
+"Now" has to be defined          | triggers
+Data arrives out of order        | event time + watermarks
+Incremental updates need memory  | state + state store
+Crashes must not lose/duplicate  | checkpointing
+
+
+
 # Sources and Sinks
 
     Sources can be = File source ,Socket Source ,Rate Source ,Rate Per Micro-Batch Source(format:rate-micro-batch) ,Kafka Source
