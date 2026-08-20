@@ -11,6 +11,17 @@
 
         3) Install Pyspark library :
                 > pip install pyspark
+        
+        4) Setting up IDE (development env) to work in VS code :
+
+                4.1) ipykernel -->> this acts as intermediate between IDE s like {Jupyter VScode} and {system python or venv python}
+                        > pip install ipykernel
+
+                4.2) You have two ways from here, chose any one of the below  : (Subject to review and corrections)
+                        4.2.1) Run jupyter notebook from your venv and give its local server in selecting kernel 
+                                > pip install jupyter
+                                > jupyter notebook     # get local server link from here 
+                        4.2.2) Run the Venv from the terminal and just select that venv in kernel selection 
 
 # Structured streaming :
 
