@@ -1,3 +1,22 @@
+# Check later :
+    Claude Desktop Application 
+    Claude Projects 
+    Claude Artifacts
+    Claude Cowork 
+    Claude Dispatch
+    Claude Code
+    Claude Plugins
+    Claude Skills
+
+# Claude Certifications
+    Claude Certified Associate — Foundations (CCAO-F)
+    Claude Certified Developer — Foundations (CCDV-F) :
+        - Capg Accpunt 
+        - Order Id - 43FVX56Dy
+    Claude Certified Architect — Foundations (CCAR-F)
+        - Order Id - 5E75Y2R3y
+    Claude Certified Architect — Professional (CCAR-P)
+
 # 2023 :
     > Claude 1 Family : 100K token context window, larger than competitors at the time .
 
@@ -26,15 +45,7 @@
 
 
 
-Check later :
-    Claude Desktop Application 
-    Claude Projects 
-    Claude Artifacts
-    Claude Cowork 
-    Claude Dispatch
-    Claude Code
-    Claude Plugins
-    Claude Skills
+
 
 
 Check what is firecrawl 
