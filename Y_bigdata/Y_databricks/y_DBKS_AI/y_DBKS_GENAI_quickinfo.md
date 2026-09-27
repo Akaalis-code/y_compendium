@@ -319,7 +319,7 @@
 
 
 
-# ################################################################################ ROUGH work / BACKUP ################################################################################
+# ########### ROUGH work / BACKUP ############
     - Mosaic AI Vector Search is SERVERLESS (End point based) vector database on top of DELTA TABLES.
     - It performs all the VECTOR DB functionalities like STORAGE , INDEXING , SIMILARITY SEARCH.
     - Code :

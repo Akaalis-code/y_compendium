@@ -29,6 +29,86 @@
 	Databricks champions (or) Databricks partner program -->> (need to look into this) 
 		https://credentials.databricks.com/group/231242
 
+# Databricks Hierarchy and Overview of (Accounts , Region , Metastore , Catalog , workspace) : 
+	-	To understand Databricks, separate it into two layers:
+			- Execution & Compute (Workspaces): 
+						WORKSPACE (e.g., "prod-workspace-us-east")
+						│
+						├── Compute Configuration
+						│   ├── All-Purpose Clusters (Interactive development, debug environments)
+						│   ├── Job Clusters (Automated, single-job lifecycle clusters)
+						│   ├── Serverless Compute Pools (Auto-scaling code execution)
+						│   └── SQL Warehouses (Serverless & Classic query endpoints)
+						│
+						├── Orchestration & Automation
+						│   ├── Jobs & Workflows (Schedules, DAGs, multi-task pipelines, alerts)
+						│   └── Delta Live Tables (DLT) Pipelines (Declarative streaming/batch pipeline engines)
+						│
+						├── Developer & IDE Assets
+						│   ├── Repos & Git Folders (Git branches, CI/CD integration)
+						│   ├── Notebooks (Interactive SQL, Python, Scala, R code)
+						│   ├── Workspace Files (Local scripts, requirements.txt, helper modules)
+						│   └── DBFS / Local Storage Files (Legacy ephemeral workspace storage)
+						│
+						├── Machine Learning & Data Science (IDE Execution)
+						│   ├── MLflow Experiments (Runs, metrics, hyperparameter logs, artifact paths)
+						│   ├── Feature Store Code (Scripts/Pipelines generating features)
+						│   ├── Jupyter Notebooks (.ipynb execution environments)
+						│   └── Databricks Apps (Streamlit / Gradio hosting applications)
+						│
+						├── AI & GenAI Development
+						│   ├── Playground (UI interface to prompt and test LLMs)
+						│   ├── RAG Evaluation Workflows (Code pipelines for evaluation metrics)
+						│   └── Agent Authoring Scripts (LangChain / LlamaIndex / Agent code)
+						│
+						└── Business Intelligence & Analytics
+							├── Lakeview Dashboards (Native visualization workbooks)
+							├── Legacy Dashboards (Workspace-bound dashboards)
+							├── Queries & Alerts (Scheduled SQL alerts)
+							└── Genie Spaces (Natural language SQL exploration rooms)
+			- Data Governance (Unity Catalog): 
+						UNITY CATALOG METASTORE (e.g., "us-east-metastore")
+						│
+						├── 3-Level Data & Engineering Assets (catalog.schema.object)
+						│   ├── Managed Tables (Delta Lake tables fully managed by Databricks)
+						│   ├── External Tables (Tables pointing to custom cloud storage paths)
+						│   ├── Foreign Tables (Lakehouse Federation: virtual connections to Postgres, Snowflake, etc.)
+						│   ├── Streaming Tables & Materialized Views (Declarative target tables)
+						│   ├── Views (Standard & Dynamic Views with row/column-level filtering)
+						│   ├── Volumes (Managed/External directories for raw files, CSVs, PDFs, audio, logs)
+						│   └── User-Defined Functions (UDFs) (Centralized Python/SQL functions)
+						│
+						├── Data Science & Machine Learning Assets (catalog.schema.object)
+						│   ├── MLflow Registered Models (Centralized ML model versions, stages, and aliases)
+						│   ├── Feature Engineering Tables (Shared, reusable feature tables with point-in-time lookup)
+						│   ├── Databricks Model Serving Endpoints (Governance & metadata for served ML models)
+						│   └── Evaluation Datasets (Benchmarking datasets for ML drift & accuracy)
+						│
+						├── AI & GenAI Assets (catalog.schema.object)
+						│   ├── Vector Search Indexes (HNSW embeddings mapped to source Delta tables for RAG)
+						│   ├── Vector Search Endpoints (Infrastructure definition for Vector Search)
+						│   ├── AI Gateway Endpoints (Managed routes & rate-limits for external LLMs like OpenAI/Claude)
+						│   ├── Registered AI Agents & Tools (Compound AI System specs, tool definitions)
+						│   └── Native Mosaic AI Functions (SQL LLM functions: ai_query, ai_similarity, ai_extract)
+						│
+						├── Infrastructure & Storage Objects (Metastore Level)
+						│   ├── Storage Credentials (AWS IAM Roles, Azure Managed Identities, GCP Service Accounts)
+						│   ├── External Locations (Validated paths to S3/ADLS/GCS buckets)
+						│   └── Connections (Credentials for external databases used in Lakehouse Federation)
+						│
+						├── Governance, Security & Auditing (Metastore Level)
+						│   ├── Identity Management (Universal Users, Groups, and Service Principals)
+						│   ├── Access Control Lists (ACLs) (GRANT / REVOKE permissions across all objects)
+						│   ├── Governed Tags (PII, PCI-DSS, classification tags applied to assets/columns)
+						│   ├── Data Lineage Metadata (Automatic column-level tracking across pipelines)
+						│   └── System Tables (system.access, system.billing, system.lineage audit logs)
+						│
+						└── Delta Sharing (Data Exchange Objects)
+							├── Shares (Bundled tables, volumes, and views ready for distribution)
+							├── Recipients (Authorized external organizations/systems)
+							└── Providers (External data sellers/providers sharing inward)
+							
+
 # CONNECTION of DATABRICKS WORKSPACE to ADLS GEN2 :
 	WAY 1 :
 		- Using DBFS .
@@ -39,8 +119,19 @@
 								mount_point = "/mnt/<mount-name>",
 								extra_configs = configs
 							)
+		
+		- Accessing Data from that mount :
+			a. Pyspark :
+				> df = spark.read.format("delta").load("/mnt/<mount-name>/path/to/data")
+			b. SQL through mount points :
+				> SELECT * FROM delta.`/mnt/<mount-name>/path/to/data` LIMIT 10;
+			c. By creating a Table from mount points :
+				> CREATE TABLE my_catalog.my_schema.sales_data
+				  USING DELTA
+				  LOCATION '/mnt/<mount-name>/path/to/data';
+				> SELECT * FROM my_catalog.my_schema.sales_data;
 	
-	WAY 2:
+	WAY 2 :
 		- you can use SPARK config method to set whatever config you want to get authenticated 
 		- example :
 			spark.conf.set("...","...")
@@ -253,7 +344,7 @@
 	DLT Notebook can only be run using "JOB COMPUTE"
 
 
-	@dlt.table()	-->>	for Streaming and Materializs views
+	@dlt.table()	-->>	for Streaming Live Tables and Materializs views
 	@dlt.view()		-->>	For Views 
 
 
